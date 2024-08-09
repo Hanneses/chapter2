@@ -1,5 +1,5 @@
 {
-  "name": "chapter",
+  "name": "chapter2",
   "version": "0.0.1",
   "description": "A self-hosted event management tool for nonprofits",
   "main": "server/index.js",
@@ -7,8 +7,8 @@
     "doc": "docs"
   },
   "engines": {
-    "node": "18.16.0",
-    "npm": "8.19.4"
+    "node": "20.15.0",
+    "npm": "10.7.0"
   },
   "scripts": {
     "dev:client": "dotenv -- npm -w=client run dev",
@@ -16,12 +16,12 @@
     "dev:server:coverage": "npm -w=server run dev:coverage",
     "db:migrate:dev": "npm run prisma migrate dev",
     "db:migrate:reset": "npm run prisma migrate reset -- --force",
-    "db:reset": "npm run -w=server build && npm run prisma db push && npm run prisma db seed",
+    "db:reset": "npm run -w=server build; npm run prisma db push; npm run prisma db seed",
     "both": "concurrently -c 'auto' \"npm run dev:server\" \"npm run dev:client\" \"./server/wait-for localhost:5000 -- npm -w=client run gen:dev\"",
     "both:coverage": "cross-env NODE_ENV=test concurrently \"npm run dev:server:coverage\" \"npm run dev:client\" \"./server/wait-for localhost:5000 -- npm -w=client run gen:dev\"",
     "build": "cross-env NODE_ENV=production docker compose -f docker-compose.yml build",
     "build:coverage": "cross-env NODE_ENV=test npm run build",
-    "clean": "shx rm ./server/tsconfig.tsbuildinfo && npm run prisma -- generate",
+    "clean": "shx rm ./server/tsconfig.tsbuildinfo; npm run prisma -- generate",
     "gen": "npm -w=client run gen",
     "start": "docker compose -f docker-compose.yml -f docker-compose.production.yml up -d",
     "start:ci": "docker compose -f docker-compose.yml -f docker-compose.ci.yml up -d",
@@ -36,18 +36,18 @@
     "cypress:coverage:report": "npx nyc report",
     "test": "jest --coverage --verbose",
     "test:watch": "jest --watchAll",
-    "postinstall": "node scripts/postInstall.js && npm run change-user:owner",
+    "postinstall": "node scripts/postInstall.js; npm run change-user:owner",
     "lint": "eslint './**/*.{ts,tsx,js,jsx}'",
-    "lint-and-test": "npm run lint && npm run test",
+    "lint-and-test": "npm run lint; npm run test",
     "lint:fix": "eslint './**/*.{ts,tsx,js,jsx}' --fix",
     "pretty": "prettier --write client/**/*.ts* server/**/*.ts",
-    "prepare": "is-docker || husky install",
+    "prepare": "(is-docker) -OR (husky install)",
     "prisma": "npx -w=server dotenv -e ../.env -- prisma",
     "reminders:send": "npm -w=server run reminders:send"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/freeCodeCamp/chapter.git"
+    "url": "git+https://github.com/Hanneses/chapter2.git"
   },
   "keywords": [
     "chapter",
@@ -57,12 +57,12 @@
   "author": "author@chapter.io",
   "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/freeCodeCamp/chapter/issues"
+    "url": "https://github.com/Hanneses/chapter2/issues"
   },
-  "homepage": "https://github.com/freeCodeCamp/chapter#readme",
+  "homepage": "https://github.com/Hanneses/chapter2#readme",
   "devDependencies": {
     "@faker-js/faker": "6.3.1",
-    "@testing-library/cypress": "8.0.7",
+    "@testing-library/cypress": "^10.0.2",
     "@types/jest": "29.5.1",
     "@types/node-fetch": "2.6.3",
     "@types/supertest": "2.0.12",
@@ -70,15 +70,15 @@
     "@typescript-eslint/parser": "5.59.0",
     "concurrently": "7.6.0",
     "cross-env": "7.0.3",
-    "cypress": "10.11.0",
-    "cypress-mailhog": "1.7.0",
-    "cypress-wait-until": "1.7.2",
+    "cypress": "13.13.2",
+    "cypress-mailhog": "2.4.0",
+    "cypress-wait-until": "3.0.2",
     "dotenv": "16.0.3",
     "eslint": "8.39.0",
     "eslint-config-prettier": "8.8.0",
     "eslint-config-react": "1.1.7",
     "eslint-import-resolver-typescript": "3.5.5",
-    "eslint-plugin-cypress": "2.12.1",
+    "eslint-plugin-cypress": "3.4.0",
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-jest": "26.9.0",
     "eslint-plugin-no-only-tests": "2.6.0",
