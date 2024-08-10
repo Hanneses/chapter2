@@ -57,7 +57,11 @@
     }
   ],
   "rules": {
-    "prettier/prettier": ["error", { "singleQuote": true }],
+    "prettier/prettier": [
+      "error",
+      { "endOfLine": "auto" },
+      { "singleQuote": true }
+    ],
     "react/display-name": 0,
     "react/prop-types": 0,
     "import/no-unresolved": "error",

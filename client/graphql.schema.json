@@ -12,6 +12,7 @@
         "kind": "OBJECT",
         "name": "Attendance",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "id",
@@ -54,7 +55,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -71,6 +72,7 @@
         "kind": "SCALAR",
         "name": "Boolean",
         "description": "The `Boolean` scalar type represents `true` or `false`.",
+        "isOneOf": null,
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -81,6 +83,7 @@
         "kind": "OBJECT",
         "name": "Chapter",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "banner_url",
@@ -272,6 +275,7 @@
         "kind": "OBJECT",
         "name": "ChapterCardRelations",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "_count",
@@ -527,6 +531,7 @@
         "kind": "INPUT_OBJECT",
         "name": "ChapterInputs",
         "description": null,
+        "isOneOf": false,
         "fields": null,
         "inputFields": [
           {
@@ -702,6 +707,7 @@
         "kind": "OBJECT",
         "name": "ChapterPermission",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "id",
@@ -745,6 +751,7 @@
         "kind": "OBJECT",
         "name": "ChapterRole",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "chapter_role_permissions",
@@ -812,6 +819,7 @@
         "kind": "OBJECT",
         "name": "ChapterRolePermission",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "chapter_permission",
@@ -839,6 +847,7 @@
         "kind": "OBJECT",
         "name": "ChapterUser",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "chapter_id",
@@ -877,7 +886,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -926,6 +935,7 @@
         "kind": "OBJECT",
         "name": "ChapterUserWithRelations",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "chapter_id",
@@ -980,7 +990,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -1045,6 +1055,7 @@
         "kind": "OBJECT",
         "name": "ChapterUserWithRole",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "chapter_id",
@@ -1099,7 +1110,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -1148,6 +1159,7 @@
         "kind": "OBJECT",
         "name": "ChapterUsersCount",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "chapter_users",
@@ -1175,6 +1187,7 @@
         "kind": "OBJECT",
         "name": "ChapterWithEvents",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "banner_url",
@@ -1414,6 +1427,7 @@
         "kind": "OBJECT",
         "name": "ChapterWithRelations",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "banner_url",
@@ -1701,6 +1715,7 @@
         "kind": "INPUT_OBJECT",
         "name": "CreateSponsorInputs",
         "description": null,
+        "isOneOf": false,
         "fields": null,
         "inputFields": [
           {
@@ -1774,8 +1789,9 @@
       },
       {
         "kind": "SCALAR",
-        "name": "DateTime",
-        "description": "The javascript `Date` as string. Type represents date and time as the ISO Date string.",
+        "name": "DateTimeISO",
+        "description": "A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.This scalar is serialized to a string in ISO 8601 format and parsed from a string in ISO 8601 format.",
+        "isOneOf": null,
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -1786,6 +1802,7 @@
         "kind": "OBJECT",
         "name": "Event",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "canceled",
@@ -1844,7 +1861,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -1940,7 +1957,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -1997,6 +2014,7 @@
         "kind": "INPUT_OBJECT",
         "name": "EventInputs",
         "description": null,
+        "isOneOf": false,
         "fields": null,
         "inputFields": [
           {
@@ -2039,7 +2057,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -2147,7 +2165,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -2212,6 +2230,7 @@
         "kind": "OBJECT",
         "name": "EventPermission",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "id",
@@ -2255,6 +2274,7 @@
         "kind": "OBJECT",
         "name": "EventRole",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "id",
@@ -2298,6 +2318,7 @@
         "kind": "OBJECT",
         "name": "EventRolePermission",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "event_permission",
@@ -2325,6 +2346,7 @@
         "kind": "OBJECT",
         "name": "EventRoleWithPermissions",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "event_role_permissions",
@@ -2392,6 +2414,7 @@
         "kind": "OBJECT",
         "name": "EventSponsor",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "sponsor",
@@ -2419,6 +2442,7 @@
         "kind": "OBJECT",
         "name": "EventUser",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "event_id",
@@ -2445,7 +2469,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -2477,7 +2501,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -2510,6 +2534,7 @@
         "kind": "OBJECT",
         "name": "EventUserWithAttendanceAndUser",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "attendance",
@@ -2552,7 +2577,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -2584,7 +2609,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -2633,6 +2658,7 @@
         "kind": "OBJECT",
         "name": "EventUserWithRelations",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "attendance",
@@ -2691,7 +2717,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -2723,7 +2749,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -2772,6 +2798,7 @@
         "kind": "OBJECT",
         "name": "EventUserWithRolePermissions",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "event_id",
@@ -2814,7 +2841,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -2846,7 +2873,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -2879,6 +2906,7 @@
         "kind": "OBJECT",
         "name": "EventWithRelationsWithEventUser",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "canceled",
@@ -2953,7 +2981,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -3121,7 +3149,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -3190,6 +3218,7 @@
         "kind": "OBJECT",
         "name": "EventWithRelationsWithEventUserRelations",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "canceled",
@@ -3264,7 +3293,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -3432,7 +3461,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -3501,6 +3530,7 @@
         "kind": "OBJECT",
         "name": "EventWithVenue",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "canceled",
@@ -3559,7 +3589,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -3679,7 +3709,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -3748,6 +3778,7 @@
         "kind": "OBJECT",
         "name": "EventsWithChapters",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "canceled",
@@ -3822,7 +3853,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -3942,7 +3973,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -3999,6 +4030,7 @@
         "kind": "SCALAR",
         "name": "Float",
         "description": "The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).",
+        "isOneOf": null,
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -4009,6 +4041,7 @@
         "kind": "OBJECT",
         "name": "InstancePermission",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "name",
@@ -4036,6 +4069,7 @@
         "kind": "OBJECT",
         "name": "InstanceRole",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "id",
@@ -4103,6 +4137,7 @@
         "kind": "OBJECT",
         "name": "InstanceRolePermission",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "instance_permission",
@@ -4130,6 +4165,7 @@
         "kind": "SCALAR",
         "name": "Int",
         "description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.",
+        "isOneOf": null,
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -4140,6 +4176,7 @@
         "kind": "OBJECT",
         "name": "Mutation",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "attendEvent",
@@ -5580,6 +5617,7 @@
         "kind": "OBJECT",
         "name": "PaginatedEventsWithChapters",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "events",
@@ -5631,6 +5669,7 @@
         "kind": "OBJECT",
         "name": "Query",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "calendarIntegrationStatus",
@@ -6309,6 +6348,7 @@
         "kind": "OBJECT",
         "name": "Sponsor",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "id",
@@ -6400,6 +6440,7 @@
         "kind": "OBJECT",
         "name": "SponsorWithEvents",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "event_sponsors",
@@ -6515,6 +6556,7 @@
         "kind": "OBJECT",
         "name": "SponsoredEvent",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "event",
@@ -6542,6 +6584,7 @@
         "kind": "SCALAR",
         "name": "String",
         "description": "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.",
+        "isOneOf": null,
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -6552,6 +6595,7 @@
         "kind": "OBJECT",
         "name": "Tag",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "id",
@@ -6595,6 +6639,7 @@
         "kind": "OBJECT",
         "name": "Tags",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "tag",
@@ -6622,6 +6667,7 @@
         "kind": "OBJECT",
         "name": "TokenStatus",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "is_valid",
@@ -6665,6 +6711,7 @@
         "kind": "INPUT_OBJECT",
         "name": "UpdateSponsorInputs",
         "description": null,
+        "isOneOf": false,
         "fields": null,
         "inputFields": [
           {
@@ -6740,6 +6787,7 @@
         "kind": "INPUT_OBJECT",
         "name": "UpdateUserInputs",
         "description": null,
+        "isOneOf": false,
         "fields": null,
         "inputFields": [
           {
@@ -6791,6 +6839,7 @@
         "kind": "OBJECT",
         "name": "User",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "auto_subscribe",
@@ -6862,6 +6911,7 @@
         "kind": "OBJECT",
         "name": "UserBan",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "chapter_id",
@@ -6905,6 +6955,7 @@
         "kind": "OBJECT",
         "name": "UserBanChapters",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "chapter",
@@ -6964,6 +7015,7 @@
         "kind": "OBJECT",
         "name": "UserChapter",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "chapter",
@@ -7034,7 +7086,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -7083,6 +7135,7 @@
         "kind": "OBJECT",
         "name": "UserEvent",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "attendance",
@@ -7157,7 +7210,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -7189,7 +7242,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "DateTime",
+                "name": "DateTimeISO",
                 "ofType": null
               }
             },
@@ -7222,6 +7275,7 @@
         "kind": "OBJECT",
         "name": "UserForDownload",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "admined_chapters",
@@ -7421,6 +7475,7 @@
         "kind": "OBJECT",
         "name": "UserProfile",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "admined_chapters",
@@ -7548,6 +7603,7 @@
         "kind": "OBJECT",
         "name": "UserWithInstanceRole",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "admined_chapters",
@@ -7659,6 +7715,7 @@
         "kind": "OBJECT",
         "name": "UserWithPermissions",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "admined_chapters",
@@ -7842,6 +7899,7 @@
         "kind": "OBJECT",
         "name": "Venue",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "chapter_id",
@@ -8001,6 +8059,7 @@
         "kind": "INPUT_OBJECT",
         "name": "VenueInputs",
         "description": null,
+        "isOneOf": false,
         "fields": null,
         "inputFields": [
           {
@@ -8152,6 +8211,7 @@
         "kind": "ENUM",
         "name": "VenueType",
         "description": "All possible venue types for an event",
+        "isOneOf": null,
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -8181,6 +8241,7 @@
         "kind": "OBJECT",
         "name": "VenueWithChapter",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "chapter",
@@ -8356,6 +8417,7 @@
         "kind": "OBJECT",
         "name": "VenueWithChapterEvents",
         "description": null,
+        "isOneOf": null,
         "fields": [
           {
             "name": "chapter",
@@ -8555,6 +8617,7 @@
         "kind": "OBJECT",
         "name": "__Directive",
         "description": "A Directive provides a way to describe alternate runtime execution and type validation behavior in a GraphQL document.\n\nIn some cases, you need to provide options to alter GraphQL's execution behavior in ways field arguments will not suffice, such as conditionally including or skipping a field. Directives provide this by describing additional information to the executor.",
+        "isOneOf": null,
         "fields": [
           {
             "name": "name",
@@ -8671,6 +8734,7 @@
         "kind": "ENUM",
         "name": "__DirectiveLocation",
         "description": "A Directive can be adjacent to many parts of the GraphQL language, a __DirectiveLocation describes one such possible adjacencies.",
+        "isOneOf": null,
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -8796,6 +8860,7 @@
         "kind": "OBJECT",
         "name": "__EnumValue",
         "description": "One possible value for a given Enum. Enum values are unique values, not a placeholder for a string or numeric value. However an Enum value is returned in a JSON response as a string.",
+        "isOneOf": null,
         "fields": [
           {
             "name": "name",
@@ -8863,6 +8928,7 @@
         "kind": "OBJECT",
         "name": "__Field",
         "description": "Object and Interface types are described by a list of Fields, each of which has a name, potentially a list of arguments, and a return type.",
+        "isOneOf": null,
         "fields": [
           {
             "name": "name",
@@ -8983,6 +9049,7 @@
         "kind": "OBJECT",
         "name": "__InputValue",
         "description": "Arguments provided to Fields or Directives and the input fields of an InputObject are represented as Input Values which describe their type and optionally a default value.",
+        "isOneOf": null,
         "fields": [
           {
             "name": "name",
@@ -9078,6 +9145,7 @@
         "kind": "OBJECT",
         "name": "__Schema",
         "description": "A GraphQL Schema defines the capabilities of a GraphQL server. It exposes all available types and directives on the server, as well as the entry points for query, mutation, and subscription operations.",
+        "isOneOf": null,
         "fields": [
           {
             "name": "description",
@@ -9188,7 +9256,8 @@
       {
         "kind": "OBJECT",
         "name": "__Type",
-        "description": "The fundamental unit of any GraphQL Schema is the type. There are many kinds of types in GraphQL as represented by the `__TypeKind` enum.\n\nDepending on the kind of a type, certain fields describe information about that type. Scalar types provide no information beyond a name, description and optional `specifiedByUrl`, while Enum types provide their values. Object and Interface types provide the fields they describe. Abstract types, Union and Interface, provide the Object types possible at runtime. List and NonNull types compose other types.",
+        "description": "The fundamental unit of any GraphQL Schema is the type. There are many kinds of types in GraphQL as represented by the `__TypeKind` enum.\n\nDepending on the kind of a type, certain fields describe information about that type. Scalar types provide no information beyond a name, description and optional `specifiedByURL`, while Enum types provide their values. Object and Interface types provide the fields they describe. Abstract types, Union and Interface, provide the Object types possible at runtime. List and NonNull types compose other types.",
+        "isOneOf": null,
         "fields": [
           {
             "name": "kind",
@@ -9231,7 +9300,7 @@
             "deprecationReason": null
           },
           {
-            "name": "specifiedByUrl",
+            "name": "specifiedByURL",
             "description": null,
             "args": [],
             "type": {
@@ -9392,6 +9461,18 @@
             },
             "isDeprecated": false,
             "deprecationReason": null
+          },
+          {
+            "name": "isOneOf",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ],
         "inputFields": null,
@@ -9403,6 +9484,7 @@
         "kind": "ENUM",
         "name": "__TypeKind",
         "description": "An enum describing what kind of type a given `__Type` is.",
+        "isOneOf": null,
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -9510,6 +9592,13 @@
         ]
       },
       {
+        "name": "oneOf",
+        "description": "Indicates exactly one field must be supplied and this field must not be `null`.",
+        "isRepeatable": false,
+        "locations": ["INPUT_OBJECT"],
+        "args": []
+      },
+      {
         "name": "skip",
         "description": "Directs the executor to skip this field or fragment when the `if` argument is true.",
         "isRepeatable": false,
@@ -9535,13 +9624,13 @@
       },
       {
         "name": "specifiedBy",
-        "description": "Exposes a URL that specifies the behaviour of this scalar.",
+        "description": "Exposes a URL that specifies the behavior of this scalar.",
         "isRepeatable": false,
         "locations": ["SCALAR"],
         "args": [
           {
             "name": "url",
-            "description": "The URL that specifies the behaviour of this scalar.",
+            "description": "The URL that specifies the behavior of this scalar.",
             "type": {
               "kind": "NON_NULL",
               "name": null,
