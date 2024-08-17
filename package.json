@@ -41,7 +41,7 @@
     "lint-and-test": "npm run lint; npm run test",
     "lint:fix": "eslint './**/*.{ts,tsx,js,jsx}' --fix",
     "pretty": "prettier --write client/**/*.ts* server/**/*.ts",
-    "prepare": "(is-docker) -OR (husky install)",
+    "prepare": "is-docker || husky install",
     "prisma": "npx -w=server dotenv -e ../.env -- prisma",
     "reminders:send": "npm -w=server run reminders:send"
   },
