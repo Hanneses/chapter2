@@ -67,7 +67,8 @@
     "import/no-unresolved": "error",
     "import/order": "error",
     "no-only-tests/no-only-tests": "error",
-    "no-use-before-define": "error"
+    "no-use-before-define": "error",
+    "react/react-in-jsx-scope": "off" // suppress errors for missing 'import React' in files
   },
   "settings": {
     "react": {
