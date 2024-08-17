@@ -20,8 +20,8 @@
     "capacity": 10,
     "image_url": "https://test.event.org/image",
     "streaming_url": "https://test.event.org/video",
-    "start_at": "2022-01-01T00:01",
-    "ends_at": "2022-01-02T00:02",
+    "start_at": "2022-01-01T00:01:00.000Z",
+    "ends_at": "2022-01-02T00:02:00.000Z",
     "event_tags": "Test, Event, Tags"
   },
   "eventThree": {
@@ -34,8 +34,8 @@
     "capacity": 10,
     "image_url": "https://test.event.org/image",
     "streaming_url": "https://test.event.org/video",
-    "start_at": "2022-01-01T00:01",
-    "ends_at": "2022-01-02T00:02",
+    "start_at": "2022-01-01T00:01:00.000Z",
+    "ends_at": "2022-01-02T00:02:00.000Z",
     "invite_only": false,
     "event_tags": []
   },
@@ -51,8 +51,8 @@
   "partialData": {
     "capacity": 10,
     "venue_id": 1,
-    "start_at": "2022-01-01T00:01",
-    "ends_at": "2022-01-02T00:02",
+    "start_at": "2022-01-01T00:01:00.000Z",
+    "ends_at": "2022-01-02T00:02:00.000Z",
     "sponsor_ids": [],
     "name": "Other Event",
     "url": "https://test.event.org",

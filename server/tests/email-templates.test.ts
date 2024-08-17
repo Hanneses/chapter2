@@ -76,7 +76,7 @@ describe('email-templates', () => {
   describe('dateChangeText', () => {
     it('should return expected text', () => {
       const expected =
-        '\n- Start: Thu, Feb 9 @ 15:00 GMT+00:00<br />\n- End: Wed, Feb 15 @ 10:00 GMT+00:00';
+        '\n- Start: Thu, Feb 9 @ 15:00 GMT+0<br />\n- End: Wed, Feb 15 @ 10:00 GMT+0';
       expect(
         dateChangeText({
           ends_at: new Date('2023-02-15 10:00'),

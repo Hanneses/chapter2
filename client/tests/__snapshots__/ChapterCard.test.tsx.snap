@@ -161,17 +161,17 @@ exports[`ChapterCard should render with tags 1`] = `
           data-cy="tags-box"
         >
           <span
-            class="css-1gdkno8"
+            class="css-1ik71sp"
           >
             first
           </span>
           <span
-            class="css-1gdkno8"
+            class="css-1ik71sp"
           >
             third
           </span>
           <span
-            class="css-1gdkno8"
+            class="css-1ik71sp"
           >
             second
           </span>

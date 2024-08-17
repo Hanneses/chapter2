@@ -1,5 +1,4 @@
 # Use images from registry
-version: "3.7"
 services:
   server:
     image: freecodecamp/chapter-server

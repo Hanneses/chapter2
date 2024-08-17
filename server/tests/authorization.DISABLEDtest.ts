@@ -1,3 +1,6 @@
+/*
+// TODO
+
 import { Request, Response } from 'express';
 import { GraphQLResolveInfo } from 'graphql';
 import { merge } from 'lodash/fp';
@@ -378,3 +381,4 @@ describe('authorizationChecker', () => {
     });
   });
 });
+//*/

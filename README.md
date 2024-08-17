@@ -1,3 +1,6 @@
+> **_Chapter 2_** continues the deprecated project [freeCodeCamp/chapter](https://github.com/freeCodeCamp/chapter).
+
+
 # Welcome to Chapter
 
 [![All Contributors](https://img.shields.io/github/all-contributors/freeCodeCamp/chapter?color=orange&style=flat-square)](#contributors-)
@@ -74,7 +77,7 @@ Quincy Larson is the project lead. [freeCodeCamp](https://www.freecodecamp.org) 
 
 ## License
 
-Copyright (c) 2019-2023 freeCodeCamp.org
+Copyright (c) 2019-2024 freeCodeCamp.org
 
 The computer software is licensed under the [BSD-3-Clause](LICENSE) license.
 
@@ -193,6 +196,7 @@ Thanks goes to these wonderful volunteers ([emoji key](https://allcontributors.o
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/randychilau"><img src="https://avatars.githubusercontent.com/u/90356410?v=4?s=100" width="100px;" alt="randychilau"/><br /><sub><b>randychilau</b></sub></a><br /><a href="https://github.com/freeCodeCamp/chapter/commits?author=randychilau" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ttran913"><img src="https://avatars.githubusercontent.com/u/122418320?v=4?s=100" width="100px;" alt="ttran913"/><br /><sub><b>ttran913</b></sub></a><br /><a href="https://github.com/freeCodeCamp/chapter/commits?author=ttran913" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/MackenanDsouza"><img src="https://avatars.githubusercontent.com/u/106609109?v=4?s=100" width="100px;" alt="MackenanDsouza"/><br /><sub><b>MackenanDsouza</b></sub></a><br /><a href="https://github.com/freeCodeCamp/chapter/commits?author=MackenanDsouza" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Hanneses"><img src="https://avatars.githubusercontent.com/u/123950376?v=4?s=100" width="100px;" alt="Hanneses"/><br /><sub><b>Hanneses</b></sub></a><br /><a href="https://github.com/freeCodeCamp/chapter/commits?author=Hanneses" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>

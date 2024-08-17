@@ -11,83 +11,92 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
   [SubKey in K]: Maybe<T[SubKey]>;
 };
+export type MakeEmpty<
+  T extends { [key: string]: unknown },
+  K extends keyof T,
+> = { [_ in K]?: never };
+export type Incremental<T> =
+  | T
+  | {
+      [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never;
+    };
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string;
-  String: string;
-  Boolean: boolean;
-  Int: number;
-  Float: number;
-  DateTime: any;
+  ID: { input: string; output: string };
+  String: { input: string; output: string };
+  Boolean: { input: boolean; output: boolean };
+  Int: { input: number; output: number };
+  Float: { input: number; output: number };
+  DateTimeISO: { input: any; output: any };
 };
 
 export type Attendance = {
   __typename?: 'Attendance';
-  id: Scalars['Int'];
-  name: Scalars['String'];
-  updated_at: Scalars['DateTime'];
+  id: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  updated_at: Scalars['DateTimeISO']['output'];
 };
 
 export type Chapter = {
   __typename?: 'Chapter';
-  banner_url?: Maybe<Scalars['String']>;
-  category: Scalars['String'];
-  chat_url?: Maybe<Scalars['String']>;
-  city: Scalars['String'];
-  country: Scalars['String'];
-  creator_id: Scalars['Int'];
-  description: Scalars['String'];
-  has_calendar: Scalars['Boolean'];
-  id: Scalars['Int'];
-  logo_url?: Maybe<Scalars['String']>;
-  name: Scalars['String'];
-  region: Scalars['String'];
+  banner_url?: Maybe<Scalars['String']['output']>;
+  category: Scalars['String']['output'];
+  chat_url?: Maybe<Scalars['String']['output']>;
+  city: Scalars['String']['output'];
+  country: Scalars['String']['output'];
+  creator_id: Scalars['Int']['output'];
+  description: Scalars['String']['output'];
+  has_calendar: Scalars['Boolean']['output'];
+  id: Scalars['Int']['output'];
+  logo_url?: Maybe<Scalars['String']['output']>;
+  name: Scalars['String']['output'];
+  region: Scalars['String']['output'];
 };
 
 export type ChapterCardRelations = {
   __typename?: 'ChapterCardRelations';
   _count: ChapterUsersCount;
-  banner_url?: Maybe<Scalars['String']>;
-  category: Scalars['String'];
+  banner_url?: Maybe<Scalars['String']['output']>;
+  category: Scalars['String']['output'];
   chapter_tags: Array<Tags>;
-  chat_url?: Maybe<Scalars['String']>;
-  city: Scalars['String'];
-  country: Scalars['String'];
-  creator_id: Scalars['Int'];
-  description: Scalars['String'];
+  chat_url?: Maybe<Scalars['String']['output']>;
+  city: Scalars['String']['output'];
+  country: Scalars['String']['output'];
+  creator_id: Scalars['Int']['output'];
+  description: Scalars['String']['output'];
   events: Array<Event>;
-  has_calendar: Scalars['Boolean'];
-  id: Scalars['Int'];
-  logo_url?: Maybe<Scalars['String']>;
-  name: Scalars['String'];
-  region: Scalars['String'];
+  has_calendar: Scalars['Boolean']['output'];
+  id: Scalars['Int']['output'];
+  logo_url?: Maybe<Scalars['String']['output']>;
+  name: Scalars['String']['output'];
+  region: Scalars['String']['output'];
 };
 
 export type ChapterInputs = {
-  banner_url: Scalars['String'];
-  category: Scalars['String'];
-  chapter_tags: Array<Scalars['String']>;
-  chat_url?: InputMaybe<Scalars['String']>;
-  city: Scalars['String'];
-  country: Scalars['String'];
-  description: Scalars['String'];
-  logo_url: Scalars['String'];
-  name: Scalars['String'];
-  region: Scalars['String'];
+  banner_url: Scalars['String']['input'];
+  category: Scalars['String']['input'];
+  chapter_tags: Array<Scalars['String']['input']>;
+  chat_url?: InputMaybe<Scalars['String']['input']>;
+  city: Scalars['String']['input'];
+  country: Scalars['String']['input'];
+  description: Scalars['String']['input'];
+  logo_url: Scalars['String']['input'];
+  name: Scalars['String']['input'];
+  region: Scalars['String']['input'];
 };
 
 export type ChapterPermission = {
   __typename?: 'ChapterPermission';
-  id: Scalars['Int'];
-  name: Scalars['String'];
+  id: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
 };
 
 export type ChapterRole = {
   __typename?: 'ChapterRole';
   chapter_role_permissions: Array<ChapterRolePermission>;
-  id: Scalars['Int'];
-  name: Scalars['String'];
+  id: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
 };
 
 export type ChapterRolePermission = {
@@ -97,127 +106,127 @@ export type ChapterRolePermission = {
 
 export type ChapterUser = {
   __typename?: 'ChapterUser';
-  chapter_id: Scalars['Int'];
-  is_bannable?: Maybe<Scalars['Boolean']>;
-  joined_date: Scalars['DateTime'];
-  subscribed: Scalars['Boolean'];
-  user_id: Scalars['Int'];
+  chapter_id: Scalars['Int']['output'];
+  is_bannable?: Maybe<Scalars['Boolean']['output']>;
+  joined_date: Scalars['DateTimeISO']['output'];
+  subscribed: Scalars['Boolean']['output'];
+  user_id: Scalars['Int']['output'];
 };
 
 export type ChapterUserWithRelations = {
   __typename?: 'ChapterUserWithRelations';
-  chapter_id: Scalars['Int'];
+  chapter_id: Scalars['Int']['output'];
   chapter_role: ChapterRole;
-  is_bannable?: Maybe<Scalars['Boolean']>;
-  joined_date: Scalars['DateTime'];
-  subscribed: Scalars['Boolean'];
+  is_bannable?: Maybe<Scalars['Boolean']['output']>;
+  joined_date: Scalars['DateTimeISO']['output'];
+  subscribed: Scalars['Boolean']['output'];
   user: User;
-  user_id: Scalars['Int'];
+  user_id: Scalars['Int']['output'];
 };
 
 export type ChapterUserWithRole = {
   __typename?: 'ChapterUserWithRole';
-  chapter_id: Scalars['Int'];
+  chapter_id: Scalars['Int']['output'];
   chapter_role: ChapterRole;
-  is_bannable?: Maybe<Scalars['Boolean']>;
-  joined_date: Scalars['DateTime'];
-  subscribed: Scalars['Boolean'];
-  user_id: Scalars['Int'];
+  is_bannable?: Maybe<Scalars['Boolean']['output']>;
+  joined_date: Scalars['DateTimeISO']['output'];
+  subscribed: Scalars['Boolean']['output'];
+  user_id: Scalars['Int']['output'];
 };
 
 export type ChapterUsersCount = {
   __typename?: 'ChapterUsersCount';
-  chapter_users: Scalars['Int'];
+  chapter_users: Scalars['Int']['output'];
 };
 
 export type ChapterWithEvents = {
   __typename?: 'ChapterWithEvents';
-  banner_url?: Maybe<Scalars['String']>;
-  category: Scalars['String'];
+  banner_url?: Maybe<Scalars['String']['output']>;
+  category: Scalars['String']['output'];
   chapter_tags: Array<Tags>;
-  chat_url?: Maybe<Scalars['String']>;
-  city: Scalars['String'];
-  country: Scalars['String'];
-  creator_id: Scalars['Int'];
-  description: Scalars['String'];
+  chat_url?: Maybe<Scalars['String']['output']>;
+  city: Scalars['String']['output'];
+  country: Scalars['String']['output'];
+  creator_id: Scalars['Int']['output'];
+  description: Scalars['String']['output'];
   events: Array<EventWithVenue>;
-  has_calendar: Scalars['Boolean'];
-  id: Scalars['Int'];
-  logo_url?: Maybe<Scalars['String']>;
-  name: Scalars['String'];
-  region: Scalars['String'];
+  has_calendar: Scalars['Boolean']['output'];
+  id: Scalars['Int']['output'];
+  logo_url?: Maybe<Scalars['String']['output']>;
+  name: Scalars['String']['output'];
+  region: Scalars['String']['output'];
 };
 
 export type ChapterWithRelations = {
   __typename?: 'ChapterWithRelations';
-  banner_url?: Maybe<Scalars['String']>;
-  category: Scalars['String'];
+  banner_url?: Maybe<Scalars['String']['output']>;
+  category: Scalars['String']['output'];
   chapter_tags: Array<Tags>;
   chapter_users: Array<ChapterUserWithRelations>;
-  chat_url?: Maybe<Scalars['String']>;
-  city: Scalars['String'];
-  country: Scalars['String'];
-  creator_id: Scalars['Int'];
-  description: Scalars['String'];
+  chat_url?: Maybe<Scalars['String']['output']>;
+  city: Scalars['String']['output'];
+  country: Scalars['String']['output'];
+  creator_id: Scalars['Int']['output'];
+  description: Scalars['String']['output'];
   events: Array<Event>;
-  has_calendar: Scalars['Boolean'];
-  id: Scalars['Int'];
-  logo_url?: Maybe<Scalars['String']>;
-  name: Scalars['String'];
-  region: Scalars['String'];
+  has_calendar: Scalars['Boolean']['output'];
+  id: Scalars['Int']['output'];
+  logo_url?: Maybe<Scalars['String']['output']>;
+  name: Scalars['String']['output'];
+  region: Scalars['String']['output'];
   user_bans: Array<UserBan>;
 };
 
 export type CreateSponsorInputs = {
-  logo_path: Scalars['String'];
-  name: Scalars['String'];
-  type: Scalars['String'];
-  website: Scalars['String'];
+  logo_path: Scalars['String']['input'];
+  name: Scalars['String']['input'];
+  type: Scalars['String']['input'];
+  website: Scalars['String']['input'];
 };
 
 export type Event = {
   __typename?: 'Event';
-  canceled: Scalars['Boolean'];
-  capacity: Scalars['Int'];
-  description: Scalars['String'];
-  ends_at: Scalars['DateTime'];
-  has_calendar_event: Scalars['Boolean'];
-  id: Scalars['Int'];
-  image_url: Scalars['String'];
-  invite_only: Scalars['Boolean'];
-  name: Scalars['String'];
-  start_at: Scalars['DateTime'];
-  streaming_url?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
+  canceled: Scalars['Boolean']['output'];
+  capacity: Scalars['Int']['output'];
+  description: Scalars['String']['output'];
+  ends_at: Scalars['DateTimeISO']['output'];
+  has_calendar_event: Scalars['Boolean']['output'];
+  id: Scalars['Int']['output'];
+  image_url: Scalars['String']['output'];
+  invite_only: Scalars['Boolean']['output'];
+  name: Scalars['String']['output'];
+  start_at: Scalars['DateTimeISO']['output'];
+  streaming_url?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
   venue_type: VenueType;
 };
 
 export type EventInputs = {
-  capacity: Scalars['Float'];
-  description: Scalars['String'];
-  ends_at: Scalars['DateTime'];
-  event_tags: Array<Scalars['String']>;
-  image_url: Scalars['String'];
-  invite_only?: InputMaybe<Scalars['Boolean']>;
-  name: Scalars['String'];
-  sponsor_ids: Array<Scalars['Int']>;
-  start_at: Scalars['DateTime'];
-  streaming_url?: InputMaybe<Scalars['String']>;
-  url?: InputMaybe<Scalars['String']>;
-  venue_id?: InputMaybe<Scalars['Int']>;
+  capacity: Scalars['Float']['input'];
+  description: Scalars['String']['input'];
+  ends_at: Scalars['DateTimeISO']['input'];
+  event_tags: Array<Scalars['String']['input']>;
+  image_url: Scalars['String']['input'];
+  invite_only?: InputMaybe<Scalars['Boolean']['input']>;
+  name: Scalars['String']['input'];
+  sponsor_ids: Array<Scalars['Int']['input']>;
+  start_at: Scalars['DateTimeISO']['input'];
+  streaming_url?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+  venue_id?: InputMaybe<Scalars['Int']['input']>;
   venue_type?: InputMaybe<VenueType>;
 };
 
 export type EventPermission = {
   __typename?: 'EventPermission';
-  id: Scalars['Int'];
-  name: Scalars['String'];
+  id: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
 };
 
 export type EventRole = {
   __typename?: 'EventRole';
-  id: Scalars['Int'];
-  name: Scalars['String'];
+  id: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
 };
 
 export type EventRolePermission = {
@@ -228,8 +237,8 @@ export type EventRolePermission = {
 export type EventRoleWithPermissions = {
   __typename?: 'EventRoleWithPermissions';
   event_role_permissions: Array<EventRolePermission>;
-  id: Scalars['Int'];
-  name: Scalars['String'];
+  id: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
 };
 
 export type EventSponsor = {
@@ -239,138 +248,138 @@ export type EventSponsor = {
 
 export type EventUser = {
   __typename?: 'EventUser';
-  event_id: Scalars['Int'];
-  joined_date: Scalars['DateTime'];
-  subscribed: Scalars['Boolean'];
-  updated_at: Scalars['DateTime'];
-  user_id: Scalars['Int'];
+  event_id: Scalars['Int']['output'];
+  joined_date: Scalars['DateTimeISO']['output'];
+  subscribed: Scalars['Boolean']['output'];
+  updated_at: Scalars['DateTimeISO']['output'];
+  user_id: Scalars['Int']['output'];
 };
 
 export type EventUserWithAttendanceAndUser = {
   __typename?: 'EventUserWithAttendanceAndUser';
   attendance: Attendance;
-  event_id: Scalars['Int'];
-  joined_date: Scalars['DateTime'];
-  subscribed: Scalars['Boolean'];
-  updated_at: Scalars['DateTime'];
+  event_id: Scalars['Int']['output'];
+  joined_date: Scalars['DateTimeISO']['output'];
+  subscribed: Scalars['Boolean']['output'];
+  updated_at: Scalars['DateTimeISO']['output'];
   user: User;
-  user_id: Scalars['Int'];
+  user_id: Scalars['Int']['output'];
 };
 
 export type EventUserWithRelations = {
   __typename?: 'EventUserWithRelations';
   attendance: Attendance;
-  event_id: Scalars['Int'];
+  event_id: Scalars['Int']['output'];
   event_role: EventRole;
-  joined_date: Scalars['DateTime'];
-  subscribed: Scalars['Boolean'];
-  updated_at: Scalars['DateTime'];
+  joined_date: Scalars['DateTimeISO']['output'];
+  subscribed: Scalars['Boolean']['output'];
+  updated_at: Scalars['DateTimeISO']['output'];
   user: User;
-  user_id: Scalars['Int'];
+  user_id: Scalars['Int']['output'];
 };
 
 export type EventUserWithRolePermissions = {
   __typename?: 'EventUserWithRolePermissions';
-  event_id: Scalars['Int'];
+  event_id: Scalars['Int']['output'];
   event_role: EventRoleWithPermissions;
-  joined_date: Scalars['DateTime'];
-  subscribed: Scalars['Boolean'];
-  updated_at: Scalars['DateTime'];
-  user_id: Scalars['Int'];
+  joined_date: Scalars['DateTimeISO']['output'];
+  subscribed: Scalars['Boolean']['output'];
+  updated_at: Scalars['DateTimeISO']['output'];
+  user_id: Scalars['Int']['output'];
 };
 
 export type EventWithRelationsWithEventUser = {
   __typename?: 'EventWithRelationsWithEventUser';
-  canceled: Scalars['Boolean'];
-  capacity: Scalars['Int'];
+  canceled: Scalars['Boolean']['output'];
+  capacity: Scalars['Int']['output'];
   chapter: Chapter;
-  description: Scalars['String'];
-  ends_at: Scalars['DateTime'];
+  description: Scalars['String']['output'];
+  ends_at: Scalars['DateTimeISO']['output'];
   event_tags: Array<Tags>;
   event_users: Array<EventUserWithAttendanceAndUser>;
-  has_calendar_event: Scalars['Boolean'];
-  id: Scalars['Int'];
-  image_url: Scalars['String'];
-  invite_only: Scalars['Boolean'];
-  name: Scalars['String'];
+  has_calendar_event: Scalars['Boolean']['output'];
+  id: Scalars['Int']['output'];
+  image_url: Scalars['String']['output'];
+  invite_only: Scalars['Boolean']['output'];
+  name: Scalars['String']['output'];
   sponsors: Array<EventSponsor>;
-  start_at: Scalars['DateTime'];
-  streaming_url?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
+  start_at: Scalars['DateTimeISO']['output'];
+  streaming_url?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
   venue?: Maybe<Venue>;
   venue_type: VenueType;
 };
 
 export type EventWithRelationsWithEventUserRelations = {
   __typename?: 'EventWithRelationsWithEventUserRelations';
-  canceled: Scalars['Boolean'];
-  capacity: Scalars['Int'];
+  canceled: Scalars['Boolean']['output'];
+  capacity: Scalars['Int']['output'];
   chapter: Chapter;
-  description: Scalars['String'];
-  ends_at: Scalars['DateTime'];
+  description: Scalars['String']['output'];
+  ends_at: Scalars['DateTimeISO']['output'];
   event_tags: Array<Tags>;
   event_users: Array<EventUserWithRelations>;
-  has_calendar_event: Scalars['Boolean'];
-  id: Scalars['Int'];
-  image_url: Scalars['String'];
-  invite_only: Scalars['Boolean'];
-  name: Scalars['String'];
+  has_calendar_event: Scalars['Boolean']['output'];
+  id: Scalars['Int']['output'];
+  image_url: Scalars['String']['output'];
+  invite_only: Scalars['Boolean']['output'];
+  name: Scalars['String']['output'];
   sponsors: Array<EventSponsor>;
-  start_at: Scalars['DateTime'];
-  streaming_url?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
+  start_at: Scalars['DateTimeISO']['output'];
+  streaming_url?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
   venue?: Maybe<Venue>;
   venue_type: VenueType;
 };
 
 export type EventWithVenue = {
   __typename?: 'EventWithVenue';
-  canceled: Scalars['Boolean'];
-  capacity: Scalars['Int'];
-  description: Scalars['String'];
-  ends_at: Scalars['DateTime'];
+  canceled: Scalars['Boolean']['output'];
+  capacity: Scalars['Int']['output'];
+  description: Scalars['String']['output'];
+  ends_at: Scalars['DateTimeISO']['output'];
   event_tags: Array<Tags>;
-  has_calendar_event: Scalars['Boolean'];
-  id: Scalars['Int'];
-  image_url: Scalars['String'];
-  invite_only: Scalars['Boolean'];
-  name: Scalars['String'];
-  start_at: Scalars['DateTime'];
-  streaming_url?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
+  has_calendar_event: Scalars['Boolean']['output'];
+  id: Scalars['Int']['output'];
+  image_url: Scalars['String']['output'];
+  invite_only: Scalars['Boolean']['output'];
+  name: Scalars['String']['output'];
+  start_at: Scalars['DateTimeISO']['output'];
+  streaming_url?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
   venue?: Maybe<Venue>;
   venue_type: VenueType;
 };
 
 export type EventsWithChapters = {
   __typename?: 'EventsWithChapters';
-  canceled: Scalars['Boolean'];
-  capacity: Scalars['Int'];
+  canceled: Scalars['Boolean']['output'];
+  capacity: Scalars['Int']['output'];
   chapter: Chapter;
-  description: Scalars['String'];
-  ends_at: Scalars['DateTime'];
+  description: Scalars['String']['output'];
+  ends_at: Scalars['DateTimeISO']['output'];
   event_tags: Array<Tags>;
-  has_calendar_event: Scalars['Boolean'];
-  id: Scalars['Int'];
-  image_url: Scalars['String'];
-  invite_only: Scalars['Boolean'];
-  name: Scalars['String'];
-  start_at: Scalars['DateTime'];
-  streaming_url?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
+  has_calendar_event: Scalars['Boolean']['output'];
+  id: Scalars['Int']['output'];
+  image_url: Scalars['String']['output'];
+  invite_only: Scalars['Boolean']['output'];
+  name: Scalars['String']['output'];
+  start_at: Scalars['DateTimeISO']['output'];
+  streaming_url?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
   venue_type: VenueType;
 };
 
 export type InstancePermission = {
   __typename?: 'InstancePermission';
-  name: Scalars['String'];
+  name: Scalars['String']['output'];
 };
 
 export type InstanceRole = {
   __typename?: 'InstanceRole';
-  id: Scalars['Float'];
+  id: Scalars['Float']['output'];
   instance_role_permissions: Array<InstanceRolePermission>;
-  name: Scalars['String'];
+  name: Scalars['String']['output'];
 };
 
 export type InstanceRolePermission = {
@@ -382,7 +391,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   attendEvent: EventUserWithRelations;
   banUser: UserBan;
-  calendarIntegrationTest?: Maybe<Scalars['Boolean']>;
+  calendarIntegrationTest?: Maybe<Scalars['Boolean']['output']>;
   cancelAttendance?: Maybe<EventUserWithRelations>;
   cancelEvent: Event;
   changeChapterUserRole: ChapterUserWithRelations;
@@ -394,7 +403,7 @@ export type Mutation = {
   createEvent: Event;
   createSponsor: Sponsor;
   createVenue: Venue;
-  deleteAttendee: Scalars['Boolean'];
+  deleteAttendee: Scalars['Boolean']['output'];
   deleteChapter: Chapter;
   deleteEvent: Event;
   deleteMe: User;
@@ -402,14 +411,14 @@ export type Mutation = {
   joinChapter: ChapterUserWithRole;
   leaveChapter: ChapterUser;
   moveAttendeeToWaitlist: EventUserWithRelations;
-  sendEventInvite: Scalars['Boolean'];
+  sendEventInvite: Scalars['Boolean']['output'];
   subscribeToEvent: EventUser;
   toggleAutoSubscribe: User;
   toggleChapterSubscription: ChapterUser;
   unbanUser: UserBan;
   unlinkCalendarEvent: Event;
   unlinkChapterCalendar: Chapter;
-  unsubscribe: Scalars['Boolean'];
+  unsubscribe: Scalars['Boolean']['output'];
   unsubscribeFromEvent: EventUser;
   updateChapter: Chapter;
   updateEvent: Event;
@@ -419,41 +428,41 @@ export type Mutation = {
 };
 
 export type MutationAttendEventArgs = {
-  chapterId: Scalars['Int'];
-  eventId: Scalars['Int'];
+  chapterId: Scalars['Int']['input'];
+  eventId: Scalars['Int']['input'];
 };
 
 export type MutationBanUserArgs = {
-  chapterId: Scalars['Int'];
-  userId: Scalars['Int'];
+  chapterId: Scalars['Int']['input'];
+  userId: Scalars['Int']['input'];
 };
 
 export type MutationCancelAttendanceArgs = {
-  eventId: Scalars['Int'];
+  eventId: Scalars['Int']['input'];
 };
 
 export type MutationCancelEventArgs = {
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type MutationChangeChapterUserRoleArgs = {
-  chapterId: Scalars['Int'];
-  roleName: Scalars['String'];
-  userId: Scalars['Int'];
+  chapterId: Scalars['Int']['input'];
+  roleName: Scalars['String']['input'];
+  userId: Scalars['Int']['input'];
 };
 
 export type MutationChangeInstanceUserRoleArgs = {
-  id: Scalars['Int'];
-  roleName: Scalars['String'];
+  id: Scalars['Int']['input'];
+  roleName: Scalars['String']['input'];
 };
 
 export type MutationConfirmAttendeeArgs = {
-  eventId: Scalars['Int'];
-  userId: Scalars['Int'];
+  eventId: Scalars['Int']['input'];
+  userId: Scalars['Int']['input'];
 };
 
 export type MutationCreateCalendarEventArgs = {
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type MutationCreateChapterArgs = {
@@ -461,12 +470,12 @@ export type MutationCreateChapterArgs = {
 };
 
 export type MutationCreateChapterCalendarArgs = {
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type MutationCreateEventArgs = {
-  attendEvent: Scalars['Boolean'];
-  chapterId: Scalars['Int'];
+  attendEvent: Scalars['Boolean']['input'];
+  chapterId: Scalars['Int']['input'];
   data: EventInputs;
 };
 
@@ -475,83 +484,83 @@ export type MutationCreateSponsorArgs = {
 };
 
 export type MutationCreateVenueArgs = {
-  chapterId: Scalars['Int'];
+  chapterId: Scalars['Int']['input'];
   data: VenueInputs;
 };
 
 export type MutationDeleteAttendeeArgs = {
-  eventId: Scalars['Int'];
-  userId: Scalars['Int'];
+  eventId: Scalars['Int']['input'];
+  userId: Scalars['Int']['input'];
 };
 
 export type MutationDeleteChapterArgs = {
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type MutationDeleteEventArgs = {
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type MutationDeleteVenueArgs = {
-  _onlyUsedForAuth: Scalars['Int'];
-  id: Scalars['Int'];
+  _onlyUsedForAuth: Scalars['Int']['input'];
+  id: Scalars['Int']['input'];
 };
 
 export type MutationJoinChapterArgs = {
-  chapterId: Scalars['Int'];
-  subscribe?: InputMaybe<Scalars['Boolean']>;
+  chapterId: Scalars['Int']['input'];
+  subscribe?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type MutationLeaveChapterArgs = {
-  chapterId: Scalars['Int'];
+  chapterId: Scalars['Int']['input'];
 };
 
 export type MutationMoveAttendeeToWaitlistArgs = {
-  eventId: Scalars['Int'];
-  userId: Scalars['Int'];
+  eventId: Scalars['Int']['input'];
+  userId: Scalars['Int']['input'];
 };
 
 export type MutationSendEventInviteArgs = {
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type MutationSubscribeToEventArgs = {
-  eventId: Scalars['Int'];
+  eventId: Scalars['Int']['input'];
 };
 
 export type MutationToggleChapterSubscriptionArgs = {
-  chapterId: Scalars['Int'];
+  chapterId: Scalars['Int']['input'];
 };
 
 export type MutationUnbanUserArgs = {
-  chapterId: Scalars['Int'];
-  userId: Scalars['Int'];
+  chapterId: Scalars['Int']['input'];
+  userId: Scalars['Int']['input'];
 };
 
 export type MutationUnlinkCalendarEventArgs = {
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type MutationUnlinkChapterCalendarArgs = {
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type MutationUnsubscribeArgs = {
-  token: Scalars['String'];
+  token: Scalars['String']['input'];
 };
 
 export type MutationUnsubscribeFromEventArgs = {
-  eventId: Scalars['Int'];
+  eventId: Scalars['Int']['input'];
 };
 
 export type MutationUpdateChapterArgs = {
   data: ChapterInputs;
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type MutationUpdateEventArgs = {
   data: EventInputs;
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type MutationUpdateMeArgs = {
@@ -560,24 +569,24 @@ export type MutationUpdateMeArgs = {
 
 export type MutationUpdateSponsorArgs = {
   data: UpdateSponsorInputs;
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type MutationUpdateVenueArgs = {
-  _onlyUsedForAuth: Scalars['Int'];
+  _onlyUsedForAuth: Scalars['Int']['input'];
   data: VenueInputs;
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type PaginatedEventsWithChapters = {
   __typename?: 'PaginatedEventsWithChapters';
   events: Array<EventsWithChapters>;
-  total: Scalars['Int'];
+  total: Scalars['Int']['output'];
 };
 
 export type Query = {
   __typename?: 'Query';
-  calendarIntegrationStatus?: Maybe<Scalars['Boolean']>;
+  calendarIntegrationStatus?: Maybe<Scalars['Boolean']['output']>;
   chapter: ChapterWithEvents;
   chapterRoles: Array<ChapterRole>;
   chapterVenues: Array<Venue>;
@@ -595,8 +604,8 @@ export type Query = {
   paginatedEventsWithTotal: PaginatedEventsWithChapters;
   sponsorWithEvents: SponsorWithEvents;
   sponsors: Array<Sponsor>;
-  testChapterCalendarAccess?: Maybe<Scalars['Boolean']>;
-  testEventCalendarEventAccess?: Maybe<Scalars['Boolean']>;
+  testChapterCalendarAccess?: Maybe<Scalars['Boolean']['output']>;
+  testEventCalendarEventAccess?: Maybe<Scalars['Boolean']['output']>;
   tokenStatuses: Array<TokenStatus>;
   userDownload: UserForDownload;
   userProfile: UserProfile;
@@ -605,68 +614,68 @@ export type Query = {
 };
 
 export type QueryChapterArgs = {
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type QueryChapterVenuesArgs = {
-  chapterId: Scalars['Int'];
+  chapterId: Scalars['Int']['input'];
 };
 
 export type QueryDashboardChapterArgs = {
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type QueryDashboardEventArgs = {
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type QueryDashboardSponsorArgs = {
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type QueryEventArgs = {
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type QueryPaginatedEventsWithTotalArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  showOnlyUpcoming?: InputMaybe<Scalars['Boolean']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  showOnlyUpcoming?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type QuerySponsorWithEventsArgs = {
-  sponsorId: Scalars['Int'];
+  sponsorId: Scalars['Int']['input'];
 };
 
 export type QueryTestChapterCalendarAccessArgs = {
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type QueryTestEventCalendarEventAccessArgs = {
-  id: Scalars['Int'];
+  id: Scalars['Int']['input'];
 };
 
 export type QueryVenueArgs = {
-  venueId: Scalars['Int'];
+  venueId: Scalars['Int']['input'];
 };
 
 export type Sponsor = {
   __typename?: 'Sponsor';
-  id: Scalars['Int'];
-  logo_path: Scalars['String'];
-  name: Scalars['String'];
-  type: Scalars['String'];
-  website: Scalars['String'];
+  id: Scalars['Int']['output'];
+  logo_path: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  type: Scalars['String']['output'];
+  website: Scalars['String']['output'];
 };
 
 export type SponsorWithEvents = {
   __typename?: 'SponsorWithEvents';
   event_sponsors: Array<SponsoredEvent>;
-  id: Scalars['Int'];
-  logo_path: Scalars['String'];
-  name: Scalars['String'];
-  type: Scalars['String'];
-  website: Scalars['String'];
+  id: Scalars['Int']['output'];
+  logo_path: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  type: Scalars['String']['output'];
+  website: Scalars['String']['output'];
 };
 
 export type SponsoredEvent = {
@@ -676,8 +685,8 @@ export type SponsoredEvent = {
 
 export type Tag = {
   __typename?: 'Tag';
-  id: Scalars['Int'];
-  name: Scalars['String'];
+  id: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
 };
 
 export type Tags = {
@@ -687,76 +696,76 @@ export type Tags = {
 
 export type TokenStatus = {
   __typename?: 'TokenStatus';
-  is_valid: Scalars['Boolean'];
-  redacted_email: Scalars['String'];
+  is_valid: Scalars['Boolean']['output'];
+  redacted_email: Scalars['String']['output'];
 };
 
 export type UpdateSponsorInputs = {
-  logo_path: Scalars['String'];
-  name: Scalars['String'];
-  type: Scalars['String'];
-  website: Scalars['String'];
+  logo_path: Scalars['String']['input'];
+  name: Scalars['String']['input'];
+  type: Scalars['String']['input'];
+  website: Scalars['String']['input'];
 };
 
 export type UpdateUserInputs = {
-  auto_subscribe: Scalars['Boolean'];
-  image_url?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
+  auto_subscribe: Scalars['Boolean']['input'];
+  image_url?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type User = {
   __typename?: 'User';
-  auto_subscribe: Scalars['Boolean'];
-  id: Scalars['Int'];
-  image_url?: Maybe<Scalars['String']>;
-  name: Scalars['String'];
+  auto_subscribe: Scalars['Boolean']['output'];
+  id: Scalars['Int']['output'];
+  image_url?: Maybe<Scalars['String']['output']>;
+  name: Scalars['String']['output'];
 };
 
 export type UserBan = {
   __typename?: 'UserBan';
-  chapter_id: Scalars['Float'];
-  user_id: Scalars['Float'];
+  chapter_id: Scalars['Float']['output'];
+  user_id: Scalars['Float']['output'];
 };
 
 export type UserBanChapters = {
   __typename?: 'UserBanChapters';
   chapter: Chapter;
-  chapter_id: Scalars['Float'];
-  user_id: Scalars['Float'];
+  chapter_id: Scalars['Float']['output'];
+  user_id: Scalars['Float']['output'];
 };
 
 export type UserChapter = {
   __typename?: 'UserChapter';
   chapter: Chapter;
-  chapter_id: Scalars['Int'];
+  chapter_id: Scalars['Int']['output'];
   chapter_role: ChapterRole;
-  is_bannable?: Maybe<Scalars['Boolean']>;
-  joined_date: Scalars['DateTime'];
-  subscribed: Scalars['Boolean'];
-  user_id: Scalars['Int'];
+  is_bannable?: Maybe<Scalars['Boolean']['output']>;
+  joined_date: Scalars['DateTimeISO']['output'];
+  subscribed: Scalars['Boolean']['output'];
+  user_id: Scalars['Int']['output'];
 };
 
 export type UserEvent = {
   __typename?: 'UserEvent';
   attendance: Attendance;
   event: Event;
-  event_id: Scalars['Int'];
+  event_id: Scalars['Int']['output'];
   event_role: EventRoleWithPermissions;
-  joined_date: Scalars['DateTime'];
-  subscribed: Scalars['Boolean'];
-  updated_at: Scalars['DateTime'];
-  user_id: Scalars['Int'];
+  joined_date: Scalars['DateTimeISO']['output'];
+  subscribed: Scalars['Boolean']['output'];
+  updated_at: Scalars['DateTimeISO']['output'];
+  user_id: Scalars['Int']['output'];
 };
 
 export type UserForDownload = {
   __typename?: 'UserForDownload';
   admined_chapters: Array<Chapter>;
-  auto_subscribe: Scalars['Boolean'];
-  email: Scalars['String'];
-  id: Scalars['Int'];
-  image_url?: Maybe<Scalars['String']>;
+  auto_subscribe: Scalars['Boolean']['output'];
+  email: Scalars['String']['output'];
+  id: Scalars['Int']['output'];
+  image_url?: Maybe<Scalars['String']['output']>;
   instance_role: InstanceRole;
-  name: Scalars['String'];
+  name: Scalars['String']['output'];
   user_bans: Array<UserBanChapters>;
   user_chapters: Array<UserChapter>;
   user_events: Array<UserEvent>;
@@ -765,32 +774,32 @@ export type UserForDownload = {
 export type UserProfile = {
   __typename?: 'UserProfile';
   admined_chapters: Array<Chapter>;
-  auto_subscribe: Scalars['Boolean'];
-  email: Scalars['String'];
-  id: Scalars['Int'];
-  image_url?: Maybe<Scalars['String']>;
+  auto_subscribe: Scalars['Boolean']['output'];
+  email: Scalars['String']['output'];
+  id: Scalars['Int']['output'];
+  image_url?: Maybe<Scalars['String']['output']>;
   instance_role: InstanceRole;
-  name: Scalars['String'];
+  name: Scalars['String']['output'];
 };
 
 export type UserWithInstanceRole = {
   __typename?: 'UserWithInstanceRole';
   admined_chapters: Array<Chapter>;
-  auto_subscribe: Scalars['Boolean'];
-  id: Scalars['Int'];
-  image_url?: Maybe<Scalars['String']>;
+  auto_subscribe: Scalars['Boolean']['output'];
+  id: Scalars['Int']['output'];
+  image_url?: Maybe<Scalars['String']['output']>;
   instance_role: InstanceRole;
-  name: Scalars['String'];
+  name: Scalars['String']['output'];
 };
 
 export type UserWithPermissions = {
   __typename?: 'UserWithPermissions';
   admined_chapters: Array<Chapter>;
-  auto_subscribe: Scalars['Boolean'];
-  id: Scalars['Int'];
-  image_url?: Maybe<Scalars['String']>;
+  auto_subscribe: Scalars['Boolean']['output'];
+  id: Scalars['Int']['output'];
+  image_url?: Maybe<Scalars['String']['output']>;
   instance_role: InstanceRole;
-  name: Scalars['String'];
+  name: Scalars['String']['output'];
   user_bans: Array<UserBan>;
   user_chapters: Array<ChapterUserWithRole>;
   user_events: Array<EventUserWithRolePermissions>;
@@ -798,28 +807,28 @@ export type UserWithPermissions = {
 
 export type Venue = {
   __typename?: 'Venue';
-  chapter_id: Scalars['Int'];
-  city: Scalars['String'];
-  country: Scalars['String'];
-  id: Scalars['Int'];
-  latitude?: Maybe<Scalars['Float']>;
-  longitude?: Maybe<Scalars['Float']>;
-  name: Scalars['String'];
-  postal_code: Scalars['String'];
-  region: Scalars['String'];
-  street_address?: Maybe<Scalars['String']>;
+  chapter_id: Scalars['Int']['output'];
+  city: Scalars['String']['output'];
+  country: Scalars['String']['output'];
+  id: Scalars['Int']['output'];
+  latitude?: Maybe<Scalars['Float']['output']>;
+  longitude?: Maybe<Scalars['Float']['output']>;
+  name: Scalars['String']['output'];
+  postal_code: Scalars['String']['output'];
+  region: Scalars['String']['output'];
+  street_address?: Maybe<Scalars['String']['output']>;
 };
 
 export type VenueInputs = {
-  city: Scalars['String'];
-  country: Scalars['String'];
-  latitude?: InputMaybe<Scalars['Float']>;
-  longitude?: InputMaybe<Scalars['Float']>;
-  name: Scalars['String'];
-  postal_code: Scalars['String'];
-  region: Scalars['String'];
-  street_address?: InputMaybe<Scalars['String']>;
-  venue_tags: Array<Scalars['String']>;
+  city: Scalars['String']['input'];
+  country: Scalars['String']['input'];
+  latitude?: InputMaybe<Scalars['Float']['input']>;
+  longitude?: InputMaybe<Scalars['Float']['input']>;
+  name: Scalars['String']['input'];
+  postal_code: Scalars['String']['input'];
+  region: Scalars['String']['input'];
+  street_address?: InputMaybe<Scalars['String']['input']>;
+  venue_tags: Array<Scalars['String']['input']>;
 };
 
 /** All possible venue types for an event */
@@ -832,31 +841,31 @@ export enum VenueType {
 export type VenueWithChapter = {
   __typename?: 'VenueWithChapter';
   chapter: Chapter;
-  chapter_id: Scalars['Int'];
-  city: Scalars['String'];
-  country: Scalars['String'];
-  id: Scalars['Int'];
-  latitude?: Maybe<Scalars['Float']>;
-  longitude?: Maybe<Scalars['Float']>;
-  name: Scalars['String'];
-  postal_code: Scalars['String'];
-  region: Scalars['String'];
-  street_address?: Maybe<Scalars['String']>;
+  chapter_id: Scalars['Int']['output'];
+  city: Scalars['String']['output'];
+  country: Scalars['String']['output'];
+  id: Scalars['Int']['output'];
+  latitude?: Maybe<Scalars['Float']['output']>;
+  longitude?: Maybe<Scalars['Float']['output']>;
+  name: Scalars['String']['output'];
+  postal_code: Scalars['String']['output'];
+  region: Scalars['String']['output'];
+  street_address?: Maybe<Scalars['String']['output']>;
 };
 
 export type VenueWithChapterEvents = {
   __typename?: 'VenueWithChapterEvents';
   chapter: ChapterWithEvents;
-  chapter_id: Scalars['Int'];
-  city: Scalars['String'];
-  country: Scalars['String'];
-  id: Scalars['Int'];
-  latitude?: Maybe<Scalars['Float']>;
-  longitude?: Maybe<Scalars['Float']>;
-  name: Scalars['String'];
-  postal_code: Scalars['String'];
-  region: Scalars['String'];
-  street_address?: Maybe<Scalars['String']>;
+  chapter_id: Scalars['Int']['output'];
+  city: Scalars['String']['output'];
+  country: Scalars['String']['output'];
+  id: Scalars['Int']['output'];
+  latitude?: Maybe<Scalars['Float']['output']>;
+  longitude?: Maybe<Scalars['Float']['output']>;
+  name: Scalars['String']['output'];
+  postal_code: Scalars['String']['output'];
+  region: Scalars['String']['output'];
+  street_address?: Maybe<Scalars['String']['output']>;
   venue_tags: Array<Tags>;
 };
 
@@ -940,8 +949,8 @@ export type MeQuery = {
 };
 
 export type JoinChapterMutationVariables = Exact<{
-  chapterId: Scalars['Int'];
-  subscribe?: InputMaybe<Scalars['Boolean']>;
+  chapterId: Scalars['Int']['input'];
+  subscribe?: InputMaybe<Scalars['Boolean']['input']>;
 }>;
 
 export type JoinChapterMutation = {
@@ -953,7 +962,7 @@ export type JoinChapterMutation = {
 };
 
 export type LeaveChapterMutationVariables = Exact<{
-  chapterId: Scalars['Int'];
+  chapterId: Scalars['Int']['input'];
 }>;
 
 export type LeaveChapterMutation = {
@@ -962,7 +971,7 @@ export type LeaveChapterMutation = {
 };
 
 export type ToggleChapterSubscriptionMutationVariables = Exact<{
-  chapterId: Scalars['Int'];
+  chapterId: Scalars['Int']['input'];
 }>;
 
 export type ToggleChapterSubscriptionMutation = {
@@ -974,7 +983,7 @@ export type ToggleChapterSubscriptionMutation = {
 };
 
 export type ChapterQueryVariables = Exact<{
-  chapterId: Scalars['Int'];
+  chapterId: Scalars['Int']['input'];
 }>;
 
 export type ChapterQuery = {
@@ -1090,7 +1099,7 @@ export type CreateChapterMutation = {
 };
 
 export type CreateChapterCalendarMutationVariables = Exact<{
-  chapterId: Scalars['Int'];
+  chapterId: Scalars['Int']['input'];
 }>;
 
 export type CreateChapterCalendarMutation = {
@@ -1103,7 +1112,7 @@ export type CreateChapterCalendarMutation = {
 };
 
 export type UnlinkChapterCalendarMutationVariables = Exact<{
-  chapterId: Scalars['Int'];
+  chapterId: Scalars['Int']['input'];
 }>;
 
 export type UnlinkChapterCalendarMutation = {
@@ -1116,7 +1125,7 @@ export type UnlinkChapterCalendarMutation = {
 };
 
 export type UpdateChapterMutationVariables = Exact<{
-  chapterId: Scalars['Int'];
+  chapterId: Scalars['Int']['input'];
   data: ChapterInputs;
 }>;
 
@@ -1135,7 +1144,7 @@ export type UpdateChapterMutation = {
 };
 
 export type DeleteChapterMutationVariables = Exact<{
-  chapterId: Scalars['Int'];
+  chapterId: Scalars['Int']['input'];
 }>;
 
 export type DeleteChapterMutation = {
@@ -1144,8 +1153,8 @@ export type DeleteChapterMutation = {
 };
 
 export type BanUserMutationVariables = Exact<{
-  chapterId: Scalars['Int'];
-  userId: Scalars['Int'];
+  chapterId: Scalars['Int']['input'];
+  userId: Scalars['Int']['input'];
 }>;
 
 export type BanUserMutation = {
@@ -1154,8 +1163,8 @@ export type BanUserMutation = {
 };
 
 export type UnbanUserMutationVariables = Exact<{
-  chapterId: Scalars['Int'];
-  userId: Scalars['Int'];
+  chapterId: Scalars['Int']['input'];
+  userId: Scalars['Int']['input'];
 }>;
 
 export type UnbanUserMutation = {
@@ -1164,9 +1173,9 @@ export type UnbanUserMutation = {
 };
 
 export type ChangeChapterUserRoleMutationVariables = Exact<{
-  chapterId: Scalars['Int'];
-  roleName: Scalars['String'];
-  userId: Scalars['Int'];
+  chapterId: Scalars['Int']['input'];
+  roleName: Scalars['String']['input'];
+  userId: Scalars['Int']['input'];
 }>;
 
 export type ChangeChapterUserRoleMutation = {
@@ -1185,7 +1194,7 @@ export type ChapterRolesQuery = {
 };
 
 export type DashboardChapterQueryVariables = Exact<{
-  chapterId: Scalars['Int'];
+  chapterId: Scalars['Int']['input'];
 }>;
 
 export type DashboardChapterQuery = {
@@ -1248,7 +1257,7 @@ export type DashboardChaptersQuery = {
 };
 
 export type DashboardChapterUsersQueryVariables = Exact<{
-  chapterId: Scalars['Int'];
+  chapterId: Scalars['Int']['input'];
 }>;
 
 export type DashboardChapterUsersQuery = {
@@ -1268,7 +1277,7 @@ export type DashboardChapterUsersQuery = {
 };
 
 export type TestChapterCalendarAccessQueryVariables = Exact<{
-  chapterId: Scalars['Int'];
+  chapterId: Scalars['Int']['input'];
 }>;
 
 export type TestChapterCalendarAccessQuery = {
@@ -1277,9 +1286,9 @@ export type TestChapterCalendarAccessQuery = {
 };
 
 export type CreateEventMutationVariables = Exact<{
-  chapterId: Scalars['Int'];
+  chapterId: Scalars['Int']['input'];
   data: EventInputs;
-  attendEvent: Scalars['Boolean'];
+  attendEvent: Scalars['Boolean']['input'];
 }>;
 
 export type CreateEventMutation = {
@@ -1298,7 +1307,7 @@ export type CreateEventMutation = {
 };
 
 export type UpdateEventMutationVariables = Exact<{
-  eventId: Scalars['Int'];
+  eventId: Scalars['Int']['input'];
   data: EventInputs;
 }>;
 
@@ -1318,7 +1327,7 @@ export type UpdateEventMutation = {
 };
 
 export type CreateCalendarEventMutationVariables = Exact<{
-  eventId: Scalars['Int'];
+  eventId: Scalars['Int']['input'];
 }>;
 
 export type CreateCalendarEventMutation = {
@@ -1331,7 +1340,7 @@ export type CreateCalendarEventMutation = {
 };
 
 export type UnlinkCalendarEventMutationVariables = Exact<{
-  eventId: Scalars['Int'];
+  eventId: Scalars['Int']['input'];
 }>;
 
 export type UnlinkCalendarEventMutation = {
@@ -1344,7 +1353,7 @@ export type UnlinkCalendarEventMutation = {
 };
 
 export type CancelEventMutationVariables = Exact<{
-  eventId: Scalars['Int'];
+  eventId: Scalars['Int']['input'];
 }>;
 
 export type CancelEventMutation = {
@@ -1353,7 +1362,7 @@ export type CancelEventMutation = {
 };
 
 export type DeleteEventMutationVariables = Exact<{
-  eventId: Scalars['Int'];
+  eventId: Scalars['Int']['input'];
 }>;
 
 export type DeleteEventMutation = {
@@ -1362,8 +1371,8 @@ export type DeleteEventMutation = {
 };
 
 export type ConfirmAttendeeMutationVariables = Exact<{
-  eventId: Scalars['Int'];
-  userId: Scalars['Int'];
+  eventId: Scalars['Int']['input'];
+  userId: Scalars['Int']['input'];
 }>;
 
 export type ConfirmAttendeeMutation = {
@@ -1375,8 +1384,8 @@ export type ConfirmAttendeeMutation = {
 };
 
 export type DeleteAttendeeMutationVariables = Exact<{
-  eventId: Scalars['Int'];
-  userId: Scalars['Int'];
+  eventId: Scalars['Int']['input'];
+  userId: Scalars['Int']['input'];
 }>;
 
 export type DeleteAttendeeMutation = {
@@ -1385,8 +1394,8 @@ export type DeleteAttendeeMutation = {
 };
 
 export type MoveAttendeeToWaitlistMutationVariables = Exact<{
-  eventId: Scalars['Int'];
-  userId: Scalars['Int'];
+  eventId: Scalars['Int']['input'];
+  userId: Scalars['Int']['input'];
 }>;
 
 export type MoveAttendeeToWaitlistMutation = {
@@ -1398,7 +1407,7 @@ export type MoveAttendeeToWaitlistMutation = {
 };
 
 export type SendEventInviteMutationVariables = Exact<{
-  eventId: Scalars['Int'];
+  eventId: Scalars['Int']['input'];
 }>;
 
 export type SendEventInviteMutation = {
@@ -1428,7 +1437,7 @@ export type DashboardEventsQuery = {
 };
 
 export type DashboardEventQueryVariables = Exact<{
-  eventId: Scalars['Int'];
+  eventId: Scalars['Int']['input'];
 }>;
 
 export type DashboardEventQuery = {
@@ -1510,7 +1519,7 @@ export type SponsorsQuery = {
 };
 
 export type ChapterVenuesQueryVariables = Exact<{
-  chapterId: Scalars['Int'];
+  chapterId: Scalars['Int']['input'];
 }>;
 
 export type ChapterVenuesQuery = {
@@ -1519,7 +1528,7 @@ export type ChapterVenuesQuery = {
 };
 
 export type TestEventCalendarEventAccessQueryVariables = Exact<{
-  eventId: Scalars['Int'];
+  eventId: Scalars['Int']['input'];
 }>;
 
 export type TestEventCalendarEventAccessQuery = {
@@ -1544,7 +1553,7 @@ export type CreateSponsorMutation = {
 
 export type UpdateSponsorMutationVariables = Exact<{
   data: UpdateSponsorInputs;
-  updateSponsorId: Scalars['Int'];
+  updateSponsorId: Scalars['Int']['input'];
 }>;
 
 export type UpdateSponsorMutation = {
@@ -1559,7 +1568,7 @@ export type UpdateSponsorMutation = {
 };
 
 export type DashboardSponsorQueryVariables = Exact<{
-  sponsorId: Scalars['Int'];
+  sponsorId: Scalars['Int']['input'];
 }>;
 
 export type DashboardSponsorQuery = {
@@ -1575,7 +1584,7 @@ export type DashboardSponsorQuery = {
 };
 
 export type SponsorWithEventsQueryVariables = Exact<{
-  sponsorId: Scalars['Int'];
+  sponsorId: Scalars['Int']['input'];
 }>;
 
 export type SponsorWithEventsQuery = {
@@ -1601,8 +1610,8 @@ export type SponsorWithEventsQuery = {
 };
 
 export type ChangeInstanceUserRoleMutationVariables = Exact<{
-  roleName: Scalars['String'];
-  userId: Scalars['Int'];
+  roleName: Scalars['String']['input'];
+  userId: Scalars['Int']['input'];
 }>;
 
 export type ChangeInstanceUserRoleMutation = {
@@ -1637,7 +1646,7 @@ export type UsersQuery = {
 };
 
 export type CreateVenueMutationVariables = Exact<{
-  chapterId: Scalars['Int'];
+  chapterId: Scalars['Int']['input'];
   data: VenueInputs;
 }>;
 
@@ -1658,8 +1667,8 @@ export type CreateVenueMutation = {
 };
 
 export type UpdateVenueMutationVariables = Exact<{
-  venueId: Scalars['Int'];
-  chapterId: Scalars['Int'];
+  venueId: Scalars['Int']['input'];
+  chapterId: Scalars['Int']['input'];
   data: VenueInputs;
 }>;
 
@@ -1680,8 +1689,8 @@ export type UpdateVenueMutation = {
 };
 
 export type DeleteVenueMutationVariables = Exact<{
-  venueId: Scalars['Int'];
-  chapterId: Scalars['Int'];
+  venueId: Scalars['Int']['input'];
+  chapterId: Scalars['Int']['input'];
 }>;
 
 export type DeleteVenueMutation = {
@@ -1710,7 +1719,7 @@ export type DashboardVenuesQuery = {
 };
 
 export type VenueQueryVariables = Exact<{
-  venueId: Scalars['Int'];
+  venueId: Scalars['Int']['input'];
 }>;
 
 export type VenueQuery = {
@@ -1746,8 +1755,8 @@ export type VenueQuery = {
 };
 
 export type AttendEventMutationVariables = Exact<{
-  eventId: Scalars['Int'];
-  chapterId: Scalars['Int'];
+  eventId: Scalars['Int']['input'];
+  chapterId: Scalars['Int']['input'];
 }>;
 
 export type AttendEventMutation = {
@@ -1760,7 +1769,7 @@ export type AttendEventMutation = {
 };
 
 export type CancelAttendanceMutationVariables = Exact<{
-  eventId: Scalars['Int'];
+  eventId: Scalars['Int']['input'];
 }>;
 
 export type CancelAttendanceMutation = {
@@ -1772,7 +1781,7 @@ export type CancelAttendanceMutation = {
 };
 
 export type SubscribeToEventMutationVariables = Exact<{
-  eventId: Scalars['Int'];
+  eventId: Scalars['Int']['input'];
 }>;
 
 export type SubscribeToEventMutation = {
@@ -1781,7 +1790,7 @@ export type SubscribeToEventMutation = {
 };
 
 export type UnsubscribeFromEventMutationVariables = Exact<{
-  eventId: Scalars['Int'];
+  eventId: Scalars['Int']['input'];
 }>;
 
 export type UnsubscribeFromEventMutation = {
@@ -1790,9 +1799,9 @@ export type UnsubscribeFromEventMutation = {
 };
 
 export type PaginatedEventsWithTotalQueryVariables = Exact<{
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  showOnlyUpcoming?: InputMaybe<Scalars['Boolean']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  showOnlyUpcoming?: InputMaybe<Scalars['Boolean']['input']>;
 }>;
 
 export type PaginatedEventsWithTotalQuery = {
@@ -1825,7 +1834,7 @@ export type PaginatedEventsWithTotalQuery = {
 };
 
 export type EventQueryVariables = Exact<{
-  eventId: Scalars['Int'];
+  eventId: Scalars['Int']['input'];
 }>;
 
 export type EventQuery = {
@@ -2016,7 +2025,7 @@ export type UserDownloadQuery = {
 };
 
 export type UnsubscribeMutationVariables = Exact<{
-  token: Scalars['String'];
+  token: Scalars['String']['input'];
 }>;
 
 export type UnsubscribeMutation = {
@@ -2195,8 +2204,18 @@ export function useMeLazyQuery(
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, options);
 }
+export function useMeSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<MeQuery, MeQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<MeQuery, MeQueryVariables>(
+    MeDocument,
+    options,
+  );
+}
 export type MeQueryHookResult = ReturnType<typeof useMeQuery>;
 export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>;
+export type MeSuspenseQueryHookResult = ReturnType<typeof useMeSuspenseQuery>;
 export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>;
 export const JoinChapterDocument = gql`
   mutation joinChapter($chapterId: Int!, $subscribe: Boolean) {
@@ -2408,7 +2427,8 @@ export const ChapterDocument = gql`
  * });
  */
 export function useChapterQuery(
-  baseOptions: Apollo.QueryHookOptions<ChapterQuery, ChapterQueryVariables>,
+  baseOptions: Apollo.QueryHookOptions<ChapterQuery, ChapterQueryVariables> &
+    ({ variables: ChapterQueryVariables; skip?: boolean } | { skip: boolean }),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<ChapterQuery, ChapterQueryVariables>(
@@ -2428,8 +2448,23 @@ export function useChapterLazyQuery(
     options,
   );
 }
+export function useChapterSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    ChapterQuery,
+    ChapterQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<ChapterQuery, ChapterQueryVariables>(
+    ChapterDocument,
+    options,
+  );
+}
 export type ChapterQueryHookResult = ReturnType<typeof useChapterQuery>;
 export type ChapterLazyQueryHookResult = ReturnType<typeof useChapterLazyQuery>;
+export type ChapterSuspenseQueryHookResult = ReturnType<
+  typeof useChapterSuspenseQuery
+>;
 export type ChapterQueryResult = Apollo.QueryResult<
   ChapterQuery,
   ChapterQueryVariables
@@ -2499,9 +2534,24 @@ export function useChaptersLazyQuery(
     options,
   );
 }
+export function useChaptersSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    ChaptersQuery,
+    ChaptersQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<ChaptersQuery, ChaptersQueryVariables>(
+    ChaptersDocument,
+    options,
+  );
+}
 export type ChaptersQueryHookResult = ReturnType<typeof useChaptersQuery>;
 export type ChaptersLazyQueryHookResult = ReturnType<
   typeof useChaptersLazyQuery
+>;
+export type ChaptersSuspenseQueryHookResult = ReturnType<
+  typeof useChaptersSuspenseQuery
 >;
 export type ChaptersQueryResult = Apollo.QueryResult<
   ChaptersQuery,
@@ -2599,11 +2649,26 @@ export function useCalendarIntegrationStatusLazyQuery(
     CalendarIntegrationStatusQueryVariables
   >(CalendarIntegrationStatusDocument, options);
 }
+export function useCalendarIntegrationStatusSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    CalendarIntegrationStatusQuery,
+    CalendarIntegrationStatusQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    CalendarIntegrationStatusQuery,
+    CalendarIntegrationStatusQueryVariables
+  >(CalendarIntegrationStatusDocument, options);
+}
 export type CalendarIntegrationStatusQueryHookResult = ReturnType<
   typeof useCalendarIntegrationStatusQuery
 >;
 export type CalendarIntegrationStatusLazyQueryHookResult = ReturnType<
   typeof useCalendarIntegrationStatusLazyQuery
+>;
+export type CalendarIntegrationStatusSuspenseQueryHookResult = ReturnType<
+  typeof useCalendarIntegrationStatusSuspenseQuery
 >;
 export type CalendarIntegrationStatusQueryResult = Apollo.QueryResult<
   CalendarIntegrationStatusQuery,
@@ -2657,11 +2722,26 @@ export function useTokenStatusesLazyQuery(
     options,
   );
 }
+export function useTokenStatusesSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    TokenStatusesQuery,
+    TokenStatusesQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    TokenStatusesQuery,
+    TokenStatusesQueryVariables
+  >(TokenStatusesDocument, options);
+}
 export type TokenStatusesQueryHookResult = ReturnType<
   typeof useTokenStatusesQuery
 >;
 export type TokenStatusesLazyQueryHookResult = ReturnType<
   typeof useTokenStatusesLazyQuery
+>;
+export type TokenStatusesSuspenseQueryHookResult = ReturnType<
+  typeof useTokenStatusesSuspenseQuery
 >;
 export type TokenStatusesQueryResult = Apollo.QueryResult<
   TokenStatusesQuery,
@@ -3141,11 +3221,26 @@ export function useChapterRolesLazyQuery(
     options,
   );
 }
+export function useChapterRolesSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    ChapterRolesQuery,
+    ChapterRolesQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<ChapterRolesQuery, ChapterRolesQueryVariables>(
+    ChapterRolesDocument,
+    options,
+  );
+}
 export type ChapterRolesQueryHookResult = ReturnType<
   typeof useChapterRolesQuery
 >;
 export type ChapterRolesLazyQueryHookResult = ReturnType<
   typeof useChapterRolesLazyQuery
+>;
+export type ChapterRolesSuspenseQueryHookResult = ReturnType<
+  typeof useChapterRolesSuspenseQuery
 >;
 export type ChapterRolesQueryResult = Apollo.QueryResult<
   ChapterRolesQuery,
@@ -3204,7 +3299,11 @@ export function useDashboardChapterQuery(
   baseOptions: Apollo.QueryHookOptions<
     DashboardChapterQuery,
     DashboardChapterQueryVariables
-  >,
+  > &
+    (
+      | { variables: DashboardChapterQueryVariables; skip?: boolean }
+      | { skip: boolean }
+    ),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<DashboardChapterQuery, DashboardChapterQueryVariables>(
@@ -3224,11 +3323,26 @@ export function useDashboardChapterLazyQuery(
     DashboardChapterQueryVariables
   >(DashboardChapterDocument, options);
 }
+export function useDashboardChapterSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    DashboardChapterQuery,
+    DashboardChapterQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    DashboardChapterQuery,
+    DashboardChapterQueryVariables
+  >(DashboardChapterDocument, options);
+}
 export type DashboardChapterQueryHookResult = ReturnType<
   typeof useDashboardChapterQuery
 >;
 export type DashboardChapterLazyQueryHookResult = ReturnType<
   typeof useDashboardChapterLazyQuery
+>;
+export type DashboardChapterSuspenseQueryHookResult = ReturnType<
+  typeof useDashboardChapterSuspenseQuery
 >;
 export type DashboardChapterQueryResult = Apollo.QueryResult<
   DashboardChapterQuery,
@@ -3296,11 +3410,26 @@ export function useDashboardChaptersLazyQuery(
     DashboardChaptersQueryVariables
   >(DashboardChaptersDocument, options);
 }
+export function useDashboardChaptersSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    DashboardChaptersQuery,
+    DashboardChaptersQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    DashboardChaptersQuery,
+    DashboardChaptersQueryVariables
+  >(DashboardChaptersDocument, options);
+}
 export type DashboardChaptersQueryHookResult = ReturnType<
   typeof useDashboardChaptersQuery
 >;
 export type DashboardChaptersLazyQueryHookResult = ReturnType<
   typeof useDashboardChaptersLazyQuery
+>;
+export type DashboardChaptersSuspenseQueryHookResult = ReturnType<
+  typeof useDashboardChaptersSuspenseQuery
 >;
 export type DashboardChaptersQueryResult = Apollo.QueryResult<
   DashboardChaptersQuery,
@@ -3349,7 +3478,11 @@ export function useDashboardChapterUsersQuery(
   baseOptions: Apollo.QueryHookOptions<
     DashboardChapterUsersQuery,
     DashboardChapterUsersQueryVariables
-  >,
+  > &
+    (
+      | { variables: DashboardChapterUsersQueryVariables; skip?: boolean }
+      | { skip: boolean }
+    ),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -3369,11 +3502,26 @@ export function useDashboardChapterUsersLazyQuery(
     DashboardChapterUsersQueryVariables
   >(DashboardChapterUsersDocument, options);
 }
+export function useDashboardChapterUsersSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    DashboardChapterUsersQuery,
+    DashboardChapterUsersQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    DashboardChapterUsersQuery,
+    DashboardChapterUsersQueryVariables
+  >(DashboardChapterUsersDocument, options);
+}
 export type DashboardChapterUsersQueryHookResult = ReturnType<
   typeof useDashboardChapterUsersQuery
 >;
 export type DashboardChapterUsersLazyQueryHookResult = ReturnType<
   typeof useDashboardChapterUsersLazyQuery
+>;
+export type DashboardChapterUsersSuspenseQueryHookResult = ReturnType<
+  typeof useDashboardChapterUsersSuspenseQuery
 >;
 export type DashboardChapterUsersQueryResult = Apollo.QueryResult<
   DashboardChapterUsersQuery,
@@ -3405,7 +3553,11 @@ export function useTestChapterCalendarAccessQuery(
   baseOptions: Apollo.QueryHookOptions<
     TestChapterCalendarAccessQuery,
     TestChapterCalendarAccessQueryVariables
-  >,
+  > &
+    (
+      | { variables: TestChapterCalendarAccessQueryVariables; skip?: boolean }
+      | { skip: boolean }
+    ),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -3425,11 +3577,26 @@ export function useTestChapterCalendarAccessLazyQuery(
     TestChapterCalendarAccessQueryVariables
   >(TestChapterCalendarAccessDocument, options);
 }
+export function useTestChapterCalendarAccessSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    TestChapterCalendarAccessQuery,
+    TestChapterCalendarAccessQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    TestChapterCalendarAccessQuery,
+    TestChapterCalendarAccessQueryVariables
+  >(TestChapterCalendarAccessDocument, options);
+}
 export type TestChapterCalendarAccessQueryHookResult = ReturnType<
   typeof useTestChapterCalendarAccessQuery
 >;
 export type TestChapterCalendarAccessLazyQueryHookResult = ReturnType<
   typeof useTestChapterCalendarAccessLazyQuery
+>;
+export type TestChapterCalendarAccessSuspenseQueryHookResult = ReturnType<
+  typeof useTestChapterCalendarAccessSuspenseQuery
 >;
 export type TestChapterCalendarAccessQueryResult = Apollo.QueryResult<
   TestChapterCalendarAccessQuery,
@@ -4024,11 +4191,26 @@ export function useDashboardEventsLazyQuery(
     DashboardEventsQueryVariables
   >(DashboardEventsDocument, options);
 }
+export function useDashboardEventsSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    DashboardEventsQuery,
+    DashboardEventsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    DashboardEventsQuery,
+    DashboardEventsQueryVariables
+  >(DashboardEventsDocument, options);
+}
 export type DashboardEventsQueryHookResult = ReturnType<
   typeof useDashboardEventsQuery
 >;
 export type DashboardEventsLazyQueryHookResult = ReturnType<
   typeof useDashboardEventsLazyQuery
+>;
+export type DashboardEventsSuspenseQueryHookResult = ReturnType<
+  typeof useDashboardEventsSuspenseQuery
 >;
 export type DashboardEventsQueryResult = Apollo.QueryResult<
   DashboardEventsQuery,
@@ -4119,7 +4301,11 @@ export function useDashboardEventQuery(
   baseOptions: Apollo.QueryHookOptions<
     DashboardEventQuery,
     DashboardEventQueryVariables
-  >,
+  > &
+    (
+      | { variables: DashboardEventQueryVariables; skip?: boolean }
+      | { skip: boolean }
+    ),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<DashboardEventQuery, DashboardEventQueryVariables>(
@@ -4139,11 +4325,26 @@ export function useDashboardEventLazyQuery(
     options,
   );
 }
+export function useDashboardEventSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    DashboardEventQuery,
+    DashboardEventQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    DashboardEventQuery,
+    DashboardEventQueryVariables
+  >(DashboardEventDocument, options);
+}
 export type DashboardEventQueryHookResult = ReturnType<
   typeof useDashboardEventQuery
 >;
 export type DashboardEventLazyQueryHookResult = ReturnType<
   typeof useDashboardEventLazyQuery
+>;
+export type DashboardEventSuspenseQueryHookResult = ReturnType<
+  typeof useDashboardEventSuspenseQuery
 >;
 export type DashboardEventQueryResult = Apollo.QueryResult<
   DashboardEventQuery,
@@ -4197,9 +4398,24 @@ export function useSponsorsLazyQuery(
     options,
   );
 }
+export function useSponsorsSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    SponsorsQuery,
+    SponsorsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<SponsorsQuery, SponsorsQueryVariables>(
+    SponsorsDocument,
+    options,
+  );
+}
 export type SponsorsQueryHookResult = ReturnType<typeof useSponsorsQuery>;
 export type SponsorsLazyQueryHookResult = ReturnType<
   typeof useSponsorsLazyQuery
+>;
+export type SponsorsSuspenseQueryHookResult = ReturnType<
+  typeof useSponsorsSuspenseQuery
 >;
 export type SponsorsQueryResult = Apollo.QueryResult<
   SponsorsQuery,
@@ -4234,7 +4450,11 @@ export function useChapterVenuesQuery(
   baseOptions: Apollo.QueryHookOptions<
     ChapterVenuesQuery,
     ChapterVenuesQueryVariables
-  >,
+  > &
+    (
+      | { variables: ChapterVenuesQueryVariables; skip?: boolean }
+      | { skip: boolean }
+    ),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<ChapterVenuesQuery, ChapterVenuesQueryVariables>(
@@ -4254,11 +4474,26 @@ export function useChapterVenuesLazyQuery(
     options,
   );
 }
+export function useChapterVenuesSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    ChapterVenuesQuery,
+    ChapterVenuesQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    ChapterVenuesQuery,
+    ChapterVenuesQueryVariables
+  >(ChapterVenuesDocument, options);
+}
 export type ChapterVenuesQueryHookResult = ReturnType<
   typeof useChapterVenuesQuery
 >;
 export type ChapterVenuesLazyQueryHookResult = ReturnType<
   typeof useChapterVenuesLazyQuery
+>;
+export type ChapterVenuesSuspenseQueryHookResult = ReturnType<
+  typeof useChapterVenuesSuspenseQuery
 >;
 export type ChapterVenuesQueryResult = Apollo.QueryResult<
   ChapterVenuesQuery,
@@ -4290,7 +4525,14 @@ export function useTestEventCalendarEventAccessQuery(
   baseOptions: Apollo.QueryHookOptions<
     TestEventCalendarEventAccessQuery,
     TestEventCalendarEventAccessQueryVariables
-  >,
+  > &
+    (
+      | {
+          variables: TestEventCalendarEventAccessQueryVariables;
+          skip?: boolean;
+        }
+      | { skip: boolean }
+    ),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -4310,11 +4552,26 @@ export function useTestEventCalendarEventAccessLazyQuery(
     TestEventCalendarEventAccessQueryVariables
   >(TestEventCalendarEventAccessDocument, options);
 }
+export function useTestEventCalendarEventAccessSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    TestEventCalendarEventAccessQuery,
+    TestEventCalendarEventAccessQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    TestEventCalendarEventAccessQuery,
+    TestEventCalendarEventAccessQueryVariables
+  >(TestEventCalendarEventAccessDocument, options);
+}
 export type TestEventCalendarEventAccessQueryHookResult = ReturnType<
   typeof useTestEventCalendarEventAccessQuery
 >;
 export type TestEventCalendarEventAccessLazyQueryHookResult = ReturnType<
   typeof useTestEventCalendarEventAccessLazyQuery
+>;
+export type TestEventCalendarEventAccessSuspenseQueryHookResult = ReturnType<
+  typeof useTestEventCalendarEventAccessSuspenseQuery
 >;
 export type TestEventCalendarEventAccessQueryResult = Apollo.QueryResult<
   TestEventCalendarEventAccessQuery,
@@ -4459,7 +4716,11 @@ export function useDashboardSponsorQuery(
   baseOptions: Apollo.QueryHookOptions<
     DashboardSponsorQuery,
     DashboardSponsorQueryVariables
-  >,
+  > &
+    (
+      | { variables: DashboardSponsorQueryVariables; skip?: boolean }
+      | { skip: boolean }
+    ),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<DashboardSponsorQuery, DashboardSponsorQueryVariables>(
@@ -4479,11 +4740,26 @@ export function useDashboardSponsorLazyQuery(
     DashboardSponsorQueryVariables
   >(DashboardSponsorDocument, options);
 }
+export function useDashboardSponsorSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    DashboardSponsorQuery,
+    DashboardSponsorQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    DashboardSponsorQuery,
+    DashboardSponsorQueryVariables
+  >(DashboardSponsorDocument, options);
+}
 export type DashboardSponsorQueryHookResult = ReturnType<
   typeof useDashboardSponsorQuery
 >;
 export type DashboardSponsorLazyQueryHookResult = ReturnType<
   typeof useDashboardSponsorLazyQuery
+>;
+export type DashboardSponsorSuspenseQueryHookResult = ReturnType<
+  typeof useDashboardSponsorSuspenseQuery
 >;
 export type DashboardSponsorQueryResult = Apollo.QueryResult<
   DashboardSponsorQuery,
@@ -4529,7 +4805,11 @@ export function useSponsorWithEventsQuery(
   baseOptions: Apollo.QueryHookOptions<
     SponsorWithEventsQuery,
     SponsorWithEventsQueryVariables
-  >,
+  > &
+    (
+      | { variables: SponsorWithEventsQueryVariables; skip?: boolean }
+      | { skip: boolean }
+    ),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -4549,11 +4829,26 @@ export function useSponsorWithEventsLazyQuery(
     SponsorWithEventsQueryVariables
   >(SponsorWithEventsDocument, options);
 }
+export function useSponsorWithEventsSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    SponsorWithEventsQuery,
+    SponsorWithEventsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    SponsorWithEventsQuery,
+    SponsorWithEventsQueryVariables
+  >(SponsorWithEventsDocument, options);
+}
 export type SponsorWithEventsQueryHookResult = ReturnType<
   typeof useSponsorWithEventsQuery
 >;
 export type SponsorWithEventsLazyQueryHookResult = ReturnType<
   typeof useSponsorWithEventsLazyQuery
+>;
+export type SponsorWithEventsSuspenseQueryHookResult = ReturnType<
+  typeof useSponsorWithEventsSuspenseQuery
 >;
 export type SponsorWithEventsQueryResult = Apollo.QueryResult<
   SponsorWithEventsQuery,
@@ -4660,11 +4955,26 @@ export function useInstanceRolesLazyQuery(
     options,
   );
 }
+export function useInstanceRolesSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    InstanceRolesQuery,
+    InstanceRolesQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    InstanceRolesQuery,
+    InstanceRolesQueryVariables
+  >(InstanceRolesDocument, options);
+}
 export type InstanceRolesQueryHookResult = ReturnType<
   typeof useInstanceRolesQuery
 >;
 export type InstanceRolesLazyQueryHookResult = ReturnType<
   typeof useInstanceRolesLazyQuery
+>;
+export type InstanceRolesSuspenseQueryHookResult = ReturnType<
+  typeof useInstanceRolesSuspenseQuery
 >;
 export type InstanceRolesQueryResult = Apollo.QueryResult<
   InstanceRolesQuery,
@@ -4716,8 +5026,23 @@ export function useUsersLazyQuery(
     options,
   );
 }
+export function useUsersSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    UsersQuery,
+    UsersQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<UsersQuery, UsersQueryVariables>(
+    UsersDocument,
+    options,
+  );
+}
 export type UsersQueryHookResult = ReturnType<typeof useUsersQuery>;
 export type UsersLazyQueryHookResult = ReturnType<typeof useUsersLazyQuery>;
+export type UsersSuspenseQueryHookResult = ReturnType<
+  typeof useUsersSuspenseQuery
+>;
 export type UsersQueryResult = Apollo.QueryResult<
   UsersQuery,
   UsersQueryVariables
@@ -4952,11 +5277,26 @@ export function useDashboardVenuesLazyQuery(
     DashboardVenuesQueryVariables
   >(DashboardVenuesDocument, options);
 }
+export function useDashboardVenuesSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    DashboardVenuesQuery,
+    DashboardVenuesQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    DashboardVenuesQuery,
+    DashboardVenuesQueryVariables
+  >(DashboardVenuesDocument, options);
+}
 export type DashboardVenuesQueryHookResult = ReturnType<
   typeof useDashboardVenuesQuery
 >;
 export type DashboardVenuesLazyQueryHookResult = ReturnType<
   typeof useDashboardVenuesLazyQuery
+>;
+export type DashboardVenuesSuspenseQueryHookResult = ReturnType<
+  typeof useDashboardVenuesSuspenseQuery
 >;
 export type DashboardVenuesQueryResult = Apollo.QueryResult<
   DashboardVenuesQuery,
@@ -5011,7 +5351,8 @@ export const VenueDocument = gql`
  * });
  */
 export function useVenueQuery(
-  baseOptions: Apollo.QueryHookOptions<VenueQuery, VenueQueryVariables>,
+  baseOptions: Apollo.QueryHookOptions<VenueQuery, VenueQueryVariables> &
+    ({ variables: VenueQueryVariables; skip?: boolean } | { skip: boolean }),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<VenueQuery, VenueQueryVariables>(
@@ -5028,8 +5369,23 @@ export function useVenueLazyQuery(
     options,
   );
 }
+export function useVenueSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    VenueQuery,
+    VenueQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<VenueQuery, VenueQueryVariables>(
+    VenueDocument,
+    options,
+  );
+}
 export type VenueQueryHookResult = ReturnType<typeof useVenueQuery>;
 export type VenueLazyQueryHookResult = ReturnType<typeof useVenueLazyQuery>;
+export type VenueSuspenseQueryHookResult = ReturnType<
+  typeof useVenueSuspenseQuery
+>;
 export type VenueQueryResult = Apollo.QueryResult<
   VenueQuery,
   VenueQueryVariables
@@ -5317,11 +5673,26 @@ export function usePaginatedEventsWithTotalLazyQuery(
     PaginatedEventsWithTotalQueryVariables
   >(PaginatedEventsWithTotalDocument, options);
 }
+export function usePaginatedEventsWithTotalSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    PaginatedEventsWithTotalQuery,
+    PaginatedEventsWithTotalQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    PaginatedEventsWithTotalQuery,
+    PaginatedEventsWithTotalQueryVariables
+  >(PaginatedEventsWithTotalDocument, options);
+}
 export type PaginatedEventsWithTotalQueryHookResult = ReturnType<
   typeof usePaginatedEventsWithTotalQuery
 >;
 export type PaginatedEventsWithTotalLazyQueryHookResult = ReturnType<
   typeof usePaginatedEventsWithTotalLazyQuery
+>;
+export type PaginatedEventsWithTotalSuspenseQueryHookResult = ReturnType<
+  typeof usePaginatedEventsWithTotalSuspenseQuery
 >;
 export type PaginatedEventsWithTotalQueryResult = Apollo.QueryResult<
   PaginatedEventsWithTotalQuery,
@@ -5401,7 +5772,8 @@ export const EventDocument = gql`
  * });
  */
 export function useEventQuery(
-  baseOptions: Apollo.QueryHookOptions<EventQuery, EventQueryVariables>,
+  baseOptions: Apollo.QueryHookOptions<EventQuery, EventQueryVariables> &
+    ({ variables: EventQueryVariables; skip?: boolean } | { skip: boolean }),
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<EventQuery, EventQueryVariables>(
@@ -5418,8 +5790,23 @@ export function useEventLazyQuery(
     options,
   );
 }
+export function useEventSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    EventQuery,
+    EventQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<EventQuery, EventQueryVariables>(
+    EventDocument,
+    options,
+  );
+}
 export type EventQueryHookResult = ReturnType<typeof useEventQuery>;
 export type EventLazyQueryHookResult = ReturnType<typeof useEventLazyQuery>;
+export type EventSuspenseQueryHookResult = ReturnType<
+  typeof useEventSuspenseQuery
+>;
 export type EventQueryResult = Apollo.QueryResult<
   EventQuery,
   EventQueryVariables
@@ -5531,9 +5918,24 @@ export function useUserProfileLazyQuery(
     options,
   );
 }
+export function useUserProfileSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    UserProfileQuery,
+    UserProfileQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<UserProfileQuery, UserProfileQueryVariables>(
+    UserProfileDocument,
+    options,
+  );
+}
 export type UserProfileQueryHookResult = ReturnType<typeof useUserProfileQuery>;
 export type UserProfileLazyQueryHookResult = ReturnType<
   typeof useUserProfileLazyQuery
+>;
+export type UserProfileSuspenseQueryHookResult = ReturnType<
+  typeof useUserProfileSuspenseQuery
 >;
 export type UserProfileQueryResult = Apollo.QueryResult<
   UserProfileQuery,
@@ -5669,11 +6071,26 @@ export function useUserDownloadLazyQuery(
     options,
   );
 }
+export function useUserDownloadSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    UserDownloadQuery,
+    UserDownloadQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<UserDownloadQuery, UserDownloadQueryVariables>(
+    UserDownloadDocument,
+    options,
+  );
+}
 export type UserDownloadQueryHookResult = ReturnType<
   typeof useUserDownloadQuery
 >;
 export type UserDownloadLazyQueryHookResult = ReturnType<
   typeof useUserDownloadLazyQuery
+>;
+export type UserDownloadSuspenseQueryHookResult = ReturnType<
+  typeof useUserDownloadSuspenseQuery
 >;
 export type UserDownloadQueryResult = Apollo.QueryResult<
   UserDownloadQuery,

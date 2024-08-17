@@ -3,7 +3,7 @@ name: Update copyright year(s) in license file
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 3 1 1 *"
+    - cron: '0 3 1 1 *' # 03:00 on day-of-month 1 in January
 
 jobs:
   run:
@@ -18,7 +18,7 @@ jobs:
           path: |
             README.md
             LICENSE
-          commitTitle: "docs: update copyright years"
-          prTitle: "docs: update copyright years"
+          commitTitle: 'docs: update copyright years'
+          prTitle: 'docs: update copyright years'
           prBody: It's that time of the year, let's update the license
           labels: Documentation

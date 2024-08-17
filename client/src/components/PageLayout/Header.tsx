@@ -83,7 +83,7 @@ export const Header: React.FC = () => {
             width="100%"
           />
         </Link>
-        <HStack as="nav" color="gray.85">
+        <HStack as="nav" color="gray.85" zIndex={105}>
           {loadingUser ? (
             <Spinner color="white" size="xl" />
           ) : (

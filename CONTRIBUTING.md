@@ -35,11 +35,9 @@
 
 # Contribution Guidelines
 
-Hello :wave: and welcome to **_Chapter_**, a project of [freeCodeCamp](https://www.freecodecamp.org).
+Hello :wave: and welcome. **_Chapter 2_** continues the deprecated project [freeCodeCamp/chapter](https://github.com/freeCodeCamp/chapter).
 
-We strictly enforce our ["Code of Conduct"](https://www.freecodecamp.org/code-of-conduct), so please take a moment to read the 196 word policy.
-
-[Join our chat](https://discord.gg/QbQd7BpaaH) to get connected with the project's development team.
+We strictly enforce freecodecamp's ["Code of Conduct"](https://www.freecodecamp.org/code-of-conduct), so please take a moment to read the 196 word policy.
 
 # Contributing Code
 
@@ -51,7 +49,7 @@ Consider the following options when you are ready to contribute code.
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/freeCodeCamp/chapter)
 
-All [pull requests](https://github.com/freeCodeCamp/chapter/pulls) will have a GitPod link to allow for quickly opening an "ready-to-code" development environment for that specific issue / task. Follow the [GitPod documentation](https://www.gitpod.io/docs) to configure your account, setup an "ephemeral" workspace, and access a running application.
+All [pull requests](https://github.com/Hanneses/chapter2/pulls) will have a GitPod link to allow for quickly opening an "ready-to-code" development environment for that specific issue / task. Follow the [GitPod documentation](https://www.gitpod.io/docs) to configure your account, setup an "ephemeral" workspace, and access a running application.
 
 ## Using a Traditional Dev Environment
 
@@ -311,15 +309,15 @@ Submit the form and you have successfully created a PR. Congratulations! :tada:
 
 <details><summary><b>Step 1</b> - Install Node.js and Dependencies</summary>
 
-**Prerequisite**: _Node.js_ 16+ and _npm_ 8+ must be installed
+**Prerequisite**: _Node.js_ 20+ and _npm_ 10+ must be installed
 
 > Note
-> * To check Node.js, run `node --version` and the output should be like **v16**.#.#
+> * To check Node.js, run `node --version` and the output should be like **v20**.#.#
 > * If _Node.js_ is not installed, or using an older version, then:
 >   * (Recommended) Use [NVM](https://github.com/nvm-sh/nvm#installing-and-updating) to manage multiple version of Node.js and run `nvm install` within the root code directory.
  >   * Or, install or update the [latest version of Node.js](https://nodejs.org/en/download/). Be sure to close and re-open your terminal for the changes to take effect.
-> * To check npm, run `npm --version` and the output should be like **8**.#.#
-> * Update npm to the latest version by running `npm i -g npm@8` in the root code directory.
+> * To check npm, run `npm --version` and the output should be like **10**.#.#
+> * Update npm to the latest version by running `npm i -g npm@10` in the root code directory.
 
 Run `npm i` to install all of the necessary dependencies.
 
@@ -408,7 +406,7 @@ The database is seeded with several types of user.  To experiment with different
 
 # Adding a New Feature
 
-In order to understand where to start, it may help to familiarize yourself with our [tech stack](https://github.com/freeCodeCamp/chapter/blob/main/README.md#tech-stack). For more details:
+In order to understand where to start, it may help to familiarize yourself with our [tech stack](https://github.com/Hanneses/chapter2/blob/main/README.md#tech-stack). For more details:
 
 <details><summary>Tech Stack Overview</summary>
 
@@ -438,7 +436,7 @@ To see the coverage of an single spec, you can either run `npm run cypress:run -
 
 <details><summary>What do we need help with right now?</summary>
 
-We are in the early stages of development on this new application, but we value any contributions and insights.  In order to prevent duplication, please browse and search our ["Good First Issue"](https://github.com/freeCodeCamp/chapter/issues?q=is%3Aissue+is%3Aopen+label%3A%22Good+First+Issue%22) list and [existing issues](https://github.com/freeCodeCamp/chapter/issues).
+We are currently in development on this new application, but we value any contributions and insights. In order to prevent duplication, please browse and search [issues](https://github.com/Hanneses/chapter2/issues).
 
 Please [join our chat](https://discord.gg/QbQd7BpaaH) to stay in the loop.
 </details>
@@ -450,25 +448,15 @@ For typos and other wording changes, you can directly open pull requests without
 
 <details><summary>I am new to GitHub and Open Source, where should I start?</summary>
 
-Please read our [How to Contribute to Open Source Guide](https://github.com/freeCodeCamp/how-to-contribute-to-open-source).
+Please read freeCodeCamp's [How to Contribute to Open Source Guide](https://github.com/freeCodeCamp/how-to-contribute-to-open-source).
 
-Feel free to ask us questions on our ["Good First Issue"](https://github.com/freeCodeCamp/chapter/issues?q=is%3Aissue+is%3Aopen+label%3A%22Good+First+Issue%22) list or [join our chat](https://discord.gg/QbQd7BpaaH). Please be polite and patient and our community members will be glad to guide you to next steps.
+Feel free to ask us questions on our [issue list](https://github.com/Hanneses/chapter2/issues).
 
 When in doubt, you can reach out to current lead(s):
 
 | Name            | GitHub | Role |
 |:----------------|:-------|:-----|
-| Oliver Eyton-Williams | [@ojeytonwilliams](https://github.com/ojeytonwilliams) | Project Lead
-| Jim Ciallella | [@allella](https://github.com/allella) | Documentation, Newbie Questions, & Schema
-| Fran Zeko | [@Zeko369](https://github.com/Zeko369) | Admin UI, routes, models, and data migrations
-| Ayotomide Oladipo | [@tomiiide](https://github.com/tomiiide) | Public-facing client pages / forms
-| Timmy Chen | [@timmyichen](https://github.com/timmyichen) | API
-| Patrick San Juan | [@pdotsani](https://github.com/pdotsani) | Google Authentication
-| Jonathan Seubert | [@megajon](https://github.com/megajon) | Email
-| Vaibhav Singh | [@vaibhavsingh97](https://github.com/vaibhavsingh97) | Heroku 1-click deployment
-| Quincy Larson | [@QuincyLarson](https://github.com/QuincyLarson) | Executive Lead
-
-You are a champion :).
+| Hannes | [@Hanneses](https://github.com/Hanneses) | Project Lead (just tries to continue deprecated project [Chapter](https://github.com/freeCodeCamp/chapter/))
 
 </details>
 

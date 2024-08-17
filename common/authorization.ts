@@ -86,12 +86,16 @@ function getRelatedChapterId(
   // We're using 'undefined' when the id should not be inferred, leaving 'null'
   // to indicate that we've failed to infer the id (and so the request is
   // invalid)
-  const inferredFromEvent = eventId ? inferId(eventId, events) : undefined;
-  const inferredFromVenue = venueId ? inferId(venueId, venues) : undefined;
+  const inferredFromEvent =
+    typeof eventId === 'number' ? inferId(eventId, events) : undefined;
+  const inferredFromVenue =
+    typeof venueId === 'number' ? inferId(venueId, venues) : undefined;
 
-  const chapterIds = [inferredFromEvent, inferredFromVenue, chapterId].filter(
-    (x) => typeof x !== 'undefined',
-  );
+  const chapterIds = [
+    inferredFromEvent,
+    inferredFromVenue,
+    chapterId as any,
+  ].filter((x) => typeof x !== 'undefined');
 
   return chapterIds.length && chapterIds.every((x) => x === chapterIds[0])
     ? chapterIds[0]
