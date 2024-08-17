@@ -41,7 +41,9 @@ const errorLink = onError(({ networkError }) => {
     }
     // TODO: do we want to implement some kind of refresh token instead of
     // forcing the user to log in again?
-    if (networkError.result.message === 'Token expired') {
+    typeof networkError.result;
+    const networkErrorResult = networkError.result as Record<string, any>;
+    if (networkErrorResult.message === 'Token expired') {
       window.location.href = '/auth/login';
     } else {
       // TODO: do we want to do something else here? We don't want to get stuck
