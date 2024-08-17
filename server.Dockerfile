@@ -17,7 +17,7 @@ FROM node:20.16-alpine3.19 as production
 WORKDIR /usr/chapter/
 
 # Workaround for https://github.com/prisma/prisma/issues/16553 (prisma generate fails with openssl 3.0)
-RUN apk add openssl1.1-compat
+RUN apk add openssl
 
 COPY package*.json ./
 COPY server/package.json ./server/package.json
