@@ -77,7 +77,7 @@ Quincy Larson is the project lead. [freeCodeCamp](https://www.freecodecamp.org) 
 
 ## License
 
-Copyright (c) 2019-2023 freeCodeCamp.org
+Copyright (c) 2019-2024 freeCodeCamp.org
 
 The computer software is licensed under the [BSD-3-Clause](LICENSE) license.
 
