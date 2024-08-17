@@ -788,11 +788,20 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Hanneses",
+      "name": "Hanneses",
+      "avatar_url": "https://avatars.githubusercontent.com/u/123950376?v=4",
+      "profile": "https://github.com/Hanneses",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
-  "projectName": "chapter",
-  "projectOwner": "freeCodeCamp",
+  "projectName": "chapter2",
+  "projectOwner": "Hanneses",
   "repoType": "github",
   "repoHost": "https://github.com",
   "skipCi": false,

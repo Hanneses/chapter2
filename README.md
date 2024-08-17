@@ -1,4 +1,4 @@
-> ***Chapter 2*** continues the deprecated project [freeCodeCamp/chapter](https://github.com/freeCodeCamp/chapter).
+> **_Chapter 2_** continues the deprecated project [freeCodeCamp/chapter](https://github.com/freeCodeCamp/chapter).
 
 
 # Welcome to Chapter

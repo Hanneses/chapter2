@@ -35,11 +35,9 @@
 
 # Contribution Guidelines
 
-Hello :wave: and welcome to **_Chapter_**, a project of [freeCodeCamp](https://www.freecodecamp.org).
+Hello :wave: and welcome. **_Chapter 2_** continues the deprecated project [freeCodeCamp/chapter](https://github.com/freeCodeCamp/chapter).
 
-We strictly enforce our ["Code of Conduct"](https://www.freecodecamp.org/code-of-conduct), so please take a moment to read the 196 word policy.
-
-[Join our chat](https://discord.gg/QbQd7BpaaH) to get connected with the project's development team.
+We strictly enforce freecodecamp's ["Code of Conduct"](https://www.freecodecamp.org/code-of-conduct), so please take a moment to read the 196 word policy.
 
 # Contributing Code
 
@@ -51,7 +49,7 @@ Consider the following options when you are ready to contribute code.
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/freeCodeCamp/chapter)
 
-All [pull requests](https://github.com/freeCodeCamp/chapter/pulls) will have a GitPod link to allow for quickly opening an "ready-to-code" development environment for that specific issue / task. Follow the [GitPod documentation](https://www.gitpod.io/docs) to configure your account, setup an "ephemeral" workspace, and access a running application.
+All [pull requests](https://github.com/Hanneses/chapter2/pulls) will have a GitPod link to allow for quickly opening an "ready-to-code" development environment for that specific issue / task. Follow the [GitPod documentation](https://www.gitpod.io/docs) to configure your account, setup an "ephemeral" workspace, and access a running application.
 
 ## Using a Traditional Dev Environment
 
