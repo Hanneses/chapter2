@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [20.x]
     services:
       postgres:
         # For now schema spy doesn't get on with postgres:14
@@ -30,7 +30,7 @@ jobs:
       - name: Create the schema
         env:
           DB_PORT: 5432
-        run: "npm run prisma migrate reset -- --force --skip-generate --skip-seed"
+        run: 'npm run prisma migrate reset -- --force --skip-generate --skip-seed'
       - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3
         with:
           ref: gh-pages
