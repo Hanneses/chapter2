@@ -36,32 +36,43 @@ To better communicate and more easily build an API and UI, the current contribut
 
 ## Tech Stack
 
-We are using the following tools:
+Backend
 
-- [Node.js](https://nodejs.org) / [Apollo server](https://www.npmjs.com/package/apollo-server-express) - extendable graphql server
-  - [type-graphql](https://github.com/MichalLytek/type-graphql) - code first graphql schema definition library
-- [Postgres](https://www.postgresql.org) with [Prisma](https://prisma.io/) - for fully type-safe queries
-- [Next.js](https://nextjs.org/) - for both client and server-side rendering of the frontend (NextJS is based on [React](https://reactjs.org))
-  - [Apollo Client 3](https://www.apollographql.com/docs/react/)
-  - [TypeScript](https://www.typescriptlang.org/index.html#download-links)
-  - [Chakra UI](https://chakra-ui.com/) - simple, modular & accessible UI components for React
-  - Functional Components with [Hooks](https://reactjs.org/docs/hooks-intro.html)
+- [Node.js](https://nodejs.org) + [Express](http://expressjs.com/) - webserver
+- [Apollo server](https://www.npmjs.com/package/apollo-server-express) - extendable graphql server
+- [type-graphql](https://github.com/MichalLytek/type-graphql) - code first graphql schema definition library
+
+Frontend
+
+- [React](https://reactjs.org) + [Next.js](https://nextjs.org/) - client and server-side rendering of frontend
+- [Apollo Client 3](https://www.apollographql.com/docs/react/) - access Apollo server
+- [Chakra UI](https://chakra-ui.com/) - simple, modular & accessible UI component library for React
+
+Database
+
+- [Postgres](https://www.postgresql.org/) - open source relational database
+- [Prisma](https://prisma.io/) - fully type-safe queries
+
+Test
+
 - [Jest](https://jestjs.io/) - for writing unit tests.
 - [Cypress](https://www.cypress.io/) - to check if specific actions are possible to perform in certain scenarios.
 
 For more information and a guide to working on features, go to the [contributing docs](/CONTRIBUTING.md#adding-a-new-feature).
 
-## User Stories
+## Roadmap
 
-### MVP
+### MVP (in progress)
 
-The [MVP user stories are shown in the MVP Project](https://github.com/freeCodeCamp/chapter/projects/1) kanban / cards and as [issues marked with "MVP"](https://github.com/freeCodeCamp/chapter/labels/MVP).
+The MVP user stories are shown in the [MVP milestone](https://github.com/Hanneses/chapter2/milestone/1) and should be done first.
 
 ### Post-MVP
 
-We are maintaining a list of post-MVP conversations and user stories using the ["Roadmap" tag](https://github.com/freeCodeCamp/chapter/issues?utf8=%E2%9C%93&q=is%3Aopen+or+is%3Aclosed+label%3ARoadmap+).
+There is a list of further project phases using [Milestones](https://github.com/Hanneses/chapter2/milestones).
 
-Quincy Larson is the project lead. [freeCodeCamp](https://www.freecodecamp.org) will start "dogfooding" the MVP with several of its local study groups.
+## Project Board
+
+See the [Project Board](https://github.com/users/Hanneses/projects/3) to find out what we are working on.
 
 ## UI / UX / Design References
 

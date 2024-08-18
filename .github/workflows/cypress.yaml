@@ -13,7 +13,7 @@ jobs:
       matrix:
         # deactivated firefox due to timeout issues
         # browsers: [chrome, firefox]
-        browsers: [firefox]
+        browsers: [chrome]
         node-version: [20.x]
     steps:
       - name: Set Action Environment Variables
