@@ -5,17 +5,16 @@ import {
   Text,
   useDisclosure,
 } from '@chakra-ui/react';
-import { useRouter } from 'next/router';
-import React, { useEffect, useMemo, useState } from 'react';
 import { useConfirm } from 'chakra-confirm';
+import { useRouter } from 'next/router';
+import { useEffect, useMemo, useState } from 'react';
 
+import { BellIcon, CheckIcon, CloseIcon, TimeIcon } from '@chakra-ui/icons';
 import { AttendanceNames } from '../../../../../common/attendance';
-import { EVENT } from '../graphql/queries';
-import { CHAPTER } from '../../chapters/graphql/queries';
-import { DASHBOARD_EVENT } from '../../dashboard/Events/graphql/queries';
-import { useUser } from '../../auth/user';
-import { meQuery } from '../../auth/graphql/queries';
 import { InfoList } from '../../../components/InfoList';
+import { Loading } from '../../../components/Loading';
+import { Modal } from '../../../components/Modal';
+import { useSubscribeCheckbox } from '../../../components/SubscribeCheckbox';
 import {
   useAttendEventMutation,
   useCancelAttendanceMutation,
@@ -25,9 +24,11 @@ import {
 } from '../../../generated/graphql';
 import { useAlert } from '../../../hooks/useAlert';
 import { useSession } from '../../../hooks/useSession';
-import { Loading } from '../../../components/Loading';
-import { Modal } from '../../../components/Modal';
-import { useSubscribeCheckbox } from '../../../components/SubscribeCheckbox';
+import { meQuery } from '../../auth/graphql/queries';
+import { useUser } from '../../auth/user';
+import { CHAPTER } from '../../chapters/graphql/queries';
+import { DASHBOARD_EVENT } from '../../dashboard/Events/graphql/queries';
+import { EVENT } from '../graphql/queries';
 
 type ActionsProps = {
   event: {
@@ -46,6 +47,11 @@ const buttonStyleProps = {
 const textStyleProps = {
   fontSize: 'md',
   fontWeight: 500,
+};
+
+const textStylePropsSuccess = {
+  ...textStyleProps,
+  color: 'green',
 };
 
 export const Actions = ({
@@ -319,10 +325,11 @@ export const Actions = ({
             <Text {...textStyleProps}>Not attending the event</Text>
             <Button
               {...buttonStyleProps}
-              colorScheme="blue"
+              colorScheme="green"
               data-cy="attend-button"
               isLoading={loadingAttend}
               onClick={() => tryToAttend()}
+              leftIcon={<CheckIcon />}
             >
               {inviteOnly ? 'Request Invite' : 'Attend Event'}
             </Button>
@@ -331,19 +338,24 @@ export const Actions = ({
           <>
             {attendanceStatus === AttendanceNames.waitlist ? (
               <Text {...textStyleProps}>
+                <TimeIcon marginRight={2} />
                 {inviteOnly
                   ? 'Event owner will soon confirm your request'
                   : "You're on waitlist for this event"}
               </Text>
             ) : (
-              <Text data-cy="attend-success">You are attending this event</Text>
+              <Text {...textStylePropsSuccess} data-cy="attend-success">
+                <CheckIcon marginRight={2} /> You are attending this event
+              </Text>
             )}
             <Button
               {...buttonStyleProps}
               isLoading={loadingCancel}
               onClick={onCancelAttendance}
+              colorScheme="red"
+              leftIcon={<CloseIcon />}
             >
-              Cancel
+              Cancel attendance
             </Button>
           </>
         )}
@@ -351,13 +363,16 @@ export const Actions = ({
           <>
             {userEvent.subscribed ? (
               <>
-                <Text {...textStyleProps}>
+                <Text {...textStylePropsSuccess}>
+                  <BellIcon marginRight={2} />
                   You are subscribed to event updates
                 </Text>
                 <Button
                   {...buttonStyleProps}
+                  colorScheme="red"
                   isLoading={loadingUnsubscribe}
                   onClick={onUnsubscribeFromEvent}
+                  leftIcon={<CloseIcon />}
                 >
                   Unsubscribe
                 </Button>
@@ -370,6 +385,7 @@ export const Actions = ({
                   colorScheme="blue"
                   isLoading={loadingSubscribe}
                   onClick={onSubscribeToEvent}
+                  leftIcon={<BellIcon />}
                 >
                   Subscribe
                 </Button>

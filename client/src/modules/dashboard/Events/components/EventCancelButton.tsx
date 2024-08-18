@@ -1,7 +1,6 @@
 import { Button, ButtonProps } from '@chakra-ui/react';
 import { useConfirm } from 'chakra-confirm';
-import React from 'react';
-import { InfoIcon } from '@chakra-ui/icons';
+import { CloseIcon, InfoIcon } from '@chakra-ui/icons';
 
 import { Event } from '../../../../generated/graphql';
 import { useCancelEvent } from '../../../../hooks/useCancelEvent';
@@ -41,7 +40,13 @@ const EventCancelButton = (props: EventCancelButtonProps) => {
     }
   };
   return (
-    <Button {...rest} onClick={clickCancel} isDisabled={isDisabled}>
+    <Button
+      {...rest}
+      onClick={clickCancel}
+      isDisabled={isDisabled}
+      colorScheme="red"
+      leftIcon={<CloseIcon />}
+    >
       {buttonText}
     </Button>
   );

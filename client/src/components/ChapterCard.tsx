@@ -105,14 +105,6 @@ export const ChapterCard: React.FC<ChapterCardProps> = ({ chapter }) => {
             </GridItem>
           )}
           <Text
-            paddingInline={'1em'}
-            fontSize={['md', 'lg', 'xl']}
-            fontWeight={'500'}
-            gridArea="aboutheader"
-          >
-            About
-          </Text>
-          <Text
             noOfLines={3}
             paddingInline={'1em'}
             fontWeight={400}
@@ -121,6 +113,7 @@ export const ChapterCard: React.FC<ChapterCardProps> = ({ chapter }) => {
           >
             {chapter.description}
           </Text>
+
           <Text
             fontSize={['md', 'lg', 'xl']}
             fontWeight={'500'}
@@ -128,7 +121,11 @@ export const ChapterCard: React.FC<ChapterCardProps> = ({ chapter }) => {
             marginBlockStart={'.5em'}
             gridArea="eventheader"
           >
-            Next Events
+            {!chapter.events.length ? (
+              <>Currently no upcoming events</>
+            ) : (
+              <>Upcoming events</>
+            )}
           </Text>
           <GridItem area="event" paddingInline={'1em'}>
             {chapter.events
@@ -136,7 +133,7 @@ export const ChapterCard: React.FC<ChapterCardProps> = ({ chapter }) => {
               .map(({ id, name, start_at, invite_only }) => (
                 <Flex
                   paddingBlock={'.5em'}
-                  paddingInline={'.3em'}
+                  paddingInline={'1.2em'}
                   justifyContent={'space-between'}
                   alignItems="center"
                   key={id}

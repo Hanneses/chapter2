@@ -4,6 +4,7 @@ import { LinkButton } from 'chakra-next-link';
 import Head from 'next/head';
 import React, { ReactElement } from 'react';
 
+import { AddIcon, EditIcon } from '@chakra-ui/icons';
 import { checkInstancePermission } from '../../../../util/check-permission';
 import { DashboardLayout } from '../../shared/components/DashboardLayout';
 import { DashboardLoading } from '../../shared/components/DashboardLoading';
@@ -33,7 +34,11 @@ export const SponsorsPage: NextPageWithLayout = () => {
         <Flex w="full" justify="space-between">
           <Heading id="page-heading">Sponsors</Heading>
           {hasPermissionToManageSponsor && (
-            <LinkButton href="/dashboard/sponsors/new" colorScheme="blue">
+            <LinkButton
+              href="/dashboard/sponsors/new"
+              colorScheme="blue"
+              leftIcon={<AddIcon />}
+            >
               Add new
               <Text srOnly as="span">
                 sponsor
@@ -43,6 +48,7 @@ export const SponsorsPage: NextPageWithLayout = () => {
         </Flex>
         <Box display={{ base: 'none', lg: 'block' }} width={'100%'}>
           <DataTable
+            variant={'variantTableList'}
             tableProps={{ table: { 'aria-labelledby': 'page-heading' } }}
             data={data.sponsors}
             keys={['name', 'type', 'website', 'action'] as const}
@@ -58,8 +64,9 @@ export const SponsorsPage: NextPageWithLayout = () => {
                 hasPermissionToManageSponsor && (
                   <LinkButton
                     colorScheme="blue"
-                    size="xs"
+                    size="sm"
                     href={`/dashboard/sponsors/${sponsor.id}/edit`}
+                    leftIcon={<EditIcon />}
                   >
                     Edit
                     <Text srOnly as="span">

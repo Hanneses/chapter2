@@ -1,5 +1,4 @@
 import { NextPage } from 'next';
-import React from 'react';
 import { Flex, Heading, VStack, Stack, Text } from '@chakra-ui/react';
 import { Link, LinkButton } from 'chakra-next-link';
 import { Loading } from '../../../components/Loading';
@@ -29,7 +28,8 @@ export const EventsPage: NextPage = () => {
     <VStack>
       <Stack w={['90%', '90%', '60%']} maxW="37.5em" spacing={6} mt={10} mb={5}>
         <Flex justifyContent={'space-between'} alignItems={'center'}>
-          <Heading as="h1">Events: </Heading>
+          <Heading as="h1">Events</Heading>
+
           {checkInstancePermission(user, Permission.EventsView) && (
             <LinkButton href="/dashboard/events" colorScheme={'blue'}>
               Events Dashboard

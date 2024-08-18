@@ -1,8 +1,8 @@
-import { Heading, Text, Flex, Tooltip } from '@chakra-ui/react';
+import { Heading, Text, Flex, Tooltip, Box, Img } from '@chakra-ui/react';
 import { LockIcon } from '@chakra-ui/icons';
 import NextError from 'next/error';
 import { useRouter } from 'next/router';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 
 import { useDashboardEventQuery } from '../../../../generated/graphql';
 import { useParam } from '../../../../hooks/useParam';
@@ -16,6 +16,7 @@ import { LinkField, TextField } from '../components/Fields';
 import SponsorsCard from '../../../../components/SponsorsCard';
 import { TagsBox } from '../../../../components/TagsBox';
 import { NextPageWithLayout } from '../../../../pages/_app';
+import { AttendanceNames } from '../../../../../../common/attendance';
 
 export const EventPage: NextPageWithLayout = () => {
   const router = useRouter();
@@ -33,6 +34,9 @@ export const EventPage: NextPageWithLayout = () => {
   const startAt = formatDate(data.dashboardEvent.start_at);
   const endAt = formatDate(data.dashboardEvent.ends_at);
   const { id: chapterId, name: chapterName } = data.dashboardEvent.chapter;
+  const attendees = data.dashboardEvent.event_users.filter(
+    ({ attendance }) => attendance.name === AttendanceNames.confirmed,
+  );
 
   return (
     <>
@@ -62,8 +66,14 @@ export const EventPage: NextPageWithLayout = () => {
         )}
         <Text fontSize={'md'}>{data.dashboardEvent.description}</Text>
         {data.dashboardEvent.image_url && (
-          <LinkField label="Event Image Url" isExternal>
-            {data.dashboardEvent.image_url}
+          <LinkField
+            label="Image"
+            isExternal
+            href={data.dashboardEvent.image_url}
+          >
+            <Box height={'150px'}>
+              <Img src={data.dashboardEvent.image_url} maxHeight={150} />
+            </Box>
           </LinkField>
         )}
         {data.dashboardEvent.url && (
@@ -71,9 +81,11 @@ export const EventPage: NextPageWithLayout = () => {
             {data.dashboardEvent.url}
           </LinkField>
         )}
-        <TextField label="Capacity">{data.dashboardEvent.capacity}</TextField>
         <TextField label="Starting">{startAt}</TextField>
         <TextField label="Ending">{endAt}</TextField>
+        <TextField label="Capacity">
+          {`${attendees.length} / ${data.dashboardEvent.capacity}`}
+        </TextField>
         <LinkField label="Event By" href={`/dashboard/chapters/${chapterId}`}>
           {chapterName}
         </LinkField>

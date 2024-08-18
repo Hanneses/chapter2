@@ -39,7 +39,6 @@ const EventForm: React.FC<EventFormProps> = ({
   chapter,
   data,
   formType,
-  header,
   loadingText,
   onSubmit,
   submitText,
@@ -116,7 +115,12 @@ const EventForm: React.FC<EventFormProps> = ({
         submitLabel={submitText}
         FormHandling={handleSubmit(disableWhileSubmitting)}
       >
-        <Heading>{header}</Heading>
+        {data?.name ? (
+          <Heading>Edit event: {data.name}</Heading>
+        ) : (
+          <Heading>New event</Heading>
+        )}
+
         {chapter && (
           <Text fontSize={['md', 'lg', 'xl']}>Chapter: {chapter?.name}</Text>
         )}

@@ -21,6 +21,7 @@ export const HeaderContainer = forwardRef<HTMLDivElement, Props>(
         py={[2, 4]}
         background={'gray.85'}
         gap={'.5em'}
+        style={{ color: 'white' }}
       />
     );
   },

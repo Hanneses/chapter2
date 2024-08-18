@@ -10,10 +10,10 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
-import { SearchIcon } from '@chakra-ui/icons';
+import { AddIcon, EditIcon, SearchIcon } from '@chakra-ui/icons';
 import { DataTable } from 'chakra-data-table';
 import { LinkButton } from 'chakra-next-link';
-import React, { ReactElement, useState } from 'react';
+import { ReactElement, useState } from 'react';
 
 import {
   checkInstancePermission,
@@ -29,23 +29,26 @@ import { useUser } from '../../../auth/user';
 const actionLinks = [
   {
     colorScheme: 'blue',
-    size: 'xs',
+    size: 'sm',
     href: (id: number) => `/dashboard/chapters/${id}/new-venue`,
     text: 'Add venue',
+    icon: <AddIcon />,
     requiredPermission: Permission.VenueCreate,
   },
   {
     colorScheme: 'blue',
-    size: 'xs',
+    size: 'sm',
     href: (id: number) => `/dashboard/chapters/${id}/new-event`,
-    text: 'Add Event',
+    text: 'Add event',
+    icon: <AddIcon />,
     requiredPermission: Permission.EventCreate,
   },
   {
     colorScheme: 'blue',
-    size: 'xs',
+    size: 'sm',
     href: (id: number) => `/dashboard/chapters/${id}/edit`,
     text: 'Edit',
+    icon: <EditIcon />,
     requiredPermission: Permission.EventEdit,
   },
 ];
@@ -102,6 +105,7 @@ export const ChaptersPage: NextPageWithLayout = () => {
             gridColumnStart={-2}
             gridColumnEnd={-1}
             marginLeft="auto"
+            leftIcon={<AddIcon />}
           >
             Add new
             <Text srOnly as="span">
@@ -112,6 +116,7 @@ export const ChaptersPage: NextPageWithLayout = () => {
       </Grid>
       <Box display={{ base: 'none', lg: 'block' }} width="100%">
         <DataTable
+          variant={'variantTableList'}
           data={filteredChapters}
           keys={['name', 'actions'] as const}
           tableProps={{ table: { 'aria-labelledby': 'page-heading' } }}
@@ -134,12 +139,13 @@ export const ChaptersPage: NextPageWithLayout = () => {
                         chapterId: chapter.id,
                       }),
                   )
-                  .map(({ colorScheme, size, text, href }) => (
+                  .map(({ colorScheme, size, text, href, icon }) => (
                     <LinkButton
                       key={text}
                       colorScheme={colorScheme}
                       size={size}
                       href={href(chapter.id)}
+                      leftIcon={icon}
                     >
                       {text}
                       <Text srOnly as="span">

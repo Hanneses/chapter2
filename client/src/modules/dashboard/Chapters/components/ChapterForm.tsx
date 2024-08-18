@@ -1,4 +1,4 @@
-import { Button, Container, HStack } from '@chakra-ui/react';
+import { Button, Container, Heading, HStack } from '@chakra-ui/react';
 import { InfoIcon, WarningTwoIcon } from '@chakra-ui/icons';
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -47,6 +47,12 @@ const ChapterForm: React.FC<ChapterFormProps> = (props) => {
       submitLabel={submitText}
       FormHandling={handleSubmit(disableWhileSubmitting)}
     >
+      {chapter ? (
+        <Heading>Edit chapter: {chapter.name}</Heading>
+      ) : (
+        <Heading>New chapter</Heading>
+      )}
+
       {fields.map(({ key, label, placeholder, isRequired, type }) => {
         const Component = fieldTypeToComponent(type);
         const error = errors[key]?.message;

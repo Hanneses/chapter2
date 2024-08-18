@@ -15,7 +15,7 @@ import { LinkButton } from 'chakra-next-link';
 import React, { ReactElement, useState } from 'react';
 
 import { isPast } from 'date-fns';
-import { LockIcon } from '@chakra-ui/icons';
+import { AddIcon, EditIcon, LockIcon } from '@chakra-ui/icons';
 import { formatDate } from '../../../../util/date';
 import { DashboardLoading } from '../../shared/components/DashboardLoading';
 import { DashboardLayout } from '../../shared/components/DashboardLayout';
@@ -108,7 +108,7 @@ export const EventsPage: NextPageWithLayout = () => {
           <FilterEvents
             defaultChecked={hideEnded}
             setFilterEvent={setHideEnded}
-            filterLabel="Hide events that have ended"
+            filterLabel="Hide ended events"
             id={'hide-ended-events'}
           />
         </Flex>
@@ -132,6 +132,7 @@ export const EventsPage: NextPageWithLayout = () => {
             href="/dashboard/events/new"
             colorScheme={'blue'}
             gridColumn="-2 / -1"
+            leftIcon={<AddIcon />}
           >
             Add new
             <Text srOnly as="span">
@@ -146,6 +147,7 @@ export const EventsPage: NextPageWithLayout = () => {
         marginBlock={'2em'}
       >
         <DataTable
+          variant={'variantTableList'}
           tableProps={{ table: { 'aria-labelledby': 'page-heading' } }}
           data={filteredEvents}
           keys={
@@ -188,7 +190,6 @@ export const EventsPage: NextPageWithLayout = () => {
               <VStack align="flex-start">
                 <LinkButton
                   data-cy="event"
-                  colorScheme={event.canceled ? 'red' : undefined}
                   href={`/dashboard/events/${event.id}`}
                 >
                   {event.name}
@@ -229,6 +230,7 @@ export const EventsPage: NextPageWithLayout = () => {
                     colorScheme="blue"
                     size="sm"
                     href={`/dashboard/events/${event.id}/edit`}
+                    leftIcon={<EditIcon />}
                   >
                     Edit
                     <Text srOnly as="span">

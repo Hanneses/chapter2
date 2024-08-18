@@ -1,6 +1,5 @@
 import { Flex, Heading, Grid, Center } from '@chakra-ui/layout';
 import { NextPage } from 'next';
-import React from 'react';
 import { LinkButton } from 'chakra-next-link';
 import { ChapterCard } from '../../../components/ChapterCard';
 import { useChaptersQuery } from '../../../generated/graphql';
@@ -29,7 +28,7 @@ export const ChaptersPage: NextPage = () => {
           alignItems={'center'}
           width={'100%'}
         >
-          <Heading marginBlock={'1em'}>Chapters: </Heading>
+          <Heading marginBlock={'1em'}>Chapters</Heading>
           {checkInstancePermission(user, Permission.ChaptersView) && (
             <LinkButton href="/dashboard/chapters" colorScheme={'blue'}>
               Chapter Dashboard

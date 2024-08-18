@@ -12,7 +12,6 @@ import {
 import { Link } from 'chakra-next-link';
 import { NextPage } from 'next';
 import NextError from 'next/error';
-import React from 'react';
 
 import { Loading } from '../../../components/Loading';
 import SponsorsCard from '../../../components/SponsorsCard';
@@ -23,11 +22,13 @@ import { useParam } from '../../../hooks/useParam';
 import { AttendanceNames } from '../../../../../common/attendance';
 import { UsersList } from '../components/UsersList';
 import { Actions } from '../components/Actions';
+import { useUser } from 'modules/auth/user';
 
 const textStyleProps = { fontWeight: 500, fontSize: ['smaller', 'sm', 'md'] };
 
 export const EventPage: NextPage = () => {
   const { param: eventId } = useParam('eventId');
+  const { isLoggedIn } = useUser();
 
   const { loading, error, data } = useEventQuery({
     variables: { eventId },
@@ -57,7 +58,7 @@ export const EventPage: NextPage = () => {
               boxSize="100%"
               maxH="300px"
               src={data.event.image_url}
-              alt=""
+              alt="Event image"
               borderRadius="md"
               objectFit="cover"
               fallbackSrc="https://cdn.freecodecamp.org/chapter/brown-curtain-small.jpg"
@@ -90,7 +91,11 @@ export const EventPage: NextPage = () => {
         <Text {...textStyleProps}>{data.event.description}</Text>
         <Text {...textStyleProps}>Starting: {startAt}</Text>
         <Text {...textStyleProps}>Ending: {endsAt}</Text>
-        <Text {...textStyleProps}>Capacity: {data.event.capacity}</Text>
+        <Text {...textStyleProps}>
+          {`Capacity: 
+          ${isLoggedIn ? `${attendees.length} /` : ''} 
+          ${data.event.capacity}`}
+        </Text>
         {data.event.url && (
           <Text {...textStyleProps}>
             More about event:{' '}
@@ -104,9 +109,14 @@ export const EventPage: NextPage = () => {
         {data.event.sponsors.length && (
           <SponsorsCard sponsors={data.event.sponsors} />
         )}
-        <UsersList text="Attendees" users={attendees} />
-        {!data.event.invite_only && (
-          <UsersList text="Waitlist" users={waitlist} />
+
+        {isLoggedIn && (
+          <>
+            <UsersList text="Attendees" users={attendees} />
+            {!data.event.invite_only && (
+              <UsersList text="Waitlist" users={waitlist} />
+            )}
+          </>
         )}
       </VStack>
     </>

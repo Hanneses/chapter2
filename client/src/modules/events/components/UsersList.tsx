@@ -1,4 +1,3 @@
-import React from 'react';
 import { Heading, HStack, List, ListItem } from '@chakra-ui/react';
 import Avatar from '../../../components/Avatar';
 import UserName from '../../../components/UserName';
@@ -21,14 +20,18 @@ export const UsersList = ({
       {text}:
     </Heading>
     <List>
-      {users.map(({ user }) => (
-        <ListItem key={user.id} mb="2">
-          <HStack>
-            <Avatar user={user} />
-            <UserName user={user} fontSize="xl" fontWeight="bold" />
-          </HStack>
-        </ListItem>
-      ))}
+      {!users.length ? (
+        <i>no users</i>
+      ) : (
+        users.map(({ user }) => (
+          <ListItem key={user.id} mb="2">
+            <HStack>
+              <Avatar user={user} />
+              <UserName user={user} fontSize="xl" fontWeight="bold" />
+            </HStack>
+          </ListItem>
+        ))
+      )}
     </List>
   </>
 );

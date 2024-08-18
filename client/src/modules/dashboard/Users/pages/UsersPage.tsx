@@ -10,6 +10,7 @@ import {
 import { DataTable } from 'chakra-data-table';
 import React, { ReactElement, useState } from 'react';
 
+import { EditIcon } from '@chakra-ui/icons';
 import {
   useChangeInstanceUserRoleMutation,
   useInstanceRolesQuery,
@@ -88,6 +89,7 @@ export const UsersPage: NextPageWithLayout = () => {
 
         <Box display={{ base: 'none', lg: 'block' }} width={'100%'}>
           <DataTable
+            variant={'variantTableList'}
             data={data.users}
             tableProps={{ table: { 'aria-labelledby': 'page-heading' } }}
             keys={['name', 'role', 'action'] as const}
@@ -99,7 +101,8 @@ export const UsersPage: NextPageWithLayout = () => {
                     <Button
                       data-cy="changeRole"
                       colorScheme="blue"
-                      size="xs"
+                      size="sm"
+                      leftIcon={<EditIcon />}
                       onClick={() =>
                         changeRole({
                           roleName: instance_role.name,

@@ -1,28 +1,30 @@
 import { HStack } from '@chakra-ui/layout';
 import {
-  Box,
   Button,
+  Hide,
   Image,
   Menu,
   MenuButton,
   MenuItem,
   MenuList,
+  Show,
   Spinner,
+  useMediaQuery,
 } from '@chakra-ui/react';
 import { Link } from 'chakra-next-link';
 import { SkipNavLink } from '@chakra-ui/skip-nav';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-
 import { ChevronDownIcon } from '@chakra-ui/icons';
-import Avatar from '../Avatar';
 import { useUser } from '../../modules/auth/user';
 import { useAlert } from '../../hooks/useAlert';
 import { useSession } from '../../hooks/useSession';
-import { checkInstancePermission } from '../../util/check-permission';
 import { Permission } from '../../../../common/permissions';
+import { MainNavLink } from './component/MainNavLink';
 import { HeaderContainer } from './component/HeaderContainer';
+import { checkInstancePermission } from 'util/check-permission';
+import Avatar from 'components/Avatar';
 
 const menuButtonStyles = {
   logout: { backgroundColor: 'gray.10' },
@@ -34,6 +36,7 @@ const menuButtonStyles = {
     _active: {},
   },
 };
+
 // TODO: distinguish between logging into the app and logging into Auth0. Maybe
 // use sign-in for the app?
 export const Header: React.FC = () => {
@@ -41,6 +44,7 @@ export const Header: React.FC = () => {
   const { user, loadingUser } = useUser();
   const { login, logout, isAuthenticated, error } = useSession();
   const [loading, setLoading] = useState(false);
+  const [isDesktopBreakpoint] = useMediaQuery('(min-width: 768px)'); // = 'md'
 
   const addAlert = useAlert();
 
@@ -83,106 +87,108 @@ export const Header: React.FC = () => {
             width="100%"
           />
         </Link>
+
+        <Hide below={'md'}>
+          <MainNavLink href="/chapters">Chapters</MainNavLink>
+
+          <MainNavLink href="/events">Events</MainNavLink>
+        </Hide>
+
         <HStack as="nav" color="gray.85" zIndex={105}>
           {loadingUser ? (
-            <Spinner color="white" size="xl" />
+            <Spinner color="white" size="md" />
           ) : (
-            <>
-              {!user && (
-                <Button
-                  data-cy="login-button"
-                  background="gray.10"
-                  onClick={() => {
-                    setLoading(true);
-                    login();
-                  }}
-                  isLoading={loading}
-                  fontWeight="600"
-                  width="4.5em"
-                >
-                  Login
-                </Button>
-              )}
-              <Box>
-                <Menu>
-                  <MenuButton
-                    as={Button}
-                    data-cy="menu-button"
-                    padding="0"
-                    width="4.5em"
-                    {...(user
-                      ? menuButtonStyles.login
-                      : menuButtonStyles.logout)}
-                  >
-                    {user ? (
-                      <HStack spacing="0">
-                        <Avatar
-                          user={user}
-                          cursor="pointer"
-                          aria-label="menu"
-                        />
-                        <ChevronDownIcon
-                          color="gray.10"
-                          fontSize="xl"
-                          opacity=".9"
-                        />
-                      </HStack>
-                    ) : (
-                      'Menu'
-                    )}
-                  </MenuButton>
-                  <MenuList
-                    paddingBlock={0}
-                    display="flex"
-                    flexDirection="column"
-                    fontWeight="600"
-                    borderRadius="5px"
-                  >
-                    <NextLink passHref href="/chapters">
-                      <MenuItem as="a">Chapters</MenuItem>
-                    </NextLink>
-
-                    <NextLink passHref href="/events">
-                      <MenuItem as="a">Events</MenuItem>
-                    </NextLink>
-
-                    {user && (
-                      <>
-                        <NextLink passHref href="/profile">
-                          <MenuItem
-                            as="a"
-                            borderTop="1px"
-                            borderColor="gray.85"
-                          >
-                            Profile
-                          </MenuItem>
-                        </NextLink>
-                        {checkInstancePermission(
-                          user,
-                          Permission.ChaptersView,
-                        ) && (
-                          <NextLink passHref href="/dashboard/chapters">
-                            <MenuItem data-cy="menu-dashboard-link" as="a">
-                              Dashboard
-                            </MenuItem>
-                          </NextLink>
-                        )}
-                        <MenuItem
-                          data-cy="logout-button"
-                          onClick={() => goHome().then(() => logout())}
-                          fontWeight="600"
-                          borderTop="1px"
-                          borderColor="gray.85"
-                        >
-                          Logout
-                        </MenuItem>
-                      </>
-                    )}
-                  </MenuList>
-                </Menu>
-              </Box>
-            </>
+            !user && (
+              <Button
+                data-cy="login-button"
+                background="gray.10"
+                onClick={() => {
+                  setLoading(true);
+                  login();
+                }}
+                isLoading={loading}
+                fontWeight="600"
+                width="4.5em"
+              >
+                Login
+              </Button>
+            )
           )}
+          (
+          {(user || !isDesktopBreakpoint) && (
+            <Menu>
+              <MenuButton
+                as={Button}
+                data-cy="menu-button"
+                padding="4"
+                {...(user ? menuButtonStyles.login : menuButtonStyles.logout)}
+              >
+                {user ? (
+                  <HStack>
+                    <Avatar user={user} cursor="pointer" aria-label="menu" />
+                    <ChevronDownIcon
+                      color="gray.10"
+                      fontSize="xl"
+                      opacity=".9"
+                    />
+                  </HStack>
+                ) : (
+                  'Menu'
+                )}
+              </MenuButton>
+
+              <MenuList
+                paddingBlock={0}
+                display="flex"
+                flexDirection="column"
+                fontWeight="600"
+                borderRadius="5px"
+              >
+                <Show below={'md'}>
+                  <NextLink passHref href="/chapters">
+                    <MenuItem as="a">Chapters</MenuItem>
+                  </NextLink>
+
+                  <NextLink passHref href="/events">
+                    <MenuItem as="a">Events</MenuItem>
+                  </NextLink>
+                </Show>
+
+                {user && (
+                  <>
+                    <NextLink passHref href="/profile">
+                      <MenuItem
+                        as="a"
+                        borderTop={!isDesktopBreakpoint ? '1px' : ''}
+                        borderColor="gray.85"
+                      >
+                        Profile
+                      </MenuItem>
+                    </NextLink>
+
+                    {checkInstancePermission(user, Permission.ChaptersView) && (
+                      <NextLink passHref href="/dashboard/chapters">
+                        <MenuItem data-cy="menu-dashboard-link" as="a">
+                          Dashboard
+                        </MenuItem>
+                      </NextLink>
+                    )}
+
+                    <MenuItem
+                      data-cy="logout-button"
+                      onClick={() => goHome().then(() => logout())}
+                      fontWeight="600"
+                      borderTop="1px"
+                      borderColor="gray.85"
+                    >
+                      Logout
+                    </MenuItem>
+                  </>
+                )}
+              </MenuList>
+            </Menu>
+          )}
+          )
         </HStack>
       </HeaderContainer>
     </>
