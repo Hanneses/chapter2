@@ -24,8 +24,8 @@ describe('event page', () => {
       // event invite_only
       inviteOnlyEventId = events.find((event) => event.invite_only).id;
       // event running (not ended)
-      eventIdRunning = events.find(
-        (event) => event.ends_at.getFullYear() === 2099,
+      eventIdRunning = events.find((event) =>
+        event.ends_at ? new Date(event.ends_at).getFullYear() === 2099 : false,
       ).id;
     });
     cy.mhDeleteAll();

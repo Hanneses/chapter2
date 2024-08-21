@@ -8,11 +8,14 @@ interface Props {
 }
 
 export const MainNavLink = forwardRef<HTMLDivElement, Props>((props) => {
+  const { href, ...rest } = props;
+
   return (
     <Link
-      href={props.href}
+      href={href}
       className={styles.mainNavLink}
       _activeLink={{ background: '#9999' }}
+      {...rest}
     >
       {props.children}
     </Link>

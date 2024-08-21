@@ -4,6 +4,12 @@ describe('header menu', () => {
       cy.viewport(1280, 720);
     });
 
+    it('should show links chapters and events in top navigation', () => {
+      cy.visit('/');
+      cy.get('[data-cy=header-link-chapters]').should('be.visible');
+      cy.get('[data-cy=header-link-events]').should('be.visible');
+    });
+
     it('should show a link to the dashboard for an owner', () => {
       cy.login('foo@bar.com');
       cy.visit('/');
@@ -31,10 +37,10 @@ describe('header menu', () => {
       cy.viewport('iphone-x');
     });
 
-    it('should show a link to the dashboard for an admin', () => {
+    it('should NOT show links chapters and events in top navigation', () => {
       cy.visit('/');
-      cy.get('[header-link-chapters]').should('be.visible');
-      cy.get('[header-link-events]').should('be.visible');
+      cy.get('[data-cy=header-link-chapters]').should('not.exist');
+      cy.get('[data-cy=header-link-events]').should('not.exist');
     });
   });
 });
