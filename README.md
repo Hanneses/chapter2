@@ -3,13 +3,13 @@
 [![All Contributors](https://img.shields.io/github/all-contributors/Hanneses/chapter2?color=orange&style=flat-square)](#contributors-)
 [![Setup Automated](https://img.shields.io/badge/setup-automated-blue?logo=gitpod)](https://gitpod.io/#https://github.com/Hanneses/chapter2)
 
-### **_Chapter 2_** is an event management tool for non-profit organizations. It's open-source, free and easy to use. 💫
+## **_Chapter 2_** is an event management tool for non-profit organizations. It's open-source, free and easy to use. 💫
 
 The goal of this project is to provide a self-hosted Docker container deployed to the cloud with a one-click and then configured by the _owner_. No coding required.
 
 Your _organization_ can host an own instance of _Chapter 2_ under a sub-domain of your website, such as `chapter.sierraclub.org` or `chapter.womenwhocode.org`. All of an _organization_'s user data will remain under their control.
 
-See our [Vision statement](https://github.com/freeCodeCamp/chapter/wiki/Vision). (_by freeCodeCamp_) 
+See our [Vision statement](https://github.com/freeCodeCamp/chapter/wiki/Vision). (_by freeCodeCamp_)
 
 (_Chapter 2_ continues the deprecated project [freeCodeCamp/chapter](https://github.com/freeCodeCamp/chapter).)
 
@@ -71,7 +71,7 @@ To better communicate and more easily build an API and UI, the current contribut
 | _organization_ | the main structure with multiple _chapters_ | Women Who Code at the sub-domain: `chapter.womenwhocode.org` |
 | _chapter_     | a organizational structure for _events_ and _users_  | Women Who Code - New York City |
 | _event_       | a meeting with a specific location and time to which _users_ can attend | Coffee And Code - BistroOne, New York City, NY - April 9, 2020 |
-| **_Roles_** ||
+| **_Roles_**   |   |   |
 | _role_        | a definition of permissions to be attached to _users_ for the purpose of granting authorization | Owner, Adminstrator, Organizer, Member |
 | _user_        | an authenticated person who is authorized based on their _role(s)_ | Sally Gold - SallyG@example.com |
 | _visitor_     | an non-authenticated person with view-only access to public content | Any visitor |
@@ -84,25 +84,25 @@ To better communicate and more easily build an API and UI, the current contribut
 
 Backend
 
-- [Node.js](https://nodejs.org) + [Express](http://expressjs.com/) - webserver
-- [Apollo server](https://www.npmjs.com/package/apollo-server-express) - extendable graphql server
-- [type-graphql](https://github.com/MichalLytek/type-graphql) - code first graphql schema definition library
+* [Node.js](https://nodejs.org) + [Express](http://expressjs.com/) - webserver
+* [Apollo server](https://www.npmjs.com/package/apollo-server-express) - extendable graphql server
+* [type-graphql](https://github.com/MichalLytek/type-graphql) - code first graphql schema definition library
 
 Frontend
 
-- [React](https://reactjs.org) + [Next.js](https://nextjs.org/) - client and server-side rendering of frontend
-- [Apollo Client 3](https://www.apollographql.com/docs/react/) - access Apollo server
-- [Chakra UI](https://chakra-ui.com/) - simple, modular & accessible UI component library for React
+* [React](https://reactjs.org) + [Next.js](https://nextjs.org/) - client and server-side rendering of frontend
+* [Apollo Client 3](https://www.apollographql.com/docs/react/) - access Apollo server
+* [Chakra UI](https://chakra-ui.com/) - simple, modular & accessible UI component library for React
 
 Database
 
-- [Postgres](https://www.postgresql.org/) - open source relational database
-- [Prisma](https://prisma.io/) - fully type-safe queries
+* [Postgres](https://www.postgresql.org/) - open source relational database
+* [Prisma](https://prisma.io/) - fully type-safe queries
 
 Test
 
-- [Jest](https://jestjs.io/) - for writing unit tests.
-- [Cypress](https://www.cypress.io/) - to check if specific actions are possible to perform in certain scenarios.
+* [Jest](https://jestjs.io/) - for writing unit tests.
+* [Cypress](https://www.cypress.io/) - to check if specific actions are possible to perform in certain scenarios.
 
 For more information and a guide to working on features, go to the [contributing docs](/CONTRIBUTING.md#adding-a-new-feature).
 
@@ -120,17 +120,17 @@ There is a list of further project phases using [Milestones](https://github.com/
 
 See the [Project Board](https://github.com/users/Hanneses/projects/3) to find out what we are working on.
 
-## UI / UX / Design References 
+## UI / UX / Design References
 
-- [Mockups](https://preview.uxpin.com/13c1d07f6dd731123612a8884eb4174459312ac5#/pages/138361235/simulate/sitemap)  (_by freeCodeCamp_) 
-- [User Role Workflows](https://www.figma.com/file/ehgBfxoLKrlSZH0uftD6dA/Chapter-Trial?node-id=0%3A1) (_by freeCodeCamp_) 
-- [UI / UX Issues](https://github.com/freeCodeCamp/chapter/issues?q=is%3Aopen+is%3Aissue+label%3AUI%2FUX) (_by freeCodeCamp_) 
+* [Mockups](https://preview.uxpin.com/13c1d07f6dd731123612a8884eb4174459312ac5#/pages/138361235/simulate/sitemap)  (_by freeCodeCamp_)
+* [User Role Workflows](https://www.figma.com/file/ehgBfxoLKrlSZH0uftD6dA/Chapter-Trial?node-id=0%3A1) (_by freeCodeCamp_)
+* [UI / UX Issues](https://github.com/freeCodeCamp/chapter/issues?q=is%3Aopen+is%3Aissue+label%3AUI%2FUX) (_by freeCodeCamp_)
 
 ## Contributing
 
-- Please read the [contributing guidelines and steps needed to setup **_Chapter 2_** locally](CONTRIBUTING.md). We take you from local setup to submitting pull requests.
+* Please read the [contributing guidelines and steps needed to setup **_Chapter 2_** locally](CONTRIBUTING.md). We take you from local setup to submitting pull requests.
 
-- [Join our chat](https://discord.gg/QbQd7BpaaH) to get connected and follow announcements. (_by freeCodeCamp_) 
+* [Join our chat](https://discord.gg/QbQd7BpaaH) to get connected and follow announcements. (_by freeCodeCamp_)
 
 ## License
 

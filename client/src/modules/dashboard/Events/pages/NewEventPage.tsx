@@ -1,5 +1,5 @@
 import NextError from 'next/error';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 
 import { DashboardLayout } from '../../shared/components/DashboardLayout';
 import EventForm from '../components/EventForm';
@@ -29,7 +29,7 @@ export const NewEventPage: NextPageWithLayout<{
     <EventForm
       chapter={chapter}
       formType="new"
-      header="Create Event"
+      header="New event"
       loadingText="Adding Event"
       onSubmit={onSubmit}
       submitText="Add event"

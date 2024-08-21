@@ -1,5 +1,5 @@
 import NextError from 'next/error';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 
 import { useDashboardEventQuery } from '../../../../generated/graphql';
 import { useParam } from '../../../../hooks/useParam';
@@ -54,7 +54,7 @@ export const TransferEventPage: NextPageWithLayout = () => {
         venue_id: data.dashboardEvent?.venue?.id,
       }}
       formType="transfer"
-      header="Transfer Event"
+      header="Transfer event: "
       loadingText="Transfering Event"
       onSubmit={onSubmit}
       submitText="Transfer Event"
