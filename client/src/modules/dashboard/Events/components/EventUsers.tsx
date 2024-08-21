@@ -1,5 +1,5 @@
 import { Box, Button, HStack, Text, VStack } from '@chakra-ui/react';
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { useConfirm, useConfirmDelete } from 'chakra-confirm';
 import { DataTable } from 'chakra-data-table';
 import { CheckIcon, DeleteIcon, TimeIcon } from '@chakra-ui/icons';
@@ -144,7 +144,7 @@ export const EventUsers = ({
                 title={`${title}: ${users.length}`}
                 data={users}
                 keys={['user', 'joined', 'role', 'action'] as const}
-                emptyText="No users"
+                emptyText="Nobody"
                 mapper={{
                   user: ({ user }) => <UserName user={user} />,
                   action: ({ user }) => (
@@ -190,7 +190,7 @@ export const EventUsers = ({
                       data={[users[index]]}
                       keys={['type', 'action'] as const}
                       showHeader={false}
-                      emptyText="No users"
+                      emptyText="Nobody"
                       mapper={{
                         type: () => (
                           <VStack

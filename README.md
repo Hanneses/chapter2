@@ -1,38 +1,82 @@
-> **_Chapter 2_** continues the deprecated project [freeCodeCamp/chapter](https://github.com/freeCodeCamp/chapter).
+# Chapter 2 – event management tool
 
+[![All Contributors](https://img.shields.io/github/all-contributors/Hanneses/chapter2?color=orange&style=flat-square)](#contributors-)
+[![Setup Automated](https://img.shields.io/badge/setup-automated-blue?logo=gitpod)](https://gitpod.io/#https://github.com/Hanneses/chapter2)
 
-# Welcome to Chapter
+### **_Chapter 2_** is an event management tool for non-profit organizations. It's open-source, free and easy to use. 💫
 
-[![All Contributors](https://img.shields.io/github/all-contributors/freeCodeCamp/chapter?color=orange&style=flat-square)](#contributors-)
-[![Setup Automated](https://img.shields.io/badge/setup-automated-blue?logo=gitpod)](https://gitpod.io/#https://github.com/freeCodeCamp/chapter)
+The goal of this project is to provide a self-hosted Docker container deployed to the cloud with a one-click and then configured by the _owner_. No coding required.
 
-After several years of being dissatisfied with existing group event tools (Meetup, Facebook events) we decided to build our own.
+Your _organization_ can host an own instance of _Chapter 2_ under a sub-domain of your website, such as `chapter.sierraclub.org` or `chapter.womenwhocode.org`. All of an _organization_'s user data will remain under their control.
 
-This will be a self-hosted Docker container deployed to the cloud with a one-click and then configured by the _owner_. No coding required.
+See our [Vision statement](https://github.com/freeCodeCamp/chapter/wiki/Vision). (_by freeCodeCamp_) 
 
-Your _organization_ can host an _instance_ of _Chapter_ under a sub-domain of your website, such as `chapter.sierraclub.org` or `chapter.womenwhocode.org`.
+(_Chapter 2_ continues the deprecated project [freeCodeCamp/chapter](https://github.com/freeCodeCamp/chapter).)
 
-All of an _organization_'s user data will remain under their control.
+## Features
 
-Our [Vision statement](https://github.com/freeCodeCamp/chapter/wiki/Vision) provides more details on the reasons for **_Chapter_**.
+### Manage organization with chapters
+
+* **View chapters** – See all available chapters of your organisation and relating events.
+* **Join/leave chapters** – _Members_ are able to join and leave chapters.
+* **Subscribe to chapters** – _Members_ are able to subscribe to chapters to get notified for new events.
+* **Create chapters** – To manage your organizational structure you can create chapters (like sub-organizations or local branches of an organization). (adminstrators only)
+
+### Subscribe and attend events
+
+* **View events** – See all upcoming and past events of each chapter.
+* **Waiting list** – _Members_ will be placed on a waiting list if the event capacity is reached.
+* **Un/subscribe** – _Members_ can subscribe and unsubscribe from events by their own.
+
+### Maintain events
+
+> Adminstrators only
+
+* **Create events** – Create as much events as you like and assign them to chapters. Maintain several information per event: name, start/end date, description, image, type, capacity, etc.
+* **Public and invite-only** – All _members_ can subscribe to _public events_ by their own. _Invite-only events_ are restricted to invited _members_.
+* **Capacity** – Set an attendee limit for your event (see _waiting list_).
+
+### Analyze events
+
+> Adminstrators only
+
+* **Event overview** – See reports for your events and attendees.
+
+### Notifications
+
+* **Event notifications** – The system sends notification via email:
+  * **Subscription** –
+  * **Unsubscription** –
+
+### Maintenance
+
+> Adminstrators only
+
+* **Manage users** – _Owner_ can manage users of each chapter
+  * **Change role** – Set a specific user role.
+  * **Ban/unban users** – Users who breach of the rules can be banned, or unbanned.
+  
+
+⚠️ _TODO ..._
 
 ## Terminology
 
 To better communicate and more easily build an API and UI, the current contributors have decided on a collection of terminology to clarify discussions surrounding the **_Chapter_** project:
 
-| Term          | Definition      | Example  |
-| ------------- | ------------- | ----- |
-| _instance_      | a web server deployment of the [**_Chapter_** application](https://github.com/freeCodeCamp/chapter/), managed by an _organization_. | a Docker container running on a web host |
-| _organization_ | a non-profit with multiple _chapters_ | Women Who Code at the sub-domain: `chapter.womenwhocode.org` |
-| _chapter_      | a container for _events_ and _users_  | Women Who Code - New York City |
-| _event_ | a meeting with a specific location and time to which _users_ can attend | Coffee And Code - BistroOne, New York City, NY - April 9, 2020 |
-| _role_ | a named definition of permissions to be attached to _users_ for the purpose of granting authorization | Owner, Adminstrator, Organizer, Member |
-| _user_ | an authenticated _user_ who is authorized based on their _role(s)_ | Sally Gold - SallyG@example.com |
-| _visitor_ | an non-authenticated web browser session with view-only access to public content | Anonymous Web Browser Client |
-| _owner_ | the _role_ of a _user_ who can configure the [**_Chapter_** application](https://github.com/freeCodeCamp/chapter/) _instance_ and manage _administrators_ for an entire _organization_ | Women Who Code - Global IT |
+| Term          | Definition    | Example       |
+| ------------- | ------------- | ------------- |
+| _instance_    | a web server deployment of the [Chapter application](https://github.com/Hanneses/chapter2/), managed by an _organization_. | a Docker container running on a web host |
+| _organization_ | the main structure with multiple _chapters_ | Women Who Code at the sub-domain: `chapter.womenwhocode.org` |
+| _chapter_     | a organizational structure for _events_ and _users_  | Women Who Code - New York City |
+| _event_       | a meeting with a specific location and time to which _users_ can attend | Coffee And Code - BistroOne, New York City, NY - April 9, 2020 |
+| **_Roles_** ||
+| _role_        | a definition of permissions to be attached to _users_ for the purpose of granting authorization | Owner, Adminstrator, Organizer, Member |
+| _user_        | an authenticated person who is authorized based on their _role(s)_ | Sally Gold - SallyG@example.com |
+| _visitor_     | an non-authenticated person with view-only access to public content | Any visitor |
+| _member_      | the _role_ of a _user_ who can follow and receive notifications from a _chapter_ and attend _events_  | Women Who Code - Edinburgh, Local Member |
+| _organizer_ <br>(_not available yet_) | the _role_ of a _user_ who can manage a _chapter's_ _events_, attendees, communications, and _members_ | Women Who Code - Edinburgh, Local Organizer |
 | _administrator_ | the _role_ of a _user_ who can setup and manage _chapters_ and _organizers_ for an _organization_ | Women Who Code - European Administrator |
-| _organizer_ (not MVP) | the _role_ of a _user_ who can manage a _chapter's_ _events_, attendees, communications, and _members_ | Women Who Code - Edinburgh, Local Organizer |
-| _member_ | the _role_ of a _user_ who can follow and receive notifications from a _chapter_ and attend _events_  | Women Who Code - Edinburgh, Local Member |
+| _owner_       | the _role_ of a _user_ who can configure the [Chapter application](https://github.com/Hanneses/chapter2/) _instance_ and manage _administrators_ for an entire _organization_ | Women Who Code - Global IT |
 
 ## Tech Stack
 
@@ -74,21 +118,21 @@ There is a list of further project phases using [Milestones](https://github.com/
 
 See the [Project Board](https://github.com/users/Hanneses/projects/3) to find out what we are working on.
 
-## UI / UX / Design References
+## UI / UX / Design References 
 
-- [Mockups](https://preview.uxpin.com/13c1d07f6dd731123612a8884eb4174459312ac5#/pages/138361235/simulate/sitemap) and earlier [_visitor_ views](https://www.figma.com/proto/q7DikyL3N0c4CUWxHNa97i/Chapter-Prototype?node-id=1%3A2&scaling=scale-down)
-- [User Role Workflows](https://www.figma.com/file/ehgBfxoLKrlSZH0uftD6dA/Chapter-Trial?node-id=0%3A1)
-- [UI / UX Issues](https://github.com/freeCodeCamp/chapter/issues?q=is%3Aopen+is%3Aissue+label%3AUI%2FUX)
+- [Mockups](https://preview.uxpin.com/13c1d07f6dd731123612a8884eb4174459312ac5#/pages/138361235/simulate/sitemap)  (_by freeCodeCamp_) 
+- [User Role Workflows](https://www.figma.com/file/ehgBfxoLKrlSZH0uftD6dA/Chapter-Trial?node-id=0%3A1) (_by freeCodeCamp_) 
+- [UI / UX Issues](https://github.com/freeCodeCamp/chapter/issues?q=is%3Aopen+is%3Aissue+label%3AUI%2FUX) (_by freeCodeCamp_) 
 
 ## Contributing
 
-- Please read the [contributing guidelines and steps needed to setup **_Chapter_** locally](CONTRIBUTING.md). We take you from local setup to submitting pull requests.
+- Please read the [contributing guidelines and steps needed to setup **_Chapter 2_** locally](CONTRIBUTING.md). We take you from local setup to submitting pull requests.
 
-- [Join our chat](https://discord.gg/QbQd7BpaaH) to get connected and follow announcements.
+- [Join our chat](https://discord.gg/QbQd7BpaaH) to get connected and follow announcements. (_by freeCodeCamp_) 
 
 ## License
 
-Copyright (c) 2019-2024 freeCodeCamp.org
+Copyright (c) 2019-2024 [freeCodeCamp](https://www.freecodecamp.org), [Hanneses](https://github.com/Hanneses)
 
 The computer software is licensed under the [BSD-3-Clause](LICENSE) license.
 

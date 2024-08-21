@@ -21,7 +21,7 @@ export const UsersList = ({
     </Heading>
     <List>
       {!users.length ? (
-        <i>no users</i>
+        <i>nobody</i>
       ) : (
         users.map(({ user }) => (
           <ListItem key={user.id} mb="2">

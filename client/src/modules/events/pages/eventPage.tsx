@@ -13,6 +13,7 @@ import { Link } from 'chakra-next-link';
 import { NextPage } from 'next';
 import NextError from 'next/error';
 
+import { isPast } from 'date-fns';
 import { Loading } from '../../../components/Loading';
 import SponsorsCard from '../../../components/SponsorsCard';
 import { TagsBox } from '../../../components/TagsBox';
@@ -47,6 +48,7 @@ export const EventPage: NextPage = () => {
 
   const startAt = formatDate(data.event.start_at);
   const endsAt = formatDate(data.event.ends_at);
+  const hasEnded = isPast(new Date(data.event.ends_at));
 
   return (
     <>
@@ -74,10 +76,21 @@ export const EventPage: NextPage = () => {
           )}
           <Heading as="h1">{data.event.name}</Heading>
         </Flex>
-        {data.event.canceled && (
-          <Text {...textStyleProps} fontSize="md" color="red.500">
+        {data.event.canceled ? (
+          <Text
+            {...textStyleProps}
+            fontSize="md"
+            color="red.500"
+            fontWeight="bold"
+          >
             Canceled
           </Text>
+        ) : (
+          hasEnded && (
+            <Text {...textStyleProps} fontSize="md" fontWeight="bold">
+              Ended
+            </Text>
+          )
         )}
         {!!data.event.event_tags.length && (
           <TagsBox tags={data.event.event_tags} />

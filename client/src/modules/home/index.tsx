@@ -6,6 +6,7 @@ import {
   Flex,
   Text,
   Card,
+  Stack,
 } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import { Link } from 'chakra-next-link';
@@ -86,26 +87,26 @@ const Home = () => {
         <GridItem colSpan={{ base: 2, xl: 1 }}>
           <VStack align="flex-start">
             <Card padding={6} marginBottom={6}>
-              <Text>Hi {user?.name ? user?.name : 'there'}! 👋</Text>
+              <Stack spacing={3}>
+                <Text>Hi {user?.name ? user?.name : 'there'}! 👋</Text>
 
-              <Text marginTop={2}>
-                This is <strong>Demo Organization&apos;s</strong> event
-                platform. <strong>Demo Organization</strong> and our chapters
-                organize events for several topics. We&apos;ve been looking
-                forward to see you soon. Welcome!
-              </Text>
+                <Text>
+                  This is <strong>Demo Organization&apos;s</strong> event
+                  management website. <strong>Demo Organization</strong> and our
+                  chapters organize events for several topics, like environment
+                  protection and social work.
+                </Text>
 
-              <Text marginTop={2}>
-                You have a question? Great. <br />
-                Please contact us via{' '}
-                <Link
-                  to="mailto:contact@chapter-organization.com"
-                  fontWeight={'bold'}
-                >
-                  contact@chapter-organization.com
-                </Link>
-                . 📫
-              </Text>
+                <Text>
+                  We&apos;ve been looking forward to see you soon. Welcome!
+                </Text>
+
+                <Text>
+                  You have a question? Great. <br />
+                  Please contact us via <strong>mail[at]domain[dot]com</strong>.
+                  📫
+                </Text>
+              </Stack>
             </Card>
 
             <Heading as="h2" size={'md'} marginBottom={4}>
