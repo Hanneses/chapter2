@@ -9,7 +9,14 @@ import { useConfirm } from 'chakra-confirm';
 import { useRouter } from 'next/router';
 import { useEffect, useMemo, useState } from 'react';
 
-import { BellIcon, CheckIcon, CloseIcon, TimeIcon } from '@chakra-ui/icons';
+import {
+  BellIcon,
+  CheckIcon,
+  CloseIcon,
+  NotAllowedIcon,
+  TimeIcon,
+} from '@chakra-ui/icons';
+import { isPast } from 'date-fns';
 import { AttendanceNames } from '../../../../../common/attendance';
 import { InfoList } from '../../../components/InfoList';
 import { Loading } from '../../../components/Loading';
@@ -30,15 +37,6 @@ import { CHAPTER } from '../../chapters/graphql/queries';
 import { DASHBOARD_EVENT } from '../../dashboard/Events/graphql/queries';
 import { EVENT } from '../graphql/queries';
 
-type ActionsProps = {
-  event: {
-    chapter: { id: number };
-    id: number;
-    invite_only: boolean;
-    event_users: { attendance: { name: string }; user: { id: number } }[];
-  };
-};
-
 const buttonStyleProps = {
   paddingBlock: 1,
   paddingInline: 2,
@@ -54,11 +52,29 @@ const textStylePropsSuccess = {
   color: 'green',
 };
 
+const textStylePropsFail = {
+  ...textStyleProps,
+  color: 'red',
+};
+
+type ActionsProps = {
+  event: {
+    chapter: { id: number };
+    id: number;
+    invite_only: boolean;
+    canceled: boolean;
+    ends_at: any;
+    event_users: { attendance: { name: string }; user: { id: number } }[];
+  };
+};
+
 export const Actions = ({
   event: {
     id: eventId,
     chapter: { id: chapterId },
     invite_only: inviteOnly,
+    canceled,
+    ends_at,
     event_users,
   },
 }: ActionsProps) => {
@@ -89,6 +105,7 @@ export const Actions = ({
   );
 
   const attendanceStatus = eventUser?.attendance.name;
+  const hasEnded = isPast(new Date(ends_at));
 
   const refetch = {
     refetchQueries: [
@@ -319,80 +336,90 @@ export const Actions = ({
           <Spinner />
         )}
       </Modal>
+
       <SimpleGrid columns={2} gap={5} alignItems="center">
-        {!attendanceStatus || attendanceStatus === AttendanceNames.canceled ? (
-          <>
-            <Text {...textStyleProps}>Not attending the event</Text>
-            <Button
-              {...buttonStyleProps}
-              colorScheme="green"
-              data-cy="attend-button"
-              isLoading={loadingAttend}
-              onClick={() => tryToAttend()}
-              leftIcon={<CheckIcon />}
-            >
-              {inviteOnly ? 'Request Invite' : 'Attend Event'}
-            </Button>
-          </>
-        ) : (
-          <>
-            {attendanceStatus === AttendanceNames.waitlist ? (
-              <Text {...textStyleProps}>
-                <TimeIcon marginRight={2} />
-                {inviteOnly
-                  ? 'Event owner will soon confirm your request'
-                  : "You're on waitlist for this event"}
+        {!hasEnded &&
+          (canceled ? (
+            <>
+              <Text {...textStylePropsFail}>
+                Unfortunately this event was canceled.
               </Text>
-            ) : (
-              <Text {...textStylePropsSuccess} data-cy="attend-success">
-                <CheckIcon marginRight={2} /> You are attending this event
-              </Text>
-            )}
-            <Button
-              {...buttonStyleProps}
-              isLoading={loadingCancel}
-              onClick={onCancelAttendance}
-              colorScheme="red"
-              leftIcon={<CloseIcon />}
-            >
-              Cancel attendance
-            </Button>
-          </>
-        )}
-        {userEvent && (
-          <>
-            {userEvent.subscribed ? (
-              <>
-                <Text {...textStylePropsSuccess}>
-                  <BellIcon marginRight={2} />
-                  You are subscribed to event updates
+              <Button isDisabled={true} leftIcon={<NotAllowedIcon />}>
+                Attendance not possible
+              </Button>
+            </>
+          ) : !attendanceStatus ||
+            attendanceStatus === AttendanceNames.canceled ? (
+            <>
+              <Text {...textStyleProps}>Not attending the event</Text>
+              <Button
+                {...buttonStyleProps}
+                colorScheme="green"
+                data-cy="attend-button"
+                isLoading={loadingAttend}
+                onClick={() => tryToAttend()}
+                leftIcon={<CheckIcon />}
+              >
+                {inviteOnly ? 'Request Invite' : 'Attend Event'}
+              </Button>
+            </>
+          ) : (
+            <>
+              {attendanceStatus === AttendanceNames.waitlist ? (
+                <Text {...textStyleProps}>
+                  <TimeIcon marginRight={2} />
+                  {inviteOnly
+                    ? 'Event owner will soon confirm your request'
+                    : "You're on waitlist for this event"}
                 </Text>
-                <Button
-                  {...buttonStyleProps}
-                  colorScheme="red"
-                  isLoading={loadingUnsubscribe}
-                  onClick={onUnsubscribeFromEvent}
-                  leftIcon={<CloseIcon />}
-                >
-                  Unsubscribe
-                </Button>
-              </>
-            ) : (
-              <>
-                <Text {...textStyleProps}>Not subscribed to event updates</Text>
-                <Button
-                  {...buttonStyleProps}
-                  colorScheme="blue"
-                  isLoading={loadingSubscribe}
-                  onClick={onSubscribeToEvent}
-                  leftIcon={<BellIcon />}
-                >
-                  Subscribe
-                </Button>
-              </>
-            )}
-          </>
-        )}
+              ) : (
+                <Text {...textStylePropsSuccess} data-cy="attend-success">
+                  <CheckIcon marginRight={2} /> You are attending this event
+                </Text>
+              )}
+              <Button
+                {...buttonStyleProps}
+                isLoading={loadingCancel}
+                onClick={onCancelAttendance}
+                colorScheme="red"
+                leftIcon={<CloseIcon />}
+              >
+                Cancel attendance
+              </Button>
+            </>
+          ))}
+
+        {userEvent &&
+          (userEvent.subscribed ? (
+            <>
+              <Text {...textStylePropsSuccess}>
+                <BellIcon marginRight={2} />
+                You are subscribed to event updates
+              </Text>
+              <Button
+                {...buttonStyleProps}
+                colorScheme="red"
+                isLoading={loadingUnsubscribe}
+                onClick={onUnsubscribeFromEvent}
+                leftIcon={<CloseIcon />}
+              >
+                Unsubscribe
+              </Button>
+            </>
+          ) : (
+            <>
+              <Text {...textStyleProps}>Not subscribed to event updates</Text>
+              <Button
+                {...buttonStyleProps}
+                colorScheme="blue"
+                isLoading={loadingSubscribe}
+                onClick={onSubscribeToEvent}
+                leftIcon={<BellIcon />}
+              >
+                Subscribe
+              </Button>
+            </>
+          ))}
       </SimpleGrid>
     </>
   );
