@@ -5,26 +5,35 @@ describe('event page', () => {
   let chapterId;
   let eventId;
   let inviteOnlyEventId;
+  let eventIdRunning;
   let users;
+
   before(() => {
     cy.fixture('users').then((fixture) => {
       users = fixture;
     });
   });
+
   beforeEach(() => {
     cy.task('seedDb');
     cy.task<Events>('getEvents').then((events) => {
+      // events not invite_only
       ({ id: eventId, chapter_id: chapterId } = events.find(
         (event) => !event.invite_only,
       ));
+      // event invite_only
       inviteOnlyEventId = events.find((event) => event.invite_only).id;
+      // event running (not ended)
+      eventIdRunning = events.find(
+        (event) => event.ends_at.getFullYear() === 2099,
+      ).id;
     });
     cy.mhDeleteAll();
   });
 
   describe('event open for all', () => {
     beforeEach(() => {
-      cy.visit(`/events/${eventId}`);
+      cy.visit(`/events/${eventIdRunning}`);
     });
 
     it('should render correctly', () => {
@@ -262,7 +271,7 @@ describe('event page', () => {
         },
       );
 
-      cy.findByRole('button', { name: 'Cancel' }).click();
+      cy.findByRole('button', { name: 'Cancel attendance' }).click();
       cy.findByRole('button', { name: 'Confirm' }).click();
 
       cy.contains('You canceled your attendance');

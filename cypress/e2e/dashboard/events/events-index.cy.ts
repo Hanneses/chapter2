@@ -22,9 +22,9 @@ function navigateToEventsDashboard() {
 }
 
 function saveEventChanges() {
-  cy.findByRole('button', { name: 'Save Event Changes' }).click();
+  cy.findByRole('button', { name: 'Save Changes' }).click();
   cy.contains('Loading...');
-  cy.contains('Save Event Changes').should('not.exist');
+  cy.contains('Save Changes').should('not.exist');
   cy.get('[data-cy="events-dashboard"]').should('be.visible');
 }
 
@@ -74,9 +74,9 @@ describe('spec needing owner', () => {
         .invoke('text')
         .as('newVenueTitle');
 
-      cy.findByRole('form', { name: 'Save Event Changes' })
+      cy.findByRole('form', { name: 'Save Changes' })
         .findByRole('button', {
-          name: 'Save Event Changes',
+          name: 'Save Changes',
         })
         .should('be.enabled')
         .click();
@@ -179,9 +179,9 @@ describe('spec needing owner', () => {
     const titleAddon = ' new title';
 
     cy.findByRole('textbox', { name: 'Event Title' }).type(titleAddon);
-    cy.findByRole('form', { name: 'Save Event Changes' })
+    cy.findByRole('form', { name: 'Save Changes' })
       .findByRole('button', {
-        name: 'Save Event Changes',
+        name: 'Save Changes',
       })
       .click();
 

@@ -89,9 +89,13 @@ export const Header: React.FC = () => {
         </Link>
 
         <Hide below={'md'}>
-          <MainNavLink href="/chapters">Chapters</MainNavLink>
+          <MainNavLink href="/chapters" data-cy="header-link-chapters">
+            Chapters
+          </MainNavLink>
 
-          <MainNavLink href="/events">Events</MainNavLink>
+          <MainNavLink href="/events" data-cy="header-link-events">
+            Events
+          </MainNavLink>
         </Hide>
 
         <HStack as="nav" color="gray.85" zIndex={105}>
