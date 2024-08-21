@@ -141,6 +141,8 @@ export const EventsPage: NextPageWithLayout = () => {
           </LinkButton>
         )}
       </Grid>
+
+      {/* Table for large viewport */}
       <Box
         display={{ base: 'none', lg: 'block' }}
         width={'100%'}
@@ -244,6 +246,7 @@ export const EventsPage: NextPageWithLayout = () => {
         />
       </Box>
 
+      {/* Table for small viewport */}
       <Box display={{ base: 'block', lg: 'none' }} marginBlock={'2em'}>
         {filteredEvents.map(
           (

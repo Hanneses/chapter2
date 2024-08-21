@@ -44,20 +44,22 @@ See our [Vision statement](https://github.com/freeCodeCamp/chapter/wiki/Vision).
 
 ### Notifications
 
-* **Event notifications** – The system sends notification via email:
+* **Event notifications** – The system sends notification via email.
   * **Subscription** –
   * **Unsubscription** –
+
+### Account management
+
+* **Request data** – Users are able to request and download their account data.
+* **Delete account** – Users are able to deleted their accounts.
 
 ### Maintenance
 
 > Adminstrators only
 
-* **Manage users** – _Owner_ can manage users of each chapter
+* **Manage users** – _Owner_ can manage users of each chapter.
   * **Change role** – Set a specific user role.
   * **Ban/unban users** – Users who breach of the rules can be banned, or unbanned.
-  
-
-⚠️ _TODO ..._
 
 ## Terminology
 

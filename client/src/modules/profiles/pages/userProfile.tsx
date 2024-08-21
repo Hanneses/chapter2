@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import { Button } from '@chakra-ui/button';
 
 import { Link } from 'chakra-next-link';
+import { CloseIcon, DownloadIcon, InfoOutlineIcon } from '@chakra-ui/icons';
 import {
   useDeleteMeMutation,
   useUpdateMeMutation,
@@ -97,19 +98,22 @@ const UserProfile = () => {
       <Heading as="h1" marginBlock={'.5em'}>
         Profile
       </Heading>
+
       <Heading as="h2" size={'lg'}>
         Welcome, {getNameText(userInfo.name)}
       </Heading>
+
       {userInfo.admined_chapters.length > 0 && (
         <>
-          <Heading as="h2" marginBlock={'.5em'} size="md">
+          <Text marginBlock={'.5em'} size="md">
             You are an administrator for these Chapters:
-          </Heading>
+          </Text>
           <Flex
             marginTop={'1em'}
+            marginLeft={'2em'}
             maxWidth={'fit-content'}
             flexDirection={'column'}
-            gap={4}
+            gap={2}
           >
             {userInfo.admined_chapters.map(({ name, id }) => (
               <Link key={id} href={`/chapters/${id}`}>
@@ -119,66 +123,53 @@ const UserProfile = () => {
           </Flex>
         </>
       )}
-      <Heading as="h2" marginTop={'2em'} size="lg" fontWeight={500}>
+
+      <Text marginTop={'2em'} size="md" fontWeight={500}>
         Email address:{' '}
         <Text as="span" fontWeight={700}>
           {userInfo.email}
         </Text>
-      </Heading>
+      </Text>
+
       <ProfileForm
         onSubmit={submitUpdateMe}
         data={userInfo}
         loadingText={'Saving Profile Changes'}
         submitText={'Save Profile Changes'}
       />
-      <Flex gap="2em" marginBlock={'2em'}>
+
+      <Flex gap="1em" marginBlock={'1em'} marginTop={'3em'}>
         <Button
-          height={'2.8em'}
-          paddingBlock={'.65em'}
-          paddingInline={'.4em'}
-          colorScheme={'red'}
-          onClick={clickDelete}
-        >
-          Delete My Data
-        </Button>
-        <Button
-          fontWeight="600"
-          background={'gray.85'}
-          color={'gray.10'}
-          height={'100%'}
-          size={'lg'}
-          borderRadius={'5px'}
-          paddingBlock={'.65em'}
-          paddingInline={'.4em'}
-          _hover={{ color: 'gray.85', backgroundColor: 'gray.10' }}
+          colorScheme="blue"
           onClick={() => getData()}
           isDisabled={!!userDownload}
+          leftIcon={<InfoOutlineIcon />}
         >
-          Request your data
+          Request my account data
         </Button>
         {loadingDownloadData ? (
           <Spinner />
         ) : (
-          <>
-            {userDownload && (
-              <Link
-                fontWeight="600"
-                background={'gray.85'}
-                color={'gray.10'}
-                height={'100%'}
-                size={'lg'}
-                borderRadius={'5px'}
-                paddingBlock={'.65em'}
-                paddingInline={'.4em'}
-                download={`${userDownload?.name}.json`}
-                href={createDataUrl(userDownload)}
-              >
-                Download the data
-              </Link>
-            )}
-          </>
+          userDownload && (
+            <Link
+              download={`${userDownload?.name}.json`}
+              href={createDataUrl(userDownload)}
+            >
+              <Button colorScheme={'green'} leftIcon={<DownloadIcon />}>
+                Download data
+              </Button>
+            </Link>
+          )
         )}
       </Flex>
+
+      <Button
+        colorScheme={'red'}
+        onClick={clickDelete}
+        leftIcon={<CloseIcon />}
+      >
+        Delete my account
+      </Button>
     </div>
   );
 };
