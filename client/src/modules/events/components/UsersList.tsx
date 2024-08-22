@@ -13,7 +13,7 @@ export const UsersList = ({
 }) => (
   <>
     <Heading
-      data-cy={`${text.toLowerCase()}-heading`}
+      data-cy={`${text.toLowerCase()}-heading`} // [data-cy="attendees-heading"] // [data-cy="waitlist-heading"]
       fontSize={['sm', 'md', 'lg']}
       as={'h2'}
     >

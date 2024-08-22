@@ -58,6 +58,8 @@ export const EventPage: NextPage = () => {
             <Image
               data-cy="event-image"
               boxSize="100%"
+              minWidth={50}
+              minHeight={50}
               maxH="300px"
               src={data.event.image_url}
               alt="Event image"

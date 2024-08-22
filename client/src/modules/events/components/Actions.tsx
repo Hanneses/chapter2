@@ -383,6 +383,7 @@ export const Actions = ({
                 onClick={onCancelAttendance}
                 colorScheme="red"
                 leftIcon={<CloseIcon />}
+                data-cy="cancel-attendance"
               >
                 Cancel attendance
               </Button>

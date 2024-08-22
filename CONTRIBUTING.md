@@ -408,13 +408,15 @@ The database is seeded with several types of user.  To experiment with different
 
 In order to understand where to start, it may help to familiarize yourself with our [tech stack](https://github.com/Hanneses/chapter2/blob/main/README.md#tech-stack). For more details:
 
-<details><summary>Tech Stack Overview</summary>
+## Tech Stack
 
 The database we use is [PostgreSQL](https://www.postgresql.org/), which we interact with via [Prisma](https://www.prisma.io/).  Prisma maps between our database and our code, providing a fully type-safe way to interact with the database.  The [Express](https://expressjs.com/) server itself uses [Apollo GraphQL server](https://www.apollographql.com/docs/apollo-server/) to handle requests from the client. Apollo needs to know the GraphQL schema and we define that by using [TypeGraphQL](https://typegraphql.com/) since it lets us automate schema generation and uses decorators for a clean syntax.
 
 The Chapter client uses the React framework [Next.js](https://nextjs.org/) with [Apollo Client](https://www.apollographql.com/docs/react/) for data fetching.  Since we are generating a GraphQL schema we can use [GraphQL Code Generator](https://www.graphql-code-generator.com/) to convert the schema into a set of TypeScript types and, more importantly, functions to get the data from the server.  As a result we know exactly what we're allowed to request from the server and the shape of the data it returns.
 
 After you have added new feature, to make sure it stays working, we recommend using [Cypress](https://www.cypress.io/). It will automatically test different scenarios starting in the client side of the application, communicating with the server, and warning you if something unexpected happens.
+
+## Run cypress locally (end-to-end test)
 
 To record test coverage locally, run `npm run both:coverage` before starting cypress with `npm run cypress:run`.  This will generate a `cypress-coverage/lcov-report` folder in the root directory.  Open the `index.html` file in your browser to see the coverage report.
 

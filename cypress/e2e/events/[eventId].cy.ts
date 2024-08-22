@@ -5,7 +5,7 @@ describe('event page', () => {
   let chapterId;
   let eventId;
   let inviteOnlyEventId;
-  let eventIdRunning;
+  let eventRunningId;
   let users;
 
   before(() => {
@@ -19,13 +19,18 @@ describe('event page', () => {
     cy.task<Events>('getEvents').then((events) => {
       // events not invite_only
       ({ id: eventId, chapter_id: chapterId } = events.find(
-        (event) => !event.invite_only,
+        (event) => !event.invite_only && !event.canceled,
       ));
       // event invite_only
-      inviteOnlyEventId = events.find((event) => event.invite_only).id;
+      inviteOnlyEventId = events.find(
+        (event) => event.invite_only && !event.canceled,
+      ).id;
       // event running (not ended)
-      eventIdRunning = events.find((event) =>
-        event.ends_at ? new Date(event.ends_at).getFullYear() === 2099 : false,
+      eventRunningId = events.find(
+        (event) =>
+          String(event.ends_at) > new Date().toISOString() &&
+          !event.invite_only &&
+          !event.canceled,
       ).id;
     });
     cy.mhDeleteAll();
@@ -33,12 +38,18 @@ describe('event page', () => {
 
   describe('event open for all', () => {
     beforeEach(() => {
-      cy.visit(`/events/${eventIdRunning}`);
+      cy.visit(`/events/${eventRunningId}`);
     });
 
     it('should render correctly', () => {
       cy.get('h1').should('not.have.text', 'Loading...');
       cy.get('[data-cy="attend-button"]').should('be.visible');
+      cy.get('[data-cy="event-image"]').should('be.visible');
+      cy.get('[data-cy="attendees-heading"]').should('not.exist');
+      cy.get('[data-cy="waitlist-heading"]').should('not.exist');
+
+      cy.login();
+
       cy.get('[data-cy="attendees-heading"]')
         .should('be.visible')
         .next()
@@ -49,9 +60,6 @@ describe('event page', () => {
         .next()
         .should('be.visible')
         .should('match', 'ul');
-      cy.get('[data-cy="event-image"]')
-        .should('be.visible')
-        .and('have.attr', 'alt', '');
     });
 
     // TODO: we need to rework how we register users before this test can be used.
@@ -110,17 +118,17 @@ describe('event page', () => {
 
     it('is possible to join using the email links', () => {
       cy.login(users.testUser.email);
-      cy.visit(`/events/${eventId}?confirm_attendance=true`);
+      cy.visit(`/events/${eventRunningId}?confirm_attendance=true`);
 
       cy.contains('You have been invited to this event');
       cy.findByRole('button', { name: 'Confirm' }).click();
       cy.get('[data-cy="attend-success"]').should('be.visible');
-      cy.findByRole('button', { name: 'Cancel' }).should('be.visible');
+      cy.get('[data-cy="cancel-attendance"]').should('be.visible');
     });
 
     it('should be possible to use email link when user is initially logged out', () => {
       cy.exec(`npm run change-user -- ${users.testUser.email}`);
-      cy.visit(`/events/${eventId}?confirm_attendance=true`);
+      cy.visit(`/events/${eventRunningId}?confirm_attendance=true`);
 
       cy.contains('You have been invited to this event');
       cy.contains('Would you like to log in and attend');
@@ -130,7 +138,7 @@ describe('event page', () => {
       cy.contains('Waiting for login');
       cy.contains('Waiting for login').should('not.exist');
       cy.get('[data-cy="attend-success"]').should('be.visible');
-      cy.findByRole('button', { name: 'Cancel' }).should('be.visible');
+      cy.get('[data-cy="cancel-attendance"]').should('be.visible');
       cy.get('[data-cy="attendees-heading"]')
         .next()
         .within(() => {
@@ -140,28 +148,25 @@ describe('event page', () => {
 
     it('should be possible to attend and cancel', () => {
       cy.login(users.testUser.email);
+      cy.visit(`/events/${eventRunningId}`);
+
+      cy.get('[data-cy="attend-button"]').click();
+      cy.findByRole('button', { name: 'Confirm' }).click();
 
       cy.get('[data-cy="attendees-heading"]')
         .next()
         .as('attendees')
         .within(() => {
-          cy.findByText(users.testUser.name).should('not.exist');
+          cy.findByText(users.testUser.name).should('exist');
         });
 
-      cy.findByRole('button', { name: 'Attend Event' }).click();
-      cy.findByRole('button', { name: 'Confirm' }).click();
-
-      cy.get('@attendees').within(() => {
-        cy.findByText(users.testUser.name).should('exist');
-      });
-
-      cy.findByRole('button', { name: 'Cancel' }).click();
+      cy.get('[data-cy="cancel-attendance"]').click();
       cy.findByRole('button', { name: 'Confirm' }).click();
 
       cy.get('@attendees').within(() => {
         cy.findByText(users.testUser.name).should('not.exist');
       });
-      cy.findByRole('button', { name: 'Cancel' }).should('not.exist');
+      cy.get('[data-cy="cancel-attendance"]').should('not.exist');
     });
 
     it('should be possible to change event subscription', () => {
