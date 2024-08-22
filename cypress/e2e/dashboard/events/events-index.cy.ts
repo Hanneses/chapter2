@@ -212,6 +212,8 @@ describe('spec needing owner', () => {
 
   it('emails not canceled attendees when event is canceled', () => {
     cy.visit('/dashboard/events');
+    cy.get('[data-cy="dashboard-events-page-headline"]').should('be.visible');
+
     cy.findAllByRole('row')
       .not(':has([data-cy=event-canceled])')
       .find('a')
