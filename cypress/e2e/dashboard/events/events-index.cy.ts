@@ -22,7 +22,7 @@ function navigateToEventsDashboard() {
 }
 
 function saveEventChanges() {
-  cy.findByRole('button', { name: 'Save Changes' }).click();
+  cy.get('[data-cy="event-form-submit-btn"]').click();
   cy.contains('Loading...');
   cy.contains('Save Changes').should('not.exist');
   cy.get('[data-cy="events-dashboard"]').should('be.visible');
@@ -74,12 +74,7 @@ describe('spec needing owner', () => {
         .invoke('text')
         .as('newVenueTitle');
 
-      cy.findByRole('form', { name: 'Save Changes' })
-        .findByRole('button', {
-          name: 'Save Changes',
-        })
-        .should('be.enabled')
-        .click();
+      cy.get('[data-cy="event-form-submit-btn"]').should('be.enabled').click();
 
       cy.location('pathname').should('match', /^\/dashboard\/events$/);
 
@@ -136,15 +131,17 @@ describe('spec needing owner', () => {
 
     cy.get('@editButton').click();
     cy.findByRole('radio', { name: 'In-person' }).click({ force: true });
-    cy.get('@venueSelect').select(1);
     cy.get('@venueSelect').find('option').eq(1).invoke('text').as('venueName');
-    saveEventChanges();
 
-    cy.get('@venueName').then((venueName) => {
+    cy.get<string>('@venueName').then((venueName) => {
+      cy.get('@venueSelect').select(1);
+      saveEventChanges();
+
       cy.get('@editedEvent')
         .find('[data-cy="venue"]')
         .should('contain', venueName);
     });
+
     cy.get('@editedEvent')
       .find('[data-cy="streamingUrl"]')
       .should('contain', 'In-person only');
@@ -179,11 +176,7 @@ describe('spec needing owner', () => {
     const titleAddon = ' new title';
 
     cy.findByRole('textbox', { name: 'Event Title' }).type(titleAddon);
-    cy.findByRole('form', { name: 'Save Changes' })
-      .findByRole('button', {
-        name: 'Save Changes',
-      })
-      .click();
+    cy.get('[data-cy="event-form-submit-btn"]').click();
 
     cy.get('[data-cy="events-dashboard"]').should('be.visible');
     cy.get('@eventTitle').then((eventTitle) => {
@@ -201,6 +194,12 @@ describe('spec needing owner', () => {
     cy.visit('');
     cy.contains('Upcoming events');
     cy.get('a[href*="/events/"]').first().as('eventToDelete');
+
+    // TODO remove
+    cy.get<string>('@eventTitle').then((eventTitle) => {
+      cy.log('eventTitle', eventTitle);
+    });
+
     cy.get('@eventToDelete').invoke('text').as('eventTitle');
 
     navigateToEventsDashboard();

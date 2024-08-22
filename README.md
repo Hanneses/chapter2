@@ -26,13 +26,13 @@ See our [Vision statement](https://github.com/freeCodeCamp/chapter/wiki/Vision).
 * **View events** – See upcoming and past events of your organization and per each chapter.
 * **Attend events** – Members can attend events. Attendance to invity-only events needs confirmation by event organizers.
 * **Waiting list** – If an events capacity is reached members will be placed on a waiting list.
-* **Subscribe to notifications** – Members can subscribe and unsubscribe from events and chapters notifications, to get notified on new or changed events.
+* **Subscribe to notifications** – Members can subscribe to event notifications, to get notified on new or changed events.
 
 ### Manage Organization and Chapters
 
 * **View chapters** – See all available chapters of your organisation and relating events.
 * **Join/leave chapters** – Members are able to join and leave chapters.
-* **Subscribe to chapters** – Members are able to subscribe to chapters to get notified for new events.
+* **Subscribe to chapters** – Members can subscribe to chapters to get notified for new events.
 * **Create chapters** – To manage your organizational structure you can create chapters (like sub-organizations or local branches of an organization).
 
 ### Account Management

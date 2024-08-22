@@ -210,6 +210,7 @@ const EventForm: React.FC<EventFormProps> = ({
             isDisabled={!isDirty || loading || !isValid}
             isLoading={loading}
             loadingText={loadingText}
+            data-cy="event-form-submit-btn"
           >
             {submitText}
           </Button>

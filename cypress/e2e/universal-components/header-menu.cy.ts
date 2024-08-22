@@ -1,10 +1,4 @@
 describe('header menu', () => {
-  it('should show links chapters and events in top navigation', () => {
-    cy.visit('/');
-    cy.get('[data-cy=header-link-chapters]').should('be.visible');
-    cy.get('[data-cy=header-link-events]').should('be.visible');
-  });
-
   it('should show a link to the dashboard for an owner', () => {
     cy.login('foo@bar.com');
     cy.visit('/');

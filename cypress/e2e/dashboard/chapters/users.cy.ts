@@ -133,18 +133,27 @@ describe('Chapter Users dashboard', () => {
 
     cy.get('@firstUnbannedMember').find('button[data-cy="banUser"]').click();
     cy.findByRole('button', { name: 'Confirm' }).click();
-    cy.contains('was banned', { matchCase: false });
+    cy.contains('was banned', { matchCase: false }).should('exist');
 
-    cy.get('@firstUnbannedMember').find('[data-cy=isBanned]').should('exist');
-    cy.get('@firstUnbannedMember')
-      .find('button[data-cy="unbanUser"]')
-      .should('exist');
-    cy.get('@firstUnbannedMember')
-      .find('button[data-cy="banUser"]')
-      .should('not.exist');
     cy.get<string>('@firstUnbannedName').then((userName) => {
+      cy.get('@rows')
+        .filter(`:contains(${userName})`)
+        .find('[data-cy=isBanned]')
+        .should('exist');
+
+      cy.get('@rows')
+        .filter(`:contains(${userName})`)
+        .find('button[data-cy="unbanUser"]')
+        .should('exist');
+
+      cy.get('@rows')
+        .filter(`:contains(${userName})`)
+        .find('button[data-cy="banUser"]')
+        .should('not.exist');
+
       cy.getChapterEvents(chapterId).then((events) => {
         const eventIds = events.map(({ id }) => id);
+
         eventIds.forEach((eventId) => {
           cy.task<EventUsers>('getEventUsers', eventId).then((eventUsers) => {
             const eventUser = eventUsers.find(
@@ -154,20 +163,30 @@ describe('Chapter Users dashboard', () => {
           });
         });
       });
-    });
 
-    cy.get('@firstUnbannedMember').find('button[data-cy="unbanUser"]').click();
-    cy.findByRole('button', { name: 'Confirm' }).click();
-    cy.contains('was unbanned', { matchCase: false });
-    cy.get('@firstUnbannedMember')
-      .find('[data-cy=isBanned]')
-      .should('not.exist');
-    cy.get('@firstUnbannedMember')
-      .find('button[data-cy="banUser"]')
-      .should('exist');
-    cy.get('@firstUnbannedMember')
-      .find('button[data-cy="unbanUser"]')
-      .should('not.exist');
+      cy.get('@rows')
+        .filter(`:contains(${userName})`)
+        .find('button[data-cy="unbanUser"]')
+        .click();
+
+      cy.findByRole('button', { name: 'Confirm' }).click();
+      cy.contains('was unbanned', { matchCase: false });
+
+      cy.get('@rows')
+        .filter(`:contains(${userName})`)
+        .find('[data-cy=isBanned]')
+        .should('not.exist');
+
+      cy.get('@rows')
+        .filter(`:contains(${userName})`)
+        .find('button[data-cy="banUser"]')
+        .should('exist');
+
+      cy.get('@rows')
+        .filter(`:contains(${userName})`)
+        .find('button[data-cy="unbanUser"]')
+        .should('not.exist');
+    });
   });
 
   it("admins of other chapters should NOT be able to ban (or unban) that chapter's users", () => {
@@ -226,6 +245,7 @@ describe('Chapter Users dashboard', () => {
 
   it('rejects chapter admin from unbanning admin', () => {
     cy.login(users.chapter1Admin.email);
+    cy.visit(`/dashboard/chapters/${chapterId}/users`);
 
     initializeBanVariables();
 
