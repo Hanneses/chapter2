@@ -15,51 +15,30 @@ See our [Vision statement](https://github.com/freeCodeCamp/chapter/wiki/Vision).
 
 ## Features
 
-### Manage organization with chapters
+### Maintain Events
+
+* **Create events** – Create events and assign them to chapters. Maintain several information per event: name, start/end date, description, image, type, capacity, public and invite-only.
+* **Create chapters** – Create several chapters for your organization.
+* **Event overview** – See reports for chapters' events and attendees.
+
+### Attend and Subscribe to Events
+
+* **View events** – See upcoming and past events of your organization and per each chapter.
+* **Attend events** – Members can attend events. Attendance to invity-only events needs confirmation by event organizers.
+* **Waiting list** – If an events capacity is reached members will be placed on a waiting list.
+* **Subscribe to notifications** – Members can subscribe and unsubscribe from events and chapters notifications, to get notified on new or changed events.
+
+### Manage Organization and Chapters
 
 * **View chapters** – See all available chapters of your organisation and relating events.
-* **Join/leave chapters** – _Members_ are able to join and leave chapters.
-* **Subscribe to chapters** – _Members_ are able to subscribe to chapters to get notified for new events.
-* **Create chapters** – To manage your organizational structure you can create chapters (like sub-organizations or local branches of an organization). (adminstrators only)
+* **Join/leave chapters** – Members are able to join and leave chapters.
+* **Subscribe to chapters** – Members are able to subscribe to chapters to get notified for new events.
+* **Create chapters** – To manage your organizational structure you can create chapters (like sub-organizations or local branches of an organization).
 
-### Subscribe and attend events
+### Account Management
 
-* **View events** – See all upcoming and past events of each chapter.
-* **Waiting list** – _Members_ will be placed on a waiting list if the event capacity is reached.
-* **Un/subscribe** – _Members_ can subscribe and unsubscribe from events by their own.
-
-### Maintain events
-
-> Adminstrators only
-
-* **Create events** – Create as much events as you like and assign them to chapters. Maintain several information per event: name, start/end date, description, image, type, capacity, etc.
-* **Public and invite-only** – All _members_ can subscribe to _public events_ by their own. _Invite-only events_ are restricted to invited _members_.
-* **Capacity** – Set an attendee limit for your event (see _waiting list_).
-
-### Analyze events
-
-> Adminstrators only
-
-* **Event overview** – See reports for your events and attendees.
-
-### Notifications
-
-* **Event notifications** – The system sends notification via email.
-  * **Subscription** –
-  * **Unsubscription** –
-
-### Account management
-
-* **Request data** – Users are able to request and download their account data.
-* **Delete account** – Users are able to deleted their accounts.
-
-### Maintenance
-
-> Adminstrators only
-
-* **Manage users** – _Owner_ can manage users of each chapter.
-  * **Change role** – Set a specific user role.
-  * **Ban/unban users** – Users who breach of the rules can be banned, or unbanned.
+* **Request and delete data** – Users are able to request and download their account data, as well as delete their accounts.
+* **Manage users** – Administrators can manage users of each chapter, set roles, ban and unban users.
 
 ## Terminology
 
