@@ -218,9 +218,15 @@ describe('spec needing owner', () => {
       .not(':has([data-cy=event-canceled])')
       .find('a')
       .first()
-      .as('eventlink');
-    cy.get('@eventlink').click();
-    cy.get('@eventlink').invoke('text').as('eventTitle');
+      .invoke('text')
+      .as('eventTitle');
+
+    cy.findAllByRole('row')
+      .not(':has([data-cy=event-canceled])')
+      .find('a')
+      .first()
+      .click();
+
     cy.get<string>('@eventTitle').then((eventTitle) => {
       cy.findByRole('button', { name: 'Cancel' }).click();
       cy.findByRole('alertdialog').findByText('Cancel event').click();
