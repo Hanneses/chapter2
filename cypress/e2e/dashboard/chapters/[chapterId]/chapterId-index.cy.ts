@@ -19,12 +19,12 @@ function createEventViaUI({ chapterId, eventData, createInPast = false }) {
 
   const whichMonth = createInPast ? 'Previous' : 'Next';
   cy.findByLabelText(/^Start at/).click();
-  cy.get(`[aria-label="${whichMonth} Month"]`).click().click();
+  cy.get(`[aria-label="${whichMonth} Month"]`).click();
   cy.findByRole('option', { name: /.*15th, .*/ }).click();
   cy.findByText('12:00 PM').click();
 
   cy.findByLabelText(/^End at/).click();
-  cy.get(`[aria-label="${whichMonth} Month"]`).click().click();
+  cy.get(`[aria-label="${whichMonth} Month"]`).click();
   cy.findByRole('option', { name: /.*17th, .*/ }).click();
   cy.findByText('12:30 PM').click();
 

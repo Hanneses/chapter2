@@ -41,19 +41,18 @@ describe('sponsors dashboard', () => {
 
   it('lets an instance owner edit sponsors', () => {
     cy.visit(`/dashboard/sponsors/${sponsorId}/edit`);
-    cy.findByRole('textbox', { name: 'Sponsor Name' })
-      .clear()
-      .type(testSponsor.name);
-    cy.findByRole('textbox', { name: 'Website Url' })
-      .clear()
-      .type(testSponsor.website);
-    cy.findByRole('textbox', { name: 'Logo Path' })
-      .clear()
-      .type(testSponsor.logo_path);
+    cy.findByRole('textbox', { name: 'Sponsor Name' }).clear();
+    cy.findByRole('textbox', { name: 'Sponsor Name' }).type(testSponsor.name);
+
+    cy.findByRole('textbox', { name: 'Website Url' }).clear();
+    cy.findByRole('textbox', { name: 'Website Url' }).type(testSponsor.website);
+
+    cy.findByRole('textbox', { name: 'Logo Path' }).clear();
+    cy.findByRole('textbox', { name: 'Logo Path' }).type(testSponsor.logo_path);
+
     cy.findByRole('combobox', { name: 'Sponsor Type' }).select(
       testSponsor.type,
     );
-
     cy.findByRole('button', { name: 'Save Sponsor Changes' }).click();
     cy.findByRole('heading', { name: 'Sponsors' });
     cy.findByRole('link', { name: testSponsor.name }).click();

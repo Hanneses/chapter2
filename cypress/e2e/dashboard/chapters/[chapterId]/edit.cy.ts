@@ -20,31 +20,35 @@ describe('chapter edit dashboard', () => {
     cy.login(users.chapter1Admin.email);
     cy.visit(`/dashboard/chapters/${chapterId}/edit`);
 
-    cy.findByRole('textbox', { name: 'Chapter name' })
-      .clear()
-      .type(chapterData.name);
-    cy.findByRole('textbox', { name: 'Description' })
-      .clear()
-      .type(chapterData.description);
-    cy.findByRole('textbox', { name: 'Tags (separated by a comma)' })
-      .clear()
-      .type(chapterData.chapter_tags);
-    cy.findByRole('textbox', { name: 'City' }).clear().type(chapterData.city);
-    cy.findByRole('textbox', { name: 'Region' })
-      .clear()
-      .type(chapterData.region);
-    cy.findByRole('textbox', { name: 'Country' })
-      .clear()
-      .type(chapterData.country);
-    cy.findByRole('textbox', { name: 'Category' })
-      .clear()
-      .type(chapterData.category);
-    cy.findByRole('textbox', { name: 'Banner Url' })
-      .clear()
-      .type(chapterData.banner_url);
-    cy.findByRole('textbox', { name: 'Logo Url' })
-      .clear()
-      .type(chapterData.logo_url);
+    cy.findByRole('textbox', { name: 'Chapter name' }).clear();
+    cy.findByRole('textbox', { name: 'Chapter name' }).type(chapterData.name);
+
+    cy.findByRole('textbox', { name: 'Description' }).clear();
+    cy.findByRole('textbox', { name: 'Description' }).type(
+      chapterData.description,
+    );
+    cy.findByRole('textbox', { name: 'Tags (separated by a comma)' }).clear();
+    cy.findByRole('textbox', { name: 'Tags (separated by a comma)' }).type(
+      chapterData.chapter_tags,
+    );
+    cy.findByRole('textbox', { name: 'City' }).clear();
+    cy.findByRole('textbox', { name: 'City' }).type(chapterData.city);
+
+    cy.findByRole('textbox', { name: 'Region' }).clear();
+    cy.findByRole('textbox', { name: 'Region' }).type(chapterData.region);
+
+    cy.findByRole('textbox', { name: 'Country' }).clear();
+    cy.findByRole('textbox', { name: 'Country' }).type(chapterData.country);
+
+    cy.findByRole('textbox', { name: 'Category' }).clear();
+    cy.findByRole('textbox', { name: 'Category' }).type(chapterData.category);
+
+    cy.findByRole('textbox', { name: 'Banner Url' }).clear();
+    cy.findByRole('textbox', { name: 'Banner Url' }).type(
+      chapterData.banner_url,
+    );
+    cy.findByRole('textbox', { name: 'Logo Url' }).clear();
+    cy.findByRole('textbox', { name: 'Logo Url' }).type(chapterData.logo_url);
 
     cy.findByRole('form', { name: 'Save Chapter Changes' })
       .findByRole('button', { name: 'Save Chapter Changes' })

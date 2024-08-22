@@ -68,8 +68,8 @@ describe('spec needing owner', () => {
       const newEventId = response.body.data.createEvent.id;
       cy.visit(`/dashboard/events/${newEventId}/edit`);
 
+      cy.findByRole('combobox', { name: 'Venue' }).select(newVenueId);
       cy.findByRole('combobox', { name: 'Venue' })
-        .select(newVenueId)
         .find(':checked')
         .invoke('text')
         .as('newVenueTitle');
@@ -228,9 +228,9 @@ describe('spec needing owner', () => {
       .not(':has([data-cy=event-canceled])')
       .find('a')
       .first()
-      .click()
-      .invoke('text')
-      .as('eventTitle');
+      .as('eventlink');
+    cy.get('@eventlink').click();
+    cy.get('@eventlink').invoke('text').as('eventTitle');
 
     cy.findByRole('button', { name: 'Cancel' }).click();
     cy.findByRole('alertdialog').findByText('Cancel event').click();

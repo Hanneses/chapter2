@@ -17,8 +17,8 @@ const createAttendance = async (eventIds: number[], userIds: number[]) => {
       const attendanceName = on_waitlist
         ? AttendanceNames.waitlist
         : canceled
-        ? AttendanceNames.canceled
-        : AttendanceNames.confirmed;
+          ? AttendanceNames.canceled
+          : AttendanceNames.confirmed;
 
       await prisma.event_users.create({
         data: {
