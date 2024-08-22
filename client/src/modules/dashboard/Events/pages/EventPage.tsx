@@ -3,7 +3,7 @@ import { LockIcon } from '@chakra-ui/icons';
 import NextError from 'next/error';
 import { useRouter } from 'next/router';
 import { ReactElement } from 'react';
-
+import { Link } from 'chakra-next-link';
 import { useDashboardEventQuery } from '../../../../generated/graphql';
 import { useParam } from '../../../../hooks/useParam';
 import { formatDate } from '../../../../util/date';
@@ -47,6 +47,23 @@ export const EventPage: NextPageWithLayout = () => {
         gap={'3'}
         flexDirection="column"
       >
+        {data.dashboardEvent.image_url && (
+          <>
+            <Box height={'200px'}>
+              <Img
+                src={data.dashboardEvent.image_url}
+                maxHeight={200}
+                alt="Event image"
+                borderRadius="md"
+                objectFit="cover"
+              />
+            </Box>
+            <Link href={data.dashboardEvent.image_url} isExternal={true}>
+              <sub>{data.dashboardEvent.image_url}</sub>
+            </Link>
+          </>
+        )}
+
         <Flex alignItems="center">
           {data.dashboardEvent.invite_only && (
             <Tooltip label="Invite only">
@@ -61,35 +78,31 @@ export const EventPage: NextPageWithLayout = () => {
             Canceled
           </Text>
         )}
+
+        <LinkField label="Event By" href={`/dashboard/chapters/${chapterId}`}>
+          {chapterName}
+        </LinkField>
+
         {!!data.dashboardEvent.event_tags.length && (
           <TagsBox tags={data.dashboardEvent.event_tags} />
         )}
         <Text fontSize={'md'}>{data.dashboardEvent.description}</Text>
-        {data.dashboardEvent.image_url && (
-          <LinkField
-            label="Image"
-            isExternal
-            href={data.dashboardEvent.image_url}
-          >
-            <Box height={'150px'}>
-              <Img src={data.dashboardEvent.image_url} maxHeight={150} />
-            </Box>
-          </LinkField>
-        )}
-        {data.dashboardEvent.url && (
-          <LinkField label="Event Url" isExternal>
-            {data.dashboardEvent.url}
-          </LinkField>
-        )}
+
         <TextField label="Starting">{startAt}</TextField>
         <TextField label="Ending">{endAt}</TextField>
+
         <TextField label="Capacity">
           {`${attendees.length} / ${data.dashboardEvent.capacity}`}
         </TextField>
-        <LinkField label="Event By" href={`/dashboard/chapters/${chapterId}`}>
-          {chapterName}
-        </LinkField>
+
+        {data.dashboardEvent.url && (
+          <LinkField label="Website" isExternal>
+            {data.dashboardEvent.url}
+          </LinkField>
+        )}
+
         <EventVenue event={data.dashboardEvent} />
+
         <Actions
           event={data.dashboardEvent}
           chapter={data.dashboardEvent.chapter}

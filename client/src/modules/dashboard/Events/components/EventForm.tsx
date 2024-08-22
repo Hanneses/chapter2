@@ -1,5 +1,5 @@
 import { Button, Checkbox, Grid, Heading, Text } from '@chakra-ui/react';
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { add } from 'date-fns';
 
@@ -74,7 +74,7 @@ const EventForm: React.FC<EventFormProps> = ({
       ends_at: new Date(data.ends_at),
       sponsors: data.sponsors,
       venue_type: data.venue_type,
-      venue_id: formType === 'transfer' ? 0 : data.venue_id,
+      venue_id: formType === 'transfer' ? 0 : (data.venue_id ?? 0),
       image_url: data.image_url,
       invite_only: data.invite_only,
       chapter_id: chapter?.id,
@@ -96,7 +96,15 @@ const EventForm: React.FC<EventFormProps> = ({
     handleSubmit,
     register,
     watch,
+    trigger,
   } = formMethods;
+
+  useEffect(() => {
+    // if data: do initial form validation to show invalid fields early
+    if (data) {
+      trigger();
+    }
+  }, []);
 
   const inviteOnly = watch('invite_only');
   const chapterId = watch('chapter_id');

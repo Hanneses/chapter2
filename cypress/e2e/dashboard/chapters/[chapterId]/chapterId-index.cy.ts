@@ -88,8 +88,13 @@ describe('chapter dashboard', () => {
     const testEvent = { ...events.eventWithoutDateAndURL };
 
     createEventViaUI({ chapterId, eventData: testEvent });
+
     cy.location('pathname').should('match', /^\/dashboard\/events\/\d+$/);
-    // confirm that the test data appears in the new event
+
+    cy.get<string>('@venueTitle').then((venueTitle) => {
+      cy.contains(venueTitle);
+    });
+
     Object.entries(testEvent).forEach(([key, value]) => {
       // TODO: simplify this conditional when tags and dates are handled
       // properly.
@@ -101,13 +106,6 @@ describe('chapter dashboard', () => {
       } else if (!['start_at', 'ends_at', 'venue_id'].includes(key)) {
         cy.contains(value as string);
       }
-    });
-    // check that the title we selected is in the event we created.
-
-    // The type has to be set, since TS can't infer that the alias is to a
-    // string
-    cy.get<string>('@venueTitle').then((venueTitle) => {
-      cy.contains(venueTitle);
     });
 
     // TODO: select chapter during event creation and use that here (much like @venueTitle

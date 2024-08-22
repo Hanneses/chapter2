@@ -24,6 +24,7 @@ import { AttendanceNames } from '../../../../../common/attendance';
 import { UsersList } from '../components/UsersList';
 import { Actions } from '../components/Actions';
 import { useUser } from 'modules/auth/user';
+import { EventVenue } from 'modules/dashboard/Events/components/EventVenue';
 
 const textStyleProps = { fontWeight: 500, fontSize: ['smaller', 'sm', 'md'] };
 
@@ -94,15 +95,18 @@ export const EventPage: NextPage = () => {
             </Text>
           )
         )}
-        {!!data.event.event_tags.length && (
-          <TagsBox tags={data.event.event_tags} />
-        )}
+
         <Text {...textStyleProps} fontSize={['md', 'lg', 'xl']}>
           Chapter:{' '}
           <Link href={`/chapters/${data.event.chapter.id}`}>
             {data.event.chapter.name}
           </Link>
         </Text>
+
+        {!!data.event.event_tags.length && (
+          <TagsBox tags={data.event.event_tags} />
+        )}
+
         <Text {...textStyleProps}>{data.event.description}</Text>
         <Text {...textStyleProps}>Starting: {startAt}</Text>
         <Text {...textStyleProps}>Ending: {endsAt}</Text>
@@ -113,12 +117,15 @@ export const EventPage: NextPage = () => {
         </Text>
         {data.event.url && (
           <Text {...textStyleProps}>
-            More about event:{' '}
+            Website:{' '}
             <ChakraLink href={data.event.url} isExternal>
               {data.event.url}
             </ChakraLink>
           </Text>
         )}
+
+        <EventVenue event={data.event} />
+
         <Actions event={data.event} />
 
         {data.event.sponsors.length && (
