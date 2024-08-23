@@ -61,6 +61,10 @@ export default defineConfig({
     retries: { runMode: 3, openMode: 0 },
     modifyObstructiveCode: false,
     experimentalRunAllSpecs: true,
+    specPattern: [
+      'cypress/e2e/dashboard/events/events-index.cy.ts', // run flaky test first to fail fast
+      'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
+    ],
     setupNodeEvents(on, config) {
       // `on` is used to hook into various events Cypress emits
       // `config` is the resolved Cypress config
