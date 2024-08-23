@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>freecodecamp/renovate-config:main"],
+  "extends": ["github>Hanneses/renovate-config:main"],
   "rangeStrategy": "pin",
   "packageRules": [
     {

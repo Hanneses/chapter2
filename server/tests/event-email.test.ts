@@ -72,7 +72,7 @@ View all upcoming events for Not so serious: <a href='http://localhost:3000/chap
       });
       expect(emailText).toEqual(`Upcoming event for Not so serious.<br />
 <br />
-When: February 7, 2023 at 12:00 PM to February 7, 2023 at 12:30 PM
+When: February 7, 2023, 12:00 PM - 12:30 PM
 <br />
 Where: Undecided/TBD<br />
 <br />
@@ -96,7 +96,7 @@ View all upcoming events for Not so serious: <a href='http://localhost:3000/chap
       });
       expect(emailText).toEqual(`Upcoming event for Not so serious.<br />
 <br />
-When: February 7, 2023 at 12:00 PM to February 7, 2023 at 12:30 PM
+When: February 7, 2023, 12:00 PM - 12:30 PM
 <br />
 Streaming URL: Undecided/TBD<br />
 <br />
@@ -169,7 +169,7 @@ You received this email because you Subscribed to Hammes - Sawayn Event.<br />`,
       const expected = {
         emailText: `Your reservation is confirmed. You can attend the event Emard and Sons.<br />
 <br />
-When: February 7, 2023 at 12:00 PM to February 7, 2023 at 12:30 PM
+When: February 7, 2023, 12:00 PM - 12:30 PM
 <br />
 Where: Undecided/TBD<br />
 Streaming URL: http://streaming.url/abcd<br />
@@ -254,7 +254,7 @@ Streaming URL: http://streaming.url/abcd<br />
         emailText: `Hi Not the Owner,<br />
 Confirming your attendance of Howe LLC.<br />
 <br />
-When: February 7, 2023 at 12:00 PM to February 7, 2023 at 12:30 PM
+When: February 7, 2023, 12:00 PM - 12:30 PM
 <br />
 Where: Nitzsche - Hills<br />
 Streaming URL: http://streaming.url/abcd<br />
