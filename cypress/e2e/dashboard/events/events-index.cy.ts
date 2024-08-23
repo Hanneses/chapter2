@@ -211,6 +211,7 @@ describe('spec needing owner', () => {
   });
 
   it('emails not canceled attendees when event is canceled', () => {
+    cy.interceptGQL('dashboardEvents');
     cy.visit('/dashboard/events');
     cy.wait('@GQLdashboardEvents');
     cy.get('[data-cy="dashboard-events-page-headline"]').should('be.visible');
