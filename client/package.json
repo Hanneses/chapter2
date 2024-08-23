@@ -51,7 +51,7 @@
     "@graphql-codegen/typescript-graphql-files-modules": "3.0.0",
     "@graphql-codegen/typescript-operations": "4.2.3",
     "@graphql-codegen/typescript-react-apollo": "4.3.0",
-    "@testing-library/dom": "8.20.0",
+    "@testing-library/dom": "8.20.1",
     "@testing-library/react": "13.4.0",
     "@types/react": "18.0.38",
     "@types/react-datepicker": "4.10.0",
