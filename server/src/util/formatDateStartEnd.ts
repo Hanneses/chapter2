@@ -1,4 +1,4 @@
-// NOTE: consider server-side method in /server/src/util/formatEventDateStartEnd.ts
+// NOTE: consider server-side method in /client/src/util/formatEventDateStartEnd.ts
 import { formatDate, formatDateOnly, formatTimeOnly } from './date';
 
 export const formatEventDateStartEnd = (startDate: Date, endDate: Date) => {

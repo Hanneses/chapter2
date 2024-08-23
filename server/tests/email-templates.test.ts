@@ -76,11 +76,11 @@ describe('email-templates', () => {
   describe('dateChangeText', () => {
     it('should return expected text', () => {
       const expected =
-        '\n- Start: Thu, Feb 9 @ 15:00 GMT+0<br />\n- End: Wed, Feb 15 @ 10:00 GMT+0';
+        '\n- Start: February 9, 2023 at 3:00 PM<br />\n- End:   February 15, 2023 at 10:00 AM';
       expect(
         dateChangeText({
-          ends_at: new Date('2023-02-15 10:00'),
           start_at: new Date('2023-02-09 15:00'),
+          ends_at: new Date('2023-02-15 10:00'),
         }),
       ).toEqual(expected);
     });

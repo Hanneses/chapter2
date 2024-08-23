@@ -1,4 +1,5 @@
 import { events_venue_type_enum } from '@prisma/client';
+import { formatEventDateStartEnd } from './util/formatDateStartEnd';
 import { formatDate } from './util/date';
 
 export const SPACER = `<br />
@@ -206,7 +207,7 @@ export const eventInviteText = ({
   subject: `Invitation to ${eventName}.`,
   emailText: `Upcoming event for ${chapterName}.<br />
 <br />
-When: ${formatDate(start_at)} to ${formatDate(ends_at)}
+When: ${formatEventDateStartEnd(start_at, ends_at)}
 <br />${physicalLocation}${streamingData}
 <br />
 Go to <a href="${eventConfirmAttendanceURL}">the event page</a> to confirm your attendance.${SPACER}

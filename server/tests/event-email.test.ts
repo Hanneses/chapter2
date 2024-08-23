@@ -47,7 +47,7 @@ describe('event-email', () => {
       const { emailText } = eventInviteEmail(data);
       expect(emailText).toEqual(`Upcoming event for Not so serious.<br />
 <br />
-When: Tue, Feb 7 @ 12:00 GMT+0 to Tue, Feb 7 @ 12:30 GMT+0
+When: February 7, 2023, 12:00 PM - 12:30 PM
 <br />
 Where: Undecided/TBD<br />
 Streaming URL: Undecided/TBD<br />
