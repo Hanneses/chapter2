@@ -10,7 +10,7 @@
     {
       "groupName": "CodeSee",
       "matchPackagePrefixes": ["@codesee/"],
-      "automerge": true
+      "automerge": false
     }
   ]
 }
