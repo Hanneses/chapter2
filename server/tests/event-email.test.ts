@@ -263,7 +263,7 @@ You should receive a calendar invite shortly. If you do not, you can add the eve
 <br />
 <a href=https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20230207T120000Z%2F20230207T123000Z&details=&location=Nitzsche%20-%20Hills&text=Howe%20LLC>Google</a>
 <br />
-<a href=https://outlook.live.com/calendar/0/deeplink/compose?allday=false&body=&enddt=2023-02-07T12%3A30%3A00&location=Nitzsche%20-%20Hills&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&startdt=2023-02-07T12%3A00%3A00&subject=Howe%20LLC>Outlook</a>`,
+<a href=https://outlook.live.com/calendar/0/action/compose?allday=false&body=&enddt=2023-02-07T12%3A30%3A00&location=Nitzsche%20-%20Hills&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&startdt=2023-02-07T12%3A00%3A00&subject=Howe%20LLC>Outlook</a>`,
       };
       expect(eventAttendanceConfirmation(data)).toMatchObject(expected);
     });
