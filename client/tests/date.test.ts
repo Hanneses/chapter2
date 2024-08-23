@@ -14,7 +14,7 @@ describe('date', () => {
       [new Date('2022-09-03T19:00:00'), 'September 3, 2022 at 07:00 PM'],
       [new Date('2022-10-05T12:00:00'), 'October 5, 2022 at 12:00 PM'],
       [new Date('2022-11-07T13:15:00'), 'November 7, 2022 at 01:15 PM'],
-      [new Date('2022-12-15T23:45:00'), 'December 15, 200 at 11:45 PM'],
+      [new Date('2022-12-15T23:45:00'), 'December 15, 2022 at 11:45 PM'],
     ])(
       'returns formatted date when passing datetime string #%#',
       (date, expected) => {
