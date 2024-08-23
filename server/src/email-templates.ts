@@ -67,7 +67,7 @@ export const dateChangeText = ({
   start_at: Date;
 }) => {
   return `\n- Start: ${formatDate(start_at)}<br />
-- End: ${formatDate(ends_at)}`;
+- End:   ${formatDate(ends_at)}`;
 };
 
 export const streamingUrlChangeText = ({

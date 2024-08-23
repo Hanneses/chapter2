@@ -18,13 +18,13 @@ import { Loading } from '../../../components/Loading';
 import SponsorsCard from '../../../components/SponsorsCard';
 import { TagsBox } from '../../../components/TagsBox';
 import { useEventQuery } from '../../../generated/graphql';
-import { formatDate } from '../../../util/date';
 import { useParam } from '../../../hooks/useParam';
 import { AttendanceNames } from '../../../../../common/attendance';
 import { UsersList } from '../components/UsersList';
 import { Actions } from '../components/Actions';
 import { useUser } from 'modules/auth/user';
 import { EventVenue } from 'modules/dashboard/Events/components/EventVenue';
+import { formatEventDateStartEnd } from 'util/formatDateStartEnd';
 
 const textStyleProps = { fontWeight: 500, fontSize: ['smaller', 'sm', 'md'] };
 
@@ -47,8 +47,6 @@ export const EventPage: NextPage = () => {
     ({ attendance }) => attendance.name === AttendanceNames.waitlist,
   );
 
-  const startAt = formatDate(data.event.start_at);
-  const endsAt = formatDate(data.event.ends_at);
   const hasEnded = isPast(new Date(data.event.ends_at));
 
   return (
@@ -108,8 +106,11 @@ export const EventPage: NextPage = () => {
         )}
 
         <Text {...textStyleProps}>{data.event.description}</Text>
-        <Text {...textStyleProps}>Starting: {startAt}</Text>
-        <Text {...textStyleProps}>Ending: {endsAt}</Text>
+
+        <Text {...textStyleProps}>
+          {`Date: ${formatEventDateStartEnd(data.event.start_at, data.event.ends_at)}`}
+        </Text>
+
         <Text {...textStyleProps}>
           {`Capacity: 
           ${isLoggedIn ? `${attendees.length} /` : ''} 

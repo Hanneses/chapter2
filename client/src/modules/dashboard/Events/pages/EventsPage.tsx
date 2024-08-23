@@ -16,7 +16,6 @@ import React, { ReactElement, useState } from 'react';
 
 import { isPast } from 'date-fns';
 import { AddIcon, EditIcon, LockIcon } from '@chakra-ui/icons';
-import { formatDate } from '../../../../util/date';
 import { DashboardLoading } from '../../shared/components/DashboardLoading';
 import { DashboardLayout } from '../../shared/components/DashboardLayout';
 import { isOnline, isPhysical } from '../../../../util/venueType';
@@ -28,6 +27,7 @@ import {
   Permission,
 } from '../../../../../../common/permissions';
 import { checkChapterPermission } from '../../../../util/check-permission';
+import { formatEventDateStartEnd } from 'util/formatDateStartEnd';
 
 interface FilterEventsProps {
   setFilterEvent: React.Dispatch<React.SetStateAction<boolean>>;
@@ -98,7 +98,10 @@ export const EventsPage: NextPageWithLayout = () => {
         gap="2em"
         gridTemplateColumns=".5fr 1fr 1fr 8em"
       >
-        <Heading id="page-heading">Events</Heading>
+        <Heading id="page-heading" data-cy="dashboard-events-page-headline">
+          Events
+        </Heading>
+
         <Flex
           alignItems="center"
           justifyContent={{ base: 'space-between', md: 'revert' }}
@@ -224,7 +227,8 @@ export const EventsPage: NextPageWithLayout = () => {
                   : 'In-person only'}
               </Text>
             ),
-            date: (event) => formatDate(event.start_at),
+            date: (event) =>
+              formatEventDateStartEnd(event.start_at, event.ends_at),
             action: (event) => (
               <>
                 {hasPermissiontoEditEvent && (
@@ -351,7 +355,7 @@ export const EventsPage: NextPageWithLayout = () => {
                         ? streaming_url || 'TBD'
                         : 'In-person only'}
                     </Text>
-                    <Text>{formatDate(start_at)}</Text>
+                    <Text>{formatEventDateStartEnd(start_at, ends_at)}</Text>
                     {hasPermissiontoEditEvent && (
                       <LinkButton
                         colorScheme="blue"

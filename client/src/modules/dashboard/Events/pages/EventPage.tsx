@@ -6,7 +6,6 @@ import { ReactElement } from 'react';
 import { Link } from 'chakra-next-link';
 import { useDashboardEventQuery } from '../../../../generated/graphql';
 import { useParam } from '../../../../hooks/useParam';
-import { formatDate } from '../../../../util/date';
 import { DashboardLoading } from '../../shared/components/DashboardLoading';
 import { DashboardLayout } from '../../shared/components/DashboardLayout';
 import Actions from '../components/Actions';
@@ -17,6 +16,7 @@ import SponsorsCard from '../../../../components/SponsorsCard';
 import { TagsBox } from '../../../../components/TagsBox';
 import { NextPageWithLayout } from '../../../../pages/_app';
 import { AttendanceNames } from '../../../../../../common/attendance';
+import { formatEventDateStartEnd } from 'util/formatDateStartEnd';
 
 export const EventPage: NextPageWithLayout = () => {
   const router = useRouter();
@@ -31,8 +31,6 @@ export const EventPage: NextPageWithLayout = () => {
   if (!data.dashboardEvent)
     return <NextError statusCode={404} title="Event not found" />;
 
-  const startAt = formatDate(data.dashboardEvent.start_at);
-  const endAt = formatDate(data.dashboardEvent.ends_at);
   const { id: chapterId, name: chapterName } = data.dashboardEvent.chapter;
   const attendees = data.dashboardEvent.event_users.filter(
     ({ attendance }) => attendance.name === AttendanceNames.confirmed,
@@ -88,8 +86,12 @@ export const EventPage: NextPageWithLayout = () => {
         )}
         <Text fontSize={'md'}>{data.dashboardEvent.description}</Text>
 
-        <TextField label="Starting">{startAt}</TextField>
-        <TextField label="Ending">{endAt}</TextField>
+        <TextField label="Date">
+          {formatEventDateStartEnd(
+            data.dashboardEvent.start_at,
+            data.dashboardEvent.ends_at,
+          )}
+        </TextField>
 
         <TextField label="Capacity">
           {`${attendees.length} / ${data.dashboardEvent.capacity}`}

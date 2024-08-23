@@ -60,6 +60,7 @@ export default defineConfig({
     baseUrl: 'http://localhost:3000',
     retries: { runMode: 3, openMode: 0 },
     modifyObstructiveCode: false,
+    experimentalRunAllSpecs: true,
     setupNodeEvents(on, config) {
       // `on` is used to hook into various events Cypress emits
       // `config` is the resolved Cypress config

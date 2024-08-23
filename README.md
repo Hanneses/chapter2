@@ -1,6 +1,7 @@
 # Chapter 2 – event management tool
 
 [![All Contributors](https://img.shields.io/github/all-contributors/Hanneses/chapter2?color=orange&style=flat-square)](#contributors-)
+[![Cypress](https://github.com/Hanneses/chapter2/actions/workflows/cypress.yaml/badge.svg)](https://github.com/Hanneses/chapter2/actions/workflows/cypress.yaml)
 [![Setup Automated](https://img.shields.io/badge/setup-automated-blue?logo=gitpod)](https://gitpod.io/#https://github.com/Hanneses/chapter2)
 
 ## **_Chapter 2_** is an event management tool for non-profit organizations. It's open-source, free and easy to use. 💫

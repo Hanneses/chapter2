@@ -1,5 +1,20 @@
-import { format } from 'date-fns';
+// NOTE: consider client-side method in /client/src/util/date.ts
 
 export const formatDate = (date: Date) => {
-  return format(new Date(date), 'E, LLL d @ HH:mm O');
+  return new Intl.DateTimeFormat(undefined, {
+    dateStyle: 'long',
+    timeStyle: 'short',
+  }).format(new Date(date));
+};
+
+export const formatDateOnly = (date: Date) => {
+  return new Intl.DateTimeFormat(undefined, {
+    dateStyle: 'long',
+  }).format(new Date(date));
+};
+
+export const formatTimeOnly = (date: Date) => {
+  return new Intl.DateTimeFormat(undefined, {
+    timeStyle: 'short',
+  }).format(new Date(date));
 };

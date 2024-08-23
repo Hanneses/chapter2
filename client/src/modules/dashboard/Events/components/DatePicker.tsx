@@ -1,9 +1,7 @@
-import React from 'react';
-import ReactDatePicker from 'react-datepicker';
-
-import 'react-datepicker/dist/react-datepicker.css';
-
+import ReactDatePicker, { registerLocale } from 'react-datepicker';
+import { de, enUS } from 'date-fns/locale';
 import { Input } from '../../../../components/Form/Input';
+import 'react-datepicker/dist/react-datepicker.css';
 
 interface DatePickerProps {
   date: Date;
@@ -26,6 +24,14 @@ const DatePicker = ({
   loading,
   onChange,
 }: DatePickerProps) => {
+  registerLocale('de', de);
+  registerLocale('en-US', enUS);
+  const navLocale = navigator.language;
+  const timeCaption = navLocale === 'de' ? 'Zeit' : 'Time';
+  const dateFormat =
+    navLocale === 'de' ? 'd. MMMM yyyy, h:mm' : 'MMMM d, yyyy, h:mm aa';
+  const timeFormat = navLocale === 'de' ? 'h:mm' : 'h:mm aa';
+
   return (
     <ReactDatePicker
       name={field}
@@ -35,7 +41,10 @@ const DatePicker = ({
       timeIntervals={5}
       onChange={onChange}
       disabled={loading}
-      dateFormat="MMMM d, yyyy h:mm aa"
+      dateFormat={dateFormat}
+      timeFormat={timeFormat}
+      timeCaption={timeCaption}
+      locale={navLocale}
       customInput={
         <Input
           id={`${field}_trigger`}
@@ -45,6 +54,7 @@ const DatePicker = ({
           isDisabled={loading}
           isRequired={isRequired}
           value={date.toDateString()}
+          width={'400px'}
         />
       }
     />

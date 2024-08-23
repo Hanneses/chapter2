@@ -22,7 +22,7 @@ import { Pagination } from '../util/pagination';
 import { UserContextType, useUser } from '../auth/user';
 import { getNameText } from '../../components/UserName';
 
-const eventsPerPage = 2;
+const eventsPerPage = 3;
 
 type User = NonNullable<UserContextType['user']>;
 
