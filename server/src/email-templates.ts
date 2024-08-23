@@ -151,7 +151,7 @@ export const eventConfirmAtendeeText = ({
   subject: 'Your attendance is confirmed',
   emailText: `Your reservation is confirmed. You can attend the event ${eventName}.<br />
 <br />
-When: ${formatDate(start_at)} to ${formatDate(ends_at)}
+When: ${formatEventDateStartEnd(start_at, ends_at)}
 <br />${physicalLocation}${streamingData}
 <br />`,
 });
@@ -252,7 +252,7 @@ export const eventAttendanceConfirmationText = ({
   emailText: `Hi${userName},<br />
 Confirming your attendance of ${eventName}.<br />
 <br />
-When: ${formatDate(start_at)} to ${formatDate(ends_at)}
+When: ${formatEventDateStartEnd(start_at, ends_at)}
 <br />${physicalLocation}${streamingData}
 <br />
 You should receive a calendar invite shortly. If you do not, you can add the event to your calendars by clicking on the links below:<br />

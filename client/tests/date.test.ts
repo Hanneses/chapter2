@@ -3,7 +3,7 @@ import { formatDate } from '../src/util/date';
 describe('date', () => {
   describe('formatDate', () => {
     it.each([
-      [new Date('2022-01-13T00:00:00'), 'January 13, 2022 at 0:00 AM'],
+      [new Date('2022-01-13T00:00:00'), 'January 13, 2022 at 12:00 AM'],
       [new Date('2022-02-04T01:05:00'), 'February 4, 2022 at 1:05 AM'],
       [new Date('2022-03-20T19:55:00'), 'March 20, 2022 at 7:55 PM'],
       [new Date('2022-04-13T10:10:00'), 'April 13, 2022 at 10:10 AM'],

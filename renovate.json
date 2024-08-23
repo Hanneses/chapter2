@@ -1,7 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["github>Hanneses/renovate-config:main"],
-  "rangeStrategy": "pin",
+  "rangeStrategy": "auto",
   "packageRules": [
     {
       "groupName": "Jest and ts-jest",
