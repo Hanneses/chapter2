@@ -1,7 +1,9 @@
 # Use images from registry
 services:
   server:
+    # TODO replace freecodecamp docker container
     image: freecodecamp/chapter-server
 
   client:
+    # TODO replace freecodecamp docker container
     image: freecodecamp/chapter-client
