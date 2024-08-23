@@ -2,7 +2,7 @@ import { VStack, Flex, Text, Heading, Box } from '@chakra-ui/react';
 import { DataTable } from 'chakra-data-table';
 import { LinkButton } from 'chakra-next-link';
 import React, { ReactElement } from 'react';
-
+import { AddIcon, EditIcon } from '@chakra-ui/icons';
 import { useDashboardVenuesQuery } from '../../../../generated/graphql';
 import { DashboardLoading } from '../../shared/components/DashboardLoading';
 import { DashboardLayout } from '../../shared/components/DashboardLayout';
@@ -48,6 +48,7 @@ export const VenuesPage: NextPageWithLayout = () => {
             data-cy="new-venue"
             href="/dashboard/venues/new"
             colorScheme={'blue'}
+            leftIcon={<AddIcon />}
           >
             Add new
             <Text srOnly as="span">
@@ -59,6 +60,7 @@ export const VenuesPage: NextPageWithLayout = () => {
 
       <Box display={{ base: 'none', lg: 'block' }} width={'100%'}>
         <DataTable
+          variant={'variantTableList'}
           tableProps={{ table: { 'aria-labelledby': 'page-heading' } }}
           data={data.dashboardVenues}
           keys={['name', 'location', 'chapter', 'action'] as const}
@@ -86,8 +88,9 @@ export const VenuesPage: NextPageWithLayout = () => {
                   <LinkButton
                     data-cy="edit-venue-button"
                     colorScheme="blue"
-                    size="xs"
+                    size="sm"
                     href={`/dashboard/chapters/${venue.chapter_id}/venues/${venue.id}/edit`}
+                    leftIcon={<EditIcon />}
                   >
                     Edit
                     <Text srOnly as="span">

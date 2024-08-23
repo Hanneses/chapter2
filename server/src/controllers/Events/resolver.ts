@@ -431,8 +431,8 @@ export class EventResolver {
       emailData: isAttendee
         ? eventAttendanceConfirmation
         : event.invite_only
-        ? eventAttendanceRequest
-        : eventWaitlistConfirmation,
+          ? eventAttendanceRequest
+          : eventWaitlistConfirmation,
       event,
       user: ctx.user,
     });

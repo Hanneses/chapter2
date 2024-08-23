@@ -1,7 +1,8 @@
 import { extendTheme } from '@chakra-ui/react';
 import { buttonTheme } from './ButtonOutline';
+import { tableTheme } from './Table.module';
 
-const chapterStyleVariables = {
+const colorTheme = {
   colors: {
     gray: {
       '00': '#ffffff',
@@ -15,13 +16,16 @@ const chapterStyleVariables = {
       '90': '#0a0a23',
     },
     yellow: {
-      gold: '#ffbf00',
+      gold: '#e1a900',
       light: '#ffc300',
       dark: '#4d3800',
     },
   },
 };
 
-export const chapterTheme = extendTheme(chapterStyleVariables, {
-  components: { Button: buttonTheme },
+export const customTheme = extendTheme(colorTheme, {
+  components: {
+    Button: buttonTheme,
+    Table: tableTheme,
+  },
 });

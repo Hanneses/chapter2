@@ -2,7 +2,7 @@ import { Button, HStack } from '@chakra-ui/react';
 import { useConfirm, useConfirmDelete } from 'chakra-confirm';
 import { LinkButton } from 'chakra-next-link';
 import React, { useMemo, useState } from 'react';
-
+import { ArrowRightIcon, DeleteIcon, EditIcon } from '@chakra-ui/icons';
 import { CHAPTER, CHAPTERS } from '../../../chapters/graphql/queries';
 import { DASHBOARD_EVENT, DASHBOARD_EVENTS } from '../graphql/queries';
 import {
@@ -126,9 +126,10 @@ const Actions: React.FC<ActionsProps> = ({
       )}
       <HStack spacing="3">
         <LinkButton
-          size={['sm', 'md']}
+          size={'sm'}
           colorScheme="blue"
           href={`/dashboard/events/${eventId}/edit`}
+          leftIcon={<EditIcon />}
         >
           Edit
         </LinkButton>
@@ -140,7 +141,7 @@ const Actions: React.FC<ActionsProps> = ({
             eventId,
           }) && (
             <Button
-              size={['sm', 'md']}
+              size={'sm'}
               colorScheme="blue"
               onClick={onCreateCalendarEvent}
               isLoading={isCreatingCalendarEvent}
@@ -148,29 +149,32 @@ const Actions: React.FC<ActionsProps> = ({
               Create calendar event
             </Button>
           )}
-        {!hideCancel && !canceled && (
-          <EventCancelButton
-            size={['sm', 'md']}
-            event={event}
-            buttonText="Cancel"
-          />
-        )}
-        <Button size={['sm', 'md']} colorScheme="red" onClick={onClickDelete}>
-          Delete
-        </Button>
-        <SharePopOver
-          size={['sm', 'md']}
-          link={`${process.env.NEXT_PUBLIC_CLIENT_URL}/events/${eventId}?confirm_attendance=true`}
-        />
+
         {user?.admined_chapters && user.admined_chapters?.length >= 2 && (
           <LinkButton
-            size={['sm', 'md']}
+            size={'sm'}
             colorScheme="blue"
             href={`/dashboard/events/${eventId}/transfer`}
+            leftIcon={<ArrowRightIcon />}
           >
             Transfer
           </LinkButton>
         )}
+        <SharePopOver
+          size={'sm'}
+          link={`${process.env.NEXT_PUBLIC_CLIENT_URL}/events/${eventId}?confirm_attendance=true`}
+        />
+        {!hideCancel && !canceled && (
+          <EventCancelButton size={'sm'} event={event} buttonText="Cancel" />
+        )}
+        <Button
+          size={'sm'}
+          colorScheme="red"
+          onClick={onClickDelete}
+          leftIcon={<DeleteIcon />}
+        >
+          Delete
+        </Button>
       </HStack>
     </>
   );

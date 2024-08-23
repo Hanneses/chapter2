@@ -4,25 +4,25 @@ on:
     branches: [main]
 jobs:
   publish:
-    if: github.repository == 'freeCodeCamp/chapter'
+    if: github.repository == 'Hanneses/chapter2'
     name: Publish to GitHub pages
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         node-version: [20.x]
     services:
       postgres:
         # For now schema spy doesn't get on with postgres:14
-        image: postgres:13
+        image: postgres:16
         env:
           POSTGRES_PASSWORD: password
           POSTGRES_DB: chapter
         ports:
           - 5432:5432
     steps:
-      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
+      - uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@1a4442cacd436585916779262731d5b162bc6ec7 # v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install
@@ -31,7 +31,7 @@ jobs:
         env:
           DB_PORT: 5432
         run: 'npm run prisma migrate reset -- --force --skip-generate --skip-seed'
-      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
+      - uses: actions/checkout@v4
         with:
           ref: gh-pages
       - name: Run SchemaSpy

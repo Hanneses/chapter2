@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@chakra-ui/button';
 import { useForm } from 'react-hook-form';
-import { VStack } from '@chakra-ui/layout';
+import { Heading, VStack } from '@chakra-ui/layout';
 
 import { Select } from '../../../../components/Form/Select';
 import { Form } from '../../../../components/Form/Form';
@@ -45,6 +45,12 @@ const SponsorForm: React.FC<SponsorFormProps> = (props) => {
       submitLabel={submitText}
       FormHandling={handleSubmit(disableWhileSubmitting)}
     >
+      {sponsor?.name ? (
+        <Heading>Edit sponsor: {sponsor?.name}</Heading>
+      ) : (
+        <Heading>New sponsor</Heading>
+      )}
+
       <VStack gap={4}>
         {fields.map((field) => {
           const error = errors[field.key]?.message;

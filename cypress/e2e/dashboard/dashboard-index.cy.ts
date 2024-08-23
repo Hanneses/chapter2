@@ -5,11 +5,11 @@ describe('dashboard', () => {
     cy.fixture('users').then((fixture) => {
       users = fixture;
     });
-    cy.visit('/dashboard');
   });
 
   it('instance owner should have links to all the dashboard', () => {
     cy.login();
+    cy.visit('/dashboard');
     cy.get('a[href="/dashboard/events"]').should('be.visible');
     cy.get('a[href="/dashboard/chapters"]').should('be.visible');
     cy.get('a[href="/dashboard/venues"]').should('be.visible');
@@ -19,6 +19,7 @@ describe('dashboard', () => {
 
   it('chapter administrator should have links to the dashboards allowed for chapter administrator', () => {
     cy.login(users.chapter1Admin.email);
+    cy.visit('/dashboard');
     cy.get('a[href="/dashboard/events"]').should('be.visible');
     cy.get('a[href="/dashboard/chapters"]').should('be.visible');
     cy.get('a[href="/dashboard/venues"]').should('be.visible');
@@ -29,6 +30,8 @@ describe('dashboard', () => {
 
   it(`member shouldn't have links to the dashboards`, () => {
     cy.login(users.testUser.email);
+    cy.visit('/dashboard');
+
     cy.get('a[href="/dashboard/events"]').should('not.exist');
     cy.get('a[href="/dashboard/chapters"]').should('not.exist');
     cy.get('a[href="/dashboard/venues"]').should('not.exist');

@@ -16,6 +16,11 @@ describe('events page', () => {
       .should('be.visible')
       .should('have.length', 10);
 
-    cy.get('[data-testid="pagination"]').click().should('not.exist');
+    cy.get('[data-testid="pagination"]').click();
+    cy.get('[data-cy="event-card"]')
+      .should('be.visible')
+      .should('have.length', 15);
+
+    cy.get('[data-testid="pagination"]').should('not.exist');
   });
 });

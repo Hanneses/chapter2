@@ -47,7 +47,7 @@ describe('event-email', () => {
       const { emailText } = eventInviteEmail(data);
       expect(emailText).toEqual(`Upcoming event for Not so serious.<br />
 <br />
-When: Tue, Feb 7 @ 12:00 GMT+0 to Tue, Feb 7 @ 12:30 GMT+0
+When: February 7, 2023, 12:00 PM - 12:30 PM
 <br />
 Where: Undecided/TBD<br />
 Streaming URL: Undecided/TBD<br />
@@ -72,7 +72,7 @@ View all upcoming events for Not so serious: <a href='http://localhost:3000/chap
       });
       expect(emailText).toEqual(`Upcoming event for Not so serious.<br />
 <br />
-When: Tue, Feb 7 @ 12:00 GMT+0 to Tue, Feb 7 @ 12:30 GMT+0
+When: February 7, 2023, 12:00 PM - 12:30 PM
 <br />
 Where: Undecided/TBD<br />
 <br />
@@ -96,7 +96,7 @@ View all upcoming events for Not so serious: <a href='http://localhost:3000/chap
       });
       expect(emailText).toEqual(`Upcoming event for Not so serious.<br />
 <br />
-When: Tue, Feb 7 @ 12:00 GMT+0 to Tue, Feb 7 @ 12:30 GMT+0
+When: February 7, 2023, 12:00 PM - 12:30 PM
 <br />
 Streaming URL: Undecided/TBD<br />
 <br />
@@ -169,7 +169,7 @@ You received this email because you Subscribed to Hammes - Sawayn Event.<br />`,
       const expected = {
         emailText: `Your reservation is confirmed. You can attend the event Emard and Sons.<br />
 <br />
-When: Tue, Feb 7 @ 12:00 GMT+0 to Tue, Feb 7 @ 12:30 GMT+0
+When: February 7, 2023, 12:00 PM - 12:30 PM
 <br />
 Where: Undecided/TBD<br />
 Streaming URL: http://streaming.url/abcd<br />
@@ -254,7 +254,7 @@ Streaming URL: http://streaming.url/abcd<br />
         emailText: `Hi Not the Owner,<br />
 Confirming your attendance of Howe LLC.<br />
 <br />
-When: Tue, Feb 7 @ 12:00 GMT+0 to Tue, Feb 7 @ 12:30 GMT+0
+When: February 7, 2023, 12:00 PM - 12:30 PM
 <br />
 Where: Nitzsche - Hills<br />
 Streaming URL: http://streaming.url/abcd<br />
@@ -263,7 +263,7 @@ You should receive a calendar invite shortly. If you do not, you can add the eve
 <br />
 <a href=https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20230207T120000Z%2F20230207T123000Z&details=&location=Nitzsche%20-%20Hills&text=Howe%20LLC>Google</a>
 <br />
-<a href=https://outlook.live.com/calendar/0/deeplink/compose?allday=false&body=&enddt=2023-02-07T12%3A30%3A00&location=Nitzsche%20-%20Hills&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&startdt=2023-02-07T12%3A00%3A00&subject=Howe%20LLC>Outlook</a>`,
+<a href=https://outlook.live.com/calendar/0/action/compose?allday=false&body=&enddt=2023-02-07T12%3A30%3A00&location=Nitzsche%20-%20Hills&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&startdt=2023-02-07T12%3A00%3A00&subject=Howe%20LLC>Outlook</a>`,
       };
       expect(eventAttendanceConfirmation(data)).toMatchObject(expected);
     });
@@ -326,8 +326,8 @@ Streaming URL: http://streaming.url/abcd<br />
 <br />
 
 
-- Start: Fri, Feb 10 @ 11:00 GMT+0<br />
-- End: Sat, Feb 11 @ 11:00 GMT+0<br />
+- Start: February 10, 2023 at 11:00 AM<br />
+- End:   February 11, 2023 at 11:00 AM<br />
 ----------------------------<br />
 <br />\n`,
       };

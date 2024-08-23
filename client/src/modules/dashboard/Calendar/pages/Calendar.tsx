@@ -2,7 +2,7 @@ import { Button, Flex, Heading, HStack, Text } from '@chakra-ui/react';
 import { DataTable } from 'chakra-data-table';
 import { LinkButton } from 'chakra-next-link';
 import NextError from 'next/error';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 
 import {
   useCalendarIntegrationStatusQuery,
@@ -88,8 +88,8 @@ export const Calendar: NextPageWithLayout = () => {
           {isAuthenticated
             ? 'Authenticated'
             : isBroken
-            ? 'Reauthenticate with Google'
-            : 'Authenticate with Google'}
+              ? 'Reauthenticate with Google'
+              : 'Authenticate with Google'}
         </LinkButton>
         {(isAuthenticated || isBroken) && (
           <Button

@@ -12,9 +12,10 @@ import {
 } from '@chakra-ui/react';
 import { DataTable } from 'chakra-data-table';
 import NextError from 'next/error';
-import React, { ReactElement, useMemo, useState } from 'react';
+import { ReactElement, useMemo, useState } from 'react';
 
 import { useConfirm } from 'chakra-confirm';
+import { EditIcon, LockIcon, UnlockIcon } from '@chakra-ui/icons';
 import {
   useBanUserMutation,
   useChapterRolesQuery,
@@ -110,7 +111,7 @@ export const ChapterUsersPage: NextPageWithLayout = () => {
   const onUnban = async ({ id: userId, name: userName }: BanArgs) => {
     const ok = await confirm({
       buttonColor: 'red',
-      body: `Are you sure you want to unban ${userName}`,
+      body: `Are you sure you want to unban ${userName}?`,
     });
 
     if (ok) {
@@ -183,7 +184,8 @@ export const ChapterUsersPage: NextPageWithLayout = () => {
                     <Button
                       data-cy="changeRole"
                       colorScheme="blue"
-                      size="xs"
+                      size="sm"
+                      leftIcon={<EditIcon />}
                       onClick={() =>
                         changeRole({
                           roleName: chapter_role.name,
@@ -192,7 +194,7 @@ export const ChapterUsersPage: NextPageWithLayout = () => {
                         })
                       }
                     >
-                      Change
+                      Change role
                       <Text srOnly as="span">
                         role of {otherUser.name}
                       </Text>
@@ -210,8 +212,9 @@ export const ChapterUsersPage: NextPageWithLayout = () => {
                       <Button
                         data-cy="unbanUser"
                         colorScheme="purple"
-                        size="xs"
+                        size="sm"
                         isDisabled={!is_bannable}
+                        leftIcon={<UnlockIcon />}
                         onClick={() => onUnban(otherUser)}
                       >
                         Unban
@@ -234,8 +237,9 @@ export const ChapterUsersPage: NextPageWithLayout = () => {
                       <Button
                         data-cy="banUser"
                         colorScheme="red"
-                        size="xs"
+                        size="sm"
                         isDisabled={!is_bannable}
+                        leftIcon={<LockIcon />}
                         onClick={() => onBan(otherUser)}
                       >
                         Ban
@@ -291,7 +295,8 @@ export const ChapterUsersPage: NextPageWithLayout = () => {
                             <Button
                               data-cy="changeRole"
                               colorScheme="blue"
-                              size="xs"
+                              size="sm"
+                              leftIcon={<EditIcon />}
                               onClick={() =>
                                 changeRole({
                                   roleName: chapter_role.name,
@@ -300,7 +305,7 @@ export const ChapterUsersPage: NextPageWithLayout = () => {
                                 })
                               }
                             >
-                              Change
+                              Change role
                               <Text srOnly as="span">
                                 role of {user.name}
                               </Text>
@@ -318,8 +323,9 @@ export const ChapterUsersPage: NextPageWithLayout = () => {
                               <Button
                                 data-cy="unbanUser"
                                 colorScheme="purple"
-                                size="xs"
+                                size="sm"
                                 isDisabled={!is_bannable}
+                                leftIcon={<UnlockIcon />}
                                 onClick={() => onUnban(user)}
                               >
                                 Unban
@@ -342,8 +348,9 @@ export const ChapterUsersPage: NextPageWithLayout = () => {
                               <Button
                                 data-cy="banUser"
                                 colorScheme="red"
-                                size="xs"
+                                size="sm"
                                 isDisabled={!is_bannable}
+                                leftIcon={<LockIcon />}
                                 onClick={() => onBan(user)}
                               >
                                 Ban

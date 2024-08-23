@@ -219,7 +219,7 @@ export interface EventFormProps {
   chapter?: { id: number; name: string };
   data?: IEventData;
   formType: 'new' | 'edit' | 'transfer';
-  header: string;
+  header?: string;
   loadingText: string;
   onSubmit: (data: EventFormData) => Promise<void>;
   submitText: string;

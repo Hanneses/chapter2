@@ -1,4 +1,4 @@
-import { Button, Heading } from '@chakra-ui/react';
+import { Button, Heading, Text } from '@chakra-ui/react';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -52,8 +52,16 @@ const VenueForm: React.FC<VenueFormProps> = (props) => {
       submitLabel={submitText}
       FormHandling={handleSubmit(disableWhileSubmitting)}
     >
+      {venue ? (
+        <Heading>Edit venue: {venue.name}</Heading>
+      ) : (
+        <Heading>New venue</Heading>
+      )}
+
       {chapterData ? (
-        <Heading>{chapterData.chapter.name}</Heading>
+        <Text fontSize={['md', 'lg', 'xl']}>
+          Chapter: {chapterData.chapter.name}
+        </Text>
       ) : (
         <Select
           label={'Chapter'}

@@ -70,8 +70,8 @@ const EventDatesForm: React.FC<EventDatesFormProps> = ({
                 {newEvent
                   ? 'Chapter members will not be notified about creation of this event, as it starts in the past.'
                   : dirtyFields.start_at
-                  ? 'New date is in the past.'
-                  : 'Start date has already passed.'}
+                    ? 'New date is in the past.'
+                    : 'Start date has already passed.'}
               </FormHelperText>
             </HStack>
           )}

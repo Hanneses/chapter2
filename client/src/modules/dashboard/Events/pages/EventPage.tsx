@@ -1,12 +1,11 @@
-import { Heading, Text, Flex, Tooltip } from '@chakra-ui/react';
+import { Heading, Text, Flex, Tooltip, Box, Img } from '@chakra-ui/react';
 import { LockIcon } from '@chakra-ui/icons';
 import NextError from 'next/error';
 import { useRouter } from 'next/router';
-import React, { ReactElement } from 'react';
-
+import { ReactElement } from 'react';
+import { Link } from 'chakra-next-link';
 import { useDashboardEventQuery } from '../../../../generated/graphql';
 import { useParam } from '../../../../hooks/useParam';
-import { formatDate } from '../../../../util/date';
 import { DashboardLoading } from '../../shared/components/DashboardLoading';
 import { DashboardLayout } from '../../shared/components/DashboardLayout';
 import Actions from '../components/Actions';
@@ -16,6 +15,8 @@ import { LinkField, TextField } from '../components/Fields';
 import SponsorsCard from '../../../../components/SponsorsCard';
 import { TagsBox } from '../../../../components/TagsBox';
 import { NextPageWithLayout } from '../../../../pages/_app';
+import { AttendanceNames } from '../../../../../../common/attendance';
+import { formatEventDateStartEnd } from 'util/formatDateStartEnd';
 
 export const EventPage: NextPageWithLayout = () => {
   const router = useRouter();
@@ -30,9 +31,10 @@ export const EventPage: NextPageWithLayout = () => {
   if (!data.dashboardEvent)
     return <NextError statusCode={404} title="Event not found" />;
 
-  const startAt = formatDate(data.dashboardEvent.start_at);
-  const endAt = formatDate(data.dashboardEvent.ends_at);
   const { id: chapterId, name: chapterName } = data.dashboardEvent.chapter;
+  const attendees = data.dashboardEvent.event_users.filter(
+    ({ attendance }) => attendance.name === AttendanceNames.confirmed,
+  );
 
   return (
     <>
@@ -43,6 +45,23 @@ export const EventPage: NextPageWithLayout = () => {
         gap={'3'}
         flexDirection="column"
       >
+        {data.dashboardEvent.image_url && (
+          <>
+            <Box height={'200px'}>
+              <Img
+                src={data.dashboardEvent.image_url}
+                maxHeight={200}
+                alt="Event image"
+                borderRadius="md"
+                objectFit="cover"
+              />
+            </Box>
+            <Link href={data.dashboardEvent.image_url} isExternal={true}>
+              <sub>{data.dashboardEvent.image_url}</sub>
+            </Link>
+          </>
+        )}
+
         <Flex alignItems="center">
           {data.dashboardEvent.invite_only && (
             <Tooltip label="Invite only">
@@ -57,27 +76,35 @@ export const EventPage: NextPageWithLayout = () => {
             Canceled
           </Text>
         )}
+
+        <LinkField label="Event By" href={`/dashboard/chapters/${chapterId}`}>
+          {chapterName}
+        </LinkField>
+
         {!!data.dashboardEvent.event_tags.length && (
           <TagsBox tags={data.dashboardEvent.event_tags} />
         )}
         <Text fontSize={'md'}>{data.dashboardEvent.description}</Text>
-        {data.dashboardEvent.image_url && (
-          <LinkField label="Event Image Url" isExternal>
-            {data.dashboardEvent.image_url}
-          </LinkField>
-        )}
+
+        <TextField label="Date">
+          {formatEventDateStartEnd(
+            data.dashboardEvent.start_at,
+            data.dashboardEvent.ends_at,
+          )}
+        </TextField>
+
+        <TextField label="Capacity">
+          {`${attendees.length} / ${data.dashboardEvent.capacity}`}
+        </TextField>
+
         {data.dashboardEvent.url && (
-          <LinkField label="Event Url" isExternal>
+          <LinkField label="Website" isExternal>
             {data.dashboardEvent.url}
           </LinkField>
         )}
-        <TextField label="Capacity">{data.dashboardEvent.capacity}</TextField>
-        <TextField label="Starting">{startAt}</TextField>
-        <TextField label="Ending">{endAt}</TextField>
-        <LinkField label="Event By" href={`/dashboard/chapters/${chapterId}`}>
-          {chapterName}
-        </LinkField>
+
         <EventVenue event={data.dashboardEvent} />
+
         <Actions
           event={data.dashboardEvent}
           chapter={data.dashboardEvent.chapter}

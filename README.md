@@ -1,83 +1,120 @@
-> **_Chapter 2_** continues the deprecated project [freeCodeCamp/chapter](https://github.com/freeCodeCamp/chapter).
+# Chapter 2 – event management tool
 
+[![All Contributors](https://img.shields.io/github/all-contributors/Hanneses/chapter2?color=orange&style=flat-square)](#contributors-)
+[![Cypress](https://github.com/Hanneses/chapter2/actions/workflows/cypress.yaml/badge.svg)](https://github.com/Hanneses/chapter2/actions/workflows/cypress.yaml)
+[![Setup Automated](https://img.shields.io/badge/setup-automated-blue?logo=gitpod)](https://gitpod.io/#https://github.com/Hanneses/chapter2)
 
-# Welcome to Chapter
+## **_Chapter 2_** is an event management tool for non-profit organizations. It's open-source, free and easy to use. 💫
 
-[![All Contributors](https://img.shields.io/github/all-contributors/freeCodeCamp/chapter?color=orange&style=flat-square)](#contributors-)
-[![Setup Automated](https://img.shields.io/badge/setup-automated-blue?logo=gitpod)](https://gitpod.io/#https://github.com/freeCodeCamp/chapter)
+The goal of this project is to provide a self-hosted Docker container deployed to the cloud with a one-click and then configured by the _owner_. No coding required.
 
-After several years of being dissatisfied with existing group event tools (Meetup, Facebook events) we decided to build our own.
+Your _organization_ can host an own instance of _Chapter 2_ under a sub-domain of your website, such as `chapter.sierraclub.org` or `chapter.womenwhocode.org`. All of an _organization_'s user data will remain under their control.
 
-This will be a self-hosted Docker container deployed to the cloud with a one-click and then configured by the _owner_. No coding required.
+See our [Vision statement](https://github.com/freeCodeCamp/chapter/wiki/Vision). (_by freeCodeCamp_)
 
-Your _organization_ can host an _instance_ of _Chapter_ under a sub-domain of your website, such as `chapter.sierraclub.org` or `chapter.womenwhocode.org`.
+(_Chapter 2_ continues the deprecated project [freeCodeCamp/chapter](https://github.com/freeCodeCamp/chapter).)
 
-All of an _organization_'s user data will remain under their control.
+## Features
 
-Our [Vision statement](https://github.com/freeCodeCamp/chapter/wiki/Vision) provides more details on the reasons for **_Chapter_**.
+### Maintain Events
+
+* **Create events** – Create events and assign them to chapters. Maintain several information per event: name, start/end date, description, image, type, capacity, public and invite-only.
+* **Create chapters** – Create several chapters for your organization.
+* **Event overview** – See reports for chapters' events and attendees.
+
+### Attend and Subscribe to Events
+
+* **View events** – See upcoming and past events of your organization and per each chapter.
+* **Attend events** – Members can attend events. Attendance to invity-only events needs confirmation by event organizers.
+* **Waiting list** – If an events capacity is reached members will be placed on a waiting list.
+* **Subscribe to notifications** – Members can subscribe to event notifications, to get notified on new or changed events.
+
+### Manage Organization and Chapters
+
+* **View chapters** – See all available chapters of your organisation and relating events.
+* **Join/leave chapters** – Members are able to join and leave chapters.
+* **Subscribe to chapters** – Members can subscribe to chapters to get notified for new events.
+* **Create chapters** – To manage your organizational structure you can create chapters (like sub-organizations or local branches of an organization).
+
+### Account Management
+
+* **Request and delete data** – Users are able to request and download their account data, as well as delete their accounts.
+* **Manage users** – Administrators can manage users of each chapter, set roles, ban and unban users.
 
 ## Terminology
 
 To better communicate and more easily build an API and UI, the current contributors have decided on a collection of terminology to clarify discussions surrounding the **_Chapter_** project:
 
-| Term          | Definition      | Example  |
-| ------------- | ------------- | ----- |
-| _instance_      | a web server deployment of the [**_Chapter_** application](https://github.com/freeCodeCamp/chapter/), managed by an _organization_. | a Docker container running on a web host |
-| _organization_ | a non-profit with multiple _chapters_ | Women Who Code at the sub-domain: `chapter.womenwhocode.org` |
-| _chapter_      | a container for _events_ and _users_  | Women Who Code - New York City |
-| _event_ | a meeting with a specific location and time to which _users_ can attend | Coffee And Code - BistroOne, New York City, NY - April 9, 2020 |
-| _role_ | a named definition of permissions to be attached to _users_ for the purpose of granting authorization | Owner, Adminstrator, Organizer, Member |
-| _user_ | an authenticated _user_ who is authorized based on their _role(s)_ | Sally Gold - SallyG@example.com |
-| _visitor_ | an non-authenticated web browser session with view-only access to public content | Anonymous Web Browser Client |
-| _owner_ | the _role_ of a _user_ who can configure the [**_Chapter_** application](https://github.com/freeCodeCamp/chapter/) _instance_ and manage _administrators_ for an entire _organization_ | Women Who Code - Global IT |
+| Term          | Definition    | Example       |
+| ------------- | ------------- | ------------- |
+| _instance_    | a web server deployment of the [Chapter application](https://github.com/Hanneses/chapter2/), managed by an _organization_. | a Docker container running on a web host |
+| _organization_ | the main structure with multiple _chapters_ | Women Who Code at the sub-domain: `chapter.womenwhocode.org` |
+| _chapter_     | a organizational structure for _events_ and _users_  | Women Who Code - New York City |
+| _event_       | a meeting with a specific location and time to which _users_ can attend | Coffee And Code - BistroOne, New York City, NY - April 9, 2020 |
+| **_Roles_**   |   |   |
+| _role_        | a definition of permissions to be attached to _users_ for the purpose of granting authorization | Owner, Adminstrator, Organizer, Member |
+| _user_        | an authenticated person who is authorized based on their _role(s)_ | Sally Gold - SallyG@example.com |
+| _visitor_     | an non-authenticated person with view-only access to public content | Any visitor |
+| _member_      | the _role_ of a _user_ who can follow and receive notifications from a _chapter_ and attend _events_  | Women Who Code - Edinburgh, Local Member |
+| _organizer_ <br>(_not available yet_) | the _role_ of a _user_ who can manage a _chapter's_ _events_, attendees, communications, and _members_ | Women Who Code - Edinburgh, Local Organizer |
 | _administrator_ | the _role_ of a _user_ who can setup and manage _chapters_ and _organizers_ for an _organization_ | Women Who Code - European Administrator |
-| _organizer_ (not MVP) | the _role_ of a _user_ who can manage a _chapter's_ _events_, attendees, communications, and _members_ | Women Who Code - Edinburgh, Local Organizer |
-| _member_ | the _role_ of a _user_ who can follow and receive notifications from a _chapter_ and attend _events_  | Women Who Code - Edinburgh, Local Member |
+| _owner_       | the _role_ of a _user_ who can configure the [Chapter application](https://github.com/Hanneses/chapter2/) _instance_ and manage _administrators_ for an entire _organization_ | Women Who Code - Global IT |
 
 ## Tech Stack
 
-We are using the following tools:
+Backend
 
-- [Node.js](https://nodejs.org) / [Apollo server](https://www.npmjs.com/package/apollo-server-express) - extendable graphql server
-  - [type-graphql](https://github.com/MichalLytek/type-graphql) - code first graphql schema definition library
-- [Postgres](https://www.postgresql.org) with [Prisma](https://prisma.io/) - for fully type-safe queries
-- [Next.js](https://nextjs.org/) - for both client and server-side rendering of the frontend (NextJS is based on [React](https://reactjs.org))
-  - [Apollo Client 3](https://www.apollographql.com/docs/react/)
-  - [TypeScript](https://www.typescriptlang.org/index.html#download-links)
-  - [Chakra UI](https://chakra-ui.com/) - simple, modular & accessible UI components for React
-  - Functional Components with [Hooks](https://reactjs.org/docs/hooks-intro.html)
-- [Jest](https://jestjs.io/) - for writing unit tests.
-- [Cypress](https://www.cypress.io/) - to check if specific actions are possible to perform in certain scenarios.
+* [Node.js](https://nodejs.org) + [Express](http://expressjs.com/) - webserver
+* [Apollo server](https://www.npmjs.com/package/apollo-server-express) - extendable graphql server
+* [type-graphql](https://github.com/MichalLytek/type-graphql) - code first graphql schema definition library
+
+Frontend
+
+* [React](https://reactjs.org) + [Next.js](https://nextjs.org/) - client and server-side rendering of frontend
+* [Apollo Client 3](https://www.apollographql.com/docs/react/) - access Apollo server
+* [Chakra UI](https://chakra-ui.com/) - simple, modular & accessible UI component library for React
+
+Database
+
+* [Postgres](https://www.postgresql.org/) - open source relational database
+* [Prisma](https://prisma.io/) - fully type-safe queries
+
+Test
+
+* [Jest](https://jestjs.io/) - for writing unit tests.
+* [Cypress](https://www.cypress.io/) - to check if specific actions are possible to perform in certain scenarios.
 
 For more information and a guide to working on features, go to the [contributing docs](/CONTRIBUTING.md#adding-a-new-feature).
 
-## User Stories
+## Roadmap
 
-### MVP
+### MVP (in progress)
 
-The [MVP user stories are shown in the MVP Project](https://github.com/freeCodeCamp/chapter/projects/1) kanban / cards and as [issues marked with "MVP"](https://github.com/freeCodeCamp/chapter/labels/MVP).
+The MVP user stories are shown in the [MVP milestone](https://github.com/Hanneses/chapter2/milestone/1) and should be done first.
 
 ### Post-MVP
 
-We are maintaining a list of post-MVP conversations and user stories using the ["Roadmap" tag](https://github.com/freeCodeCamp/chapter/issues?utf8=%E2%9C%93&q=is%3Aopen+or+is%3Aclosed+label%3ARoadmap+).
+There is a list of further project phases using [Milestones](https://github.com/Hanneses/chapter2/milestones).
 
-Quincy Larson is the project lead. [freeCodeCamp](https://www.freecodecamp.org) will start "dogfooding" the MVP with several of its local study groups.
+## Project Board
+
+See the [Project Board](https://github.com/users/Hanneses/projects/3) to find out what we are working on.
 
 ## UI / UX / Design References
 
-- [Mockups](https://preview.uxpin.com/13c1d07f6dd731123612a8884eb4174459312ac5#/pages/138361235/simulate/sitemap) and earlier [_visitor_ views](https://www.figma.com/proto/q7DikyL3N0c4CUWxHNa97i/Chapter-Prototype?node-id=1%3A2&scaling=scale-down)
-- [User Role Workflows](https://www.figma.com/file/ehgBfxoLKrlSZH0uftD6dA/Chapter-Trial?node-id=0%3A1)
-- [UI / UX Issues](https://github.com/freeCodeCamp/chapter/issues?q=is%3Aopen+is%3Aissue+label%3AUI%2FUX)
+* [Mockups](https://preview.uxpin.com/13c1d07f6dd731123612a8884eb4174459312ac5#/pages/138361235/simulate/sitemap)  (_by freeCodeCamp_)
+* [User Role Workflows](https://www.figma.com/file/ehgBfxoLKrlSZH0uftD6dA/Chapter-Trial?node-id=0%3A1) (_by freeCodeCamp_)
+* [UI / UX Issues](https://github.com/freeCodeCamp/chapter/issues?q=is%3Aopen+is%3Aissue+label%3AUI%2FUX) (_by freeCodeCamp_)
 
 ## Contributing
 
-- Please read the [contributing guidelines and steps needed to setup **_Chapter_** locally](CONTRIBUTING.md). We take you from local setup to submitting pull requests.
+* Please read the [contributing guidelines and steps needed to setup **_Chapter 2_** locally](CONTRIBUTING.md). We take you from local setup to submitting pull requests.
 
-- [Join our chat](https://discord.gg/QbQd7BpaaH) to get connected and follow announcements.
+* [Join our chat](https://discord.gg/QbQd7BpaaH) to get connected and follow announcements. (_by freeCodeCamp_)
 
 ## License
 
-Copyright (c) 2019-2024 freeCodeCamp.org
+Copyright (c) 2019-2024 [freeCodeCamp](https://www.freecodecamp.org), [Hanneses](https://github.com/Hanneses)
 
 The computer software is licensed under the [BSD-3-Clause](LICENSE) license.
 

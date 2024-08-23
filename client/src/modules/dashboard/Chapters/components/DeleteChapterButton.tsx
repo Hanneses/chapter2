@@ -2,7 +2,7 @@ import React from 'react';
 import { useConfirmDelete } from 'chakra-confirm';
 import { useRouter } from 'next/router';
 import { Button } from '@chakra-ui/button';
-
+import { DeleteIcon } from '@chakra-ui/icons';
 import { CHAPTERS } from '../../../chapters/graphql/queries';
 import { DASHBOARD_CHAPTERS } from '../graphql/queries';
 import { DASHBOARD_EVENTS } from '../../Events/graphql/queries';
@@ -69,6 +69,7 @@ export const DeleteChapterButton = ({
           size={size}
           width={width}
           onClick={clickDelete}
+          leftIcon={<DeleteIcon />}
         >
           Delete Chapter
         </Button>

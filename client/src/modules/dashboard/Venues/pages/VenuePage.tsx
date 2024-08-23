@@ -5,6 +5,7 @@ import { Link, LinkButton } from 'chakra-next-link';
 import { useConfirmDelete } from 'chakra-confirm';
 import { useRouter } from 'next/router';
 
+import { DeleteIcon, EditIcon } from '@chakra-ui/icons';
 import { Card } from '../../../../components/Card';
 import ProgressCardContent from '../../../../components/ProgressCardContent';
 import { TagsBox } from '../../../../components/TagsBox';
@@ -91,13 +92,19 @@ export const VenuePage: NextPageWithLayout = () => {
         </ProgressCardContent>
         <HStack spacing="3">
           <LinkButton
-            size={['sm', 'md']}
+            size={'sm'}
             colorScheme="blue"
             href={`/dashboard/chapters/${data.venue.chapter.id}/venues/${data.venue.id}/edit`}
+            leftIcon={<EditIcon />}
           >
             Edit
           </LinkButton>
-          <Button size={['sm', 'md']} colorScheme="red" onClick={clickDelete}>
+          <Button
+            size={'sm'}
+            colorScheme="red"
+            onClick={clickDelete}
+            leftIcon={<DeleteIcon />}
+          >
             Delete Venue
           </Button>
         </HStack>

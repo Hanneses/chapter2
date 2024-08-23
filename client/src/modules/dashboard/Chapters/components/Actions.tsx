@@ -1,8 +1,8 @@
-import { Button, Grid } from '@chakra-ui/react';
+import { Button, HStack } from '@chakra-ui/react';
 import { useConfirm } from 'chakra-confirm';
 import { LinkButton } from 'chakra-next-link';
-import React, { useMemo } from 'react';
-
+import { useMemo } from 'react';
+import { AddIcon, EditIcon } from '@chakra-ui/icons';
 import {
   InstancePermission,
   Permission,
@@ -49,6 +49,7 @@ export const Actions = ({ chapter }: ActionsProps) => {
       text: 'Add new event',
       dataCy: 'create-event',
       requiredPermission: Permission.EventCreate,
+      icon: <AddIcon />,
     },
     {
       colorScheme: 'blue',
@@ -57,6 +58,7 @@ export const Actions = ({ chapter }: ActionsProps) => {
       text: 'Add new venue',
       dataCy: 'create-venue',
       requiredPermission: Permission.VenueCreate,
+      icon: <AddIcon />,
     },
     {
       colorScheme: 'blue',
@@ -65,6 +67,7 @@ export const Actions = ({ chapter }: ActionsProps) => {
       text: 'Edit',
       dataCy: 'edit-chapter',
       requiredPermission: Permission.EventEdit,
+      icon: <EditIcon />,
     },
   ];
 
@@ -127,21 +130,21 @@ export const Actions = ({ chapter }: ActionsProps) => {
           Chapter Users
         </LinkButton>
       )}
-      <Grid
-        gridTemplateColumns="repeat(auto-fill, minmax(7.5rem, 1fr))"
-        gap="1em"
-      >
-        {allowedActions.map(({ colorScheme, size, href, text, dataCy }) => (
-          <LinkButton
-            key={text}
-            colorScheme={colorScheme}
-            size={size}
-            href={href}
-            data-cy={dataCy}
-          >
-            {text}
-          </LinkButton>
-        ))}
+      <HStack spacing="3">
+        {allowedActions.map(
+          ({ colorScheme, size, href, text, dataCy, icon }) => (
+            <LinkButton
+              key={text}
+              colorScheme={colorScheme}
+              size={size}
+              href={href}
+              data-cy={dataCy}
+              leftIcon={icon}
+            >
+              {text}
+            </LinkButton>
+          ),
+        )}
         <SharePopOver
           link={`${process.env.NEXT_PUBLIC_CLIENT_URL}/chapters/${chapterId}?ask_to_confirm=true`}
           size="sm"
@@ -159,7 +162,7 @@ export const Actions = ({ chapter }: ActionsProps) => {
             </Button>
           )}
         <DeleteChapterButton size="sm" chapterId={chapterId} />
-      </Grid>
+      </HStack>
     </>
   );
 };

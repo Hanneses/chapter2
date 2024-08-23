@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { VenueType } from '../../../../generated/graphql';
 import getLocationString, {
   PartialLocation,
@@ -25,12 +23,14 @@ export const EventVenue = ({
     <>
       {isPhysical(venue_type) && (
         <>
-          <TextField label="Venue">{venue?.name || 'Undecided/TBD'}</TextField>
-          {venue && (
-            <TextField label="Hosted at">
-              {getLocationString(venue, true)}
-            </TextField>
-          )}
+          <TextField label="Location">
+            {venue?.name || 'Undecided/TBD'}
+            {venue && (
+              <TextField label="Address">
+                {getLocationString(venue, true)}
+              </TextField>
+            )}
+          </TextField>
         </>
       )}
       {isOnline(venue_type) && (

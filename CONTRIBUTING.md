@@ -1,4 +1,4 @@
-**Table of Contents**
+# Table of Contents
 
 - [Contribution Guidelines](#contribution-guidelines)
 - [Contributing Code](#contributing-code)
@@ -42,8 +42,8 @@ We strictly enforce freecodecamp's ["Code of Conduct"](https://www.freecodecamp.
 # Contributing Code
 
 Consider the following options when you are ready to contribute code.
-* [GitPod.io](https://www.gitpod.io/docs) - a ready-to-code development environment that launches in the cloud.
-* Traditional Dev Environment - the common method of developing on a computer you control.
+- [GitPod.io](https://www.gitpod.io/docs) - a ready-to-code development environment that launches in the cloud.
+- Traditional Dev Environment - the common method of developing on a computer you control.
 
 ## Using GitPod
 
@@ -70,27 +70,27 @@ Your forked copy may be used to submit suggested changes to the **_Chapter_** re
 
 **Prerequisite**:  A Linux-compatible command line shell must exist on your development device in order to run `commands` in these docs. Options vary by operating system, but include:
 
-* Linux - the pre-installed terminal, usually running a _bash_ or _sh_ shell, should work in its default "out of the box" configuration.
-* Mac - the pre-installed _Terminal_ in MacOS, usually running a zsh shell, should work in its default "out of the box" configuration.
-* Windows - options for running a Linux terminal and shell within Windows include:
-    * [Windows Subsystem Linux with Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install-win10#manual-installation-steps) with a Linux distribution, such as [_Ubuntu 20.04 for Windows_](https://ubuntu.com/tutorials/ubuntu-on-windows) or [other supported Linux distributions](https://docs.microsoft.com/en-us/windows/wsl/install-win10#step-6---install-your-linux-distribution-of-choice).
+- Linux - the pre-installed terminal, usually running a _bash_ or _sh_ shell, should work in its default "out of the box" configuration.
+- Mac - the pre-installed _Terminal_ in MacOS, usually running a zsh shell, should work in its default "out of the box" configuration.
+- Windows - options for running a Linux terminal and shell within Windows include:
+    - [Windows Subsystem Linux with Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install-win10#manual-installation-steps) with a Linux distribution, such as [_Ubuntu 20.04 for Windows_](https://ubuntu.com/tutorials/ubuntu-on-windows) or [other supported Linux distributions](https://docs.microsoft.com/en-us/windows/wsl/install-win10#step-6---install-your-linux-distribution-of-choice).
         > Note: [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/) is an **optional** terminal interface tool. It can only open a Linux shell if WSL and a Linux distro already exist.
-    * _Git Bash_ - this terminal shell emulates Linux and is included in _Git for Windows_. It works, but is more likely to have permission errors or minor inconsistencies.
-    * _PowerShell_ and _cmd_ may run the **_Chapter_** app in _Docker Mode_, but these Windows native shells are not supported for this project.
+    - _Git Bash_ - this terminal shell emulates Linux and is included in _Git for Windows_. It works, but is more likely to have permission errors or minor inconsistencies.
+    - _PowerShell_ and _cmd_ may run the **_Chapter_** app in _Docker Mode_, but these Windows native shells are not supported for this project.
 
 **Prerequisites**: [Git](https://git-scm.com/downloads) must exist (run ``git --version`` to check) within your development terminal / shell.
 
 1. Decide if you will [authenticate to GitHub using SSH or HTTPS](https://docs.github.com/en/github/authenticating-to-github/about-authentication-to-github#authenticating-with-the-command-line).
-    * SSH - uses SSH key authentication instead of a username and password.
-    * HTTPS - uses a GitHub username and [personal access token (PAT)](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).  For security, use a PAT and not a GitHub password.
+    - SSH - uses SSH key authentication instead of a username and password.
+    - HTTPS - uses a GitHub username and [personal access token (PAT)](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).  For security, use a PAT and not a GitHub password.
 
 2. Change directories (`cd`) to where you want your **_Chapter_** fork to be cloned by Git.
     > Note: Windows using WSL + a Linux distro will maintain its own file system. Use a sub-directory within the Linux shell _/home/yourusername/_ filesystem path. The alternative, using a directory within _C:\_ or _/mnt/c_, will cause everything to run very slowly.
 
 3. [Clone](https://docs.github.com/en/github/getting-started-with-github/about-remote-repositories) your GitHub fork of **_Chapter_** using the SSH or HTTP method you selected above. Replace _YOUR_USER_NAME_ with your GitHub username.
 
-    * [SSH method](https://docs.github.com/en/github/getting-started-with-github/about-remote-repositories#cloning-with-ssh-urls) - `git clone git@github.com:YOUR_USER_NAME/Chapter.git`
-    * [HTTPS method](https://docs.github.com/en/github/getting-started-with-github/about-remote-repositories#cloning-with-https-urls) - `git clone https://github.com/YOUR_USER_NAME/chapter.git`
+    - [SSH method](https://docs.github.com/en/github/getting-started-with-github/about-remote-repositories#cloning-with-ssh-urls) - `git clone git@github.com:YOUR_USER_NAME/Chapter.git`
+    - [HTTPS method](https://docs.github.com/en/github/getting-started-with-github/about-remote-repositories#cloning-with-https-urls) - `git clone https://github.com/YOUR_USER_NAME/chapter.git`
 
 Cloning will download your fork, referred to as the _origin_, into a _chapter_ sub-directory in the current directory.
 
@@ -187,10 +187,10 @@ You are almost ready to make changes to files, but before that you should **alwa
 
     Some examples of good branch names are:
 
-    * fix/update-nav-links
-    * fix/sign-in
-    * docs/typo-in-readme
-    * feat/sponsors
+    - fix/update-nav-links
+    - fix/sign-in
+    - docs/typo-in-readme
+    - feat/sponsors
 
 4. Edit files and write code on your preferred code editor, such as [VS Code](https://code.visualstudio.com/).
 
@@ -260,9 +260,9 @@ You are almost ready to make changes to files, but before that you should **alwa
 
     Some examples of conventional commit messages are:
 
-    * fix: update API routes
-    * feat: attend event
-    * fix(docs): update database schema image
+    - fix: update API routes
+    - feat: attend event
+    - fix(docs): update database schema image
 
     Keep your commit messages short. You can always add additional information in the description of the commit message.
 
@@ -286,15 +286,15 @@ You are almost ready to make changes to files, but before that you should **alwa
     > [base repository: freeCodeCamp/chapter] [base:main] **<-** [your fork] [your proposed branch]
 
 3. Write a [descriptive title](https://contribute.freecodecamp.org/#/how-to-open-a-pull-request?id=prepare-a-good-pr-title) in the title field. A common pattern you may like to follow is: _**Type**(optional **scope**): With a Thoughtful Title_.
-    > * Example: _feat(client): Send Email on Attendance Confirmation_
-    > * **Type** examples
-    >   * chore: Changes that are not related to code, tests, or docs.
-    >   * docs: Changes to the contributing guidelines, etc.
-    >   * feat: A new feature
-    >   * fix: A bug fix
-    >   * refactor: A code change that neither fixes a bug nor adds a feature
-    >   * test: Changes related to tests
-    > * **(Scope)** examples: api, build, ci, client, db, perf, style, ui
+    > - Example: _feat(client): Send Email on Attendance Confirmation_
+    > - **Type** examples
+    >   - chore: Changes that are not related to code, tests, or docs.
+    >   - docs: Changes to the contributing guidelines, etc.
+    >   - feat: A new feature
+    >   - fix: A bug fix
+    >   - refactor: A code change that neither fixes a bug nor adds a feature
+    >   - test: Changes related to tests
+    > - **(Scope)** examples: api, build, ci, client, db, perf, style, ui
 
 4. Write a more detailed explaination of the changes in the form's text area.
     > The text area will automatically include a checklist of items to confirm before submitting the pull request.
@@ -312,18 +312,18 @@ Submit the form and you have successfully created a PR. Congratulations! :tada:
 **Prerequisite**: _Node.js_ 20+ and _npm_ 10+ must be installed
 
 > Note
-> * To check Node.js, run `node --version` and the output should be like **v20**.#.#
-> * If _Node.js_ is not installed, or using an older version, then:
->   * (Recommended) Use [NVM](https://github.com/nvm-sh/nvm#installing-and-updating) to manage multiple version of Node.js and run `nvm install` within the root code directory.
- >   * Or, install or update the [latest version of Node.js](https://nodejs.org/en/download/). Be sure to close and re-open your terminal for the changes to take effect.
-> * To check npm, run `npm --version` and the output should be like **10**.#.#
-> * Update npm to the latest version by running `npm i -g npm@10` in the root code directory.
+> - To check Node.js, run `node --version` and the output should be like **v20**.#.#
+> - If _Node.js_ is not installed, or using an older version, then:
+>   - (Recommended) Use [NVM](https://github.com/nvm-sh/nvm#installing-and-updating) to manage multiple version of Node.js and run `nvm install` within the root code directory.
+ >   - Or, install or update the [latest version of Node.js](https://nodejs.org/en/download/). Be sure to close and re-open your terminal for the changes to take effect.
+> - To check npm, run `npm --version` and the output should be like **10**.#.#
+> - Update npm to the latest version by running `npm i -g npm@10` in the root code directory.
 
 Run `npm i` to install all of the necessary dependencies.
 
 This step will **automatically** read and process the _package.json_ file. Most notably it:
-* Downloads all Node package dependencies to the _node_modules_ sub-directory
-* Creates the [_.env_ configuration file](#env-configuration-file) if one does not exist.
+- Downloads all Node package dependencies to the _node_modules_ sub-directory
+- Creates the [_.env_ configuration file](#env-configuration-file) if one does not exist.
     > Note: this is done "magically" via the _postinstall_ hook.
 </details>
 
@@ -333,25 +333,25 @@ There are two approaches to running the **_Chapter_** application.
 
 Based on your experience or preference, decide between the two options:
 
-* _Docker Mode_: typically easier if you just want to start the application for the first time or don't want to run a local PostgreSQL database on your host computer. It will take longer to "boot up" the container than manual-mode and can be slow to reload some types of code changes.
-* _Manual Mode_: more of a "hands-on" method, is more lightweight in that it's faster to "boot" and faster to refresh for some code changes, requires more knowledge of running PostgreSQL and configuring localhost services to play nice with the code.
+- _Docker Mode_: typically easier if you just want to start the application for the first time or don't want to run a local PostgreSQL database on your host computer. It will take longer to "boot up" the container than manual-mode and can be slow to reload some types of code changes.
+- _Manual Mode_: more of a "hands-on" method, is more lightweight in that it's faster to "boot" and faster to refresh for some code changes, requires more knowledge of running PostgreSQL and configuring localhost services to play nice with the code.
 
 See [Running Remotely](#running-remotely) if you are using a remote server.
 ## Docker Mode
 
 **Prerequisite**: [Docker](https://docs.docker.com/get-docker/) must exist on your system:
-* Windows & WSL - [Docker Desktop](https://hub.docker.com/editions/community/docker-ce-desktop-windows)
-    > * _Docker Desktop_ **must** be installed even when running WSL2 (Windows Subsystem Linux)
-    > * Close and re-open your terminal after the installation finishes.
-    > * Do not use Powershell or Git Bash to run commands. Rather, use a Linux / Ubuntu shell as noted above in "Using a Traditional Dev Environment > Step 2 - Prepare the Terminal and Git Environment".
-* Mac - [Docker Desktop](https://docs.docker.com/docker-for-mac/install/)
-* Linux
-    * [Docker Engine](https://docs.docker.com/engine/install/#server)
-    * [Docker Compose](https://docs.docker.com/compose/install/)
+- Windows & WSL - [Docker Desktop](https://hub.docker.com/editions/community/docker-ce-desktop-windows)
+    > - _Docker Desktop_ **must** be installed even when running WSL2 (Windows Subsystem Linux)
+    > - Close and re-open your terminal after the installation finishes.
+    > - Do not use Powershell or Git Bash to run commands. Rather, use a Linux / Ubuntu shell as noted above in "Using a Traditional Dev Environment > Step 2 - Prepare the Terminal and Git Environment".
+- Mac - [Docker Desktop](https://docs.docker.com/docker-for-mac/install/)
+- Linux
+    - [Docker Engine](https://docs.docker.com/engine/install/#server)
+    - [Docker Compose](https://docs.docker.com/compose/install/)
 
 Ensure the Docker tools are installed:
-* _Docker_ using `docker --version` and it should output something like _Docker version 19.03.13..._
-* _Docker Compose_ using `docker-compose --version` and it should output something like _docker-compose version 1.28.5..._
+- _Docker_ using `docker --version` and it should output something like _Docker version 19.03.13..._
+- _Docker Compose_ using `docker-compose --version` and it should output something like _docker-compose version 1.28.5..._
 
 Make sure _DB_PORT=54320_ is set in [_.env_](#env-configuration-file).
 
@@ -363,9 +363,9 @@ Run _Docker Compose_ `docker-compose up` from the root code directory and wait f
     app_1     | Listening on http://localhost:5000/graphql
 
 Once Docker is running:
-* The server will automatically restart anytime you save a _.ts_ or _.js_ file used by the server.
-* You can run any command within the container by prefixing it with `docker-compose exec app`, e.g. `docker-compose exec app npm install express`
-* If you, or someone else via a commit, updates _Dockerfile_ or the contents of its build directory, run `docker-compose build` to get the new image. Then, run `docker-compose up` to start the container's services.
+- The server will automatically restart anytime you save a _.ts_ or _.js_ file used by the server.
+- You can run any command within the container by prefixing it with `docker-compose exec app`, e.g. `docker-compose exec app npm install express`
+- If you, or someone else via a commit, updates _Dockerfile_ or the contents of its build directory, run `docker-compose build` to get the new image. Then, run `docker-compose up` to start the container's services.
 
 ## Manual Mode
 
@@ -388,9 +388,9 @@ See the [Initializing the Database](#initializing-the-database) section, below, 
 <details><summary><b>Step 4</b> - View the Running Application</summary>
 Once the app has started you should be able to pull up these URLs in your web browser:
 
-* Main Client Website - http://localhost:3000
-* GraphQL Playground - http://localhost:5000/graphql
-* MailHog - http://localhost:8025/ - all dev environment emails are captured and viewable through this Mailhog interface
+- Main Client Website - http://localhost:3000
+- GraphQL Playground - http://localhost:5000/graphql
+- MailHog - http://localhost:8025/ - all dev environment emails are captured and viewable through this Mailhog interface
 
 Note, MailHog is not started automatically in manual mode.  The easiest way to do that is via Docker: `docker run --rm --network host mailhog/mailhog`, but if you prefer to install it manually, instructions are on their [repository](https://github.com/mailhog/MailHog)
 </details>
@@ -408,13 +408,15 @@ The database is seeded with several types of user.  To experiment with different
 
 In order to understand where to start, it may help to familiarize yourself with our [tech stack](https://github.com/Hanneses/chapter2/blob/main/README.md#tech-stack). For more details:
 
-<details><summary>Tech Stack Overview</summary>
+## Tech Stack
 
 The database we use is [PostgreSQL](https://www.postgresql.org/), which we interact with via [Prisma](https://www.prisma.io/).  Prisma maps between our database and our code, providing a fully type-safe way to interact with the database.  The [Express](https://expressjs.com/) server itself uses [Apollo GraphQL server](https://www.apollographql.com/docs/apollo-server/) to handle requests from the client. Apollo needs to know the GraphQL schema and we define that by using [TypeGraphQL](https://typegraphql.com/) since it lets us automate schema generation and uses decorators for a clean syntax.
 
 The Chapter client uses the React framework [Next.js](https://nextjs.org/) with [Apollo Client](https://www.apollographql.com/docs/react/) for data fetching.  Since we are generating a GraphQL schema we can use [GraphQL Code Generator](https://www.graphql-code-generator.com/) to convert the schema into a set of TypeScript types and, more importantly, functions to get the data from the server.  As a result we know exactly what we're allowed to request from the server and the shape of the data it returns.
 
 After you have added new feature, to make sure it stays working, we recommend using [Cypress](https://www.cypress.io/). It will automatically test different scenarios starting in the client side of the application, communicating with the server, and warning you if something unexpected happens.
+
+## Run cypress locally (end-to-end test)
 
 To record test coverage locally, run `npm run both:coverage` before starting cypress with `npm run cypress:run`.  This will generate a `cypress-coverage/lcov-report` folder in the root directory.  Open the `index.html` file in your browser to see the coverage report.
 
@@ -424,13 +426,13 @@ To see the coverage of an single spec, you can either run `npm run cypress:run -
 
 ## Where to Find the Code
 
-* The database schema is defined in _server/prisma/schema.prisma_
-* GraphQL object types are defined by files in _server/src/graphql-types_
-* Resolvers for the GraphQL queries are defined in _server/src/controllers_
-* The client accesses the data via hooks defined in _client/src/generated/generated.tsx_
-* To create new hooks, modify _queries.ts_ and _mutations.ts_ files in _client/src/modules/**/graphql_
-* Client pages are defined according to [Next.js's routing](https://nextjs.org/docs/routing/dynamic-routes) e.g. _client/src/pages/dashboard/events/\[id\]/edit.tsx_ handles pages like _/dashboard/events/1/edit_
-* Cypress test coverage spec files should go in _/cypress/e2e_, roughly mirroring the client pages pattern
+- The database schema is defined in _server/prisma/schema.prisma_
+- GraphQL object types are defined by files in _server/src/graphql-types_
+- Resolvers for the GraphQL queries are defined in _server/src/controllers_
+- The client accesses the data via hooks defined in _client/src/generated/generated.tsx_
+- To create new hooks, modify _queries.ts_ and _mutations.ts_ files in _client/src/modules/**/graphql_
+- Client pages are defined according to [Next.js's routing](https://nextjs.org/docs/routing/dynamic-routes) e.g. _client/src/pages/dashboard/events/\[id\]/edit.tsx_ handles pages like _/dashboard/events/1/edit_
+- Cypress test coverage spec files should go in _/cypress/e2e_, roughly mirroring the client pages pattern
 
 # Frequently Asked Questions
 
@@ -475,6 +477,7 @@ To learn more, take a look at their [docs](https://docs.codesee.io/projects/reco
 The client and server are npm [workspaces](https://docs.npmjs.com/cli/v8/using-npm/workspaces).  This means that adding and removing packages work slightly differently from the usual.  All that changes is that commands are run from root with the `-w=name-of-workspace` flag.
 
 For example, to add a new `express` to the client, run `npm i -w=client express`.  Similarly, to remove it, run `npm un -w=client express`.
+
 ## Updating dependencies
 
 We rely on renovate to update dependencies automatically.
@@ -485,11 +488,13 @@ We rely on renovate to update dependencies automatically.
 
 In order to make authenticated graphql queries from Apollo Studio(works only when running on [Gitpod](https://gitpod.io/#https://github.com/freeCodeCamp/chapter)): 
 
-- Update the `cookieSession` config to following: 
-    ```js     
+- Update the `cookieSession` config to following:
+
+    ```js
     sameSite: 'none',
     secure: true,
     ```
+
 - Enable `Include cookies` option under `Connection Settings` inside Apollo Studio
 - Login to Chapter as an admin to access authenticated queries
 
@@ -536,34 +541,38 @@ When not running locally, the client needs to be passed the server's location by
 [PostgreSQL](https://www.postgresql.org/download) is our database and [Prisma](https://www.prisma.io) is used to map tables to JS objects.
 
 ### Schema
+
 Our [database schema and ER Diagrams are available online](https://opensource.freecodecamp.org/chapter/) using a custom GitHub pages domain using the [SchemaSpy](http://schemaspy.org/) format.
 
 Updates to the _gh-pages_ branch and [online schema](https://opensource.freecodecamp.org/chapter/) are [automatically triggered](https://github.com/freeCodeCamp/chapter/pull/695) by commits to the _main_ branch.
 
 ### Username and Password
-* Set your specific values in [_.env_](#env-configuration-file).
-* For security, it's ideal to change the username and password from the default values.
+
+- Set your specific values in [_.env_](#env-configuration-file).
+- For security, it's ideal to change the username and password from the default values.
 
 ### Host and Port
-* In **Docker Mode**, the Docker database container will be exposed to the host computer on Host: _localhost_ and Port: _54320_. Thus, avoiding potential port conflicts in the case your computer is running PostgreSQL locally for other projects.
-* In **Manual Mode**, the PostgreSQL port will be as you configured it, the default being Host: _localhost_ and Port: _5432_
-* If you're using a remote PostgreSQL server, then the Host and Port will be provided by the service. You'll also need to update the `DB_URL` value in [_.env_](#env-configuration-file).
+
+- In **Docker Mode**, the Docker database container will be exposed to the host computer on Host: _localhost_ and Port: _54320_. Thus, avoiding potential port conflicts in the case your computer is running PostgreSQL locally for other projects.
+- In **Manual Mode**, the PostgreSQL port will be as you configured it, the default being Host: _localhost_ and Port: _5432_
+- If you're using a remote PostgreSQL server, then the Host and Port will be provided by the service. You'll also need to update the `DB_URL` value in [_.env_](#env-configuration-file).
 
 ### Admin Tools
-* [pgAdmin](https://www.pgadmin.org/), [Postico](https://eggerapps.at/postico/) or [Table Plus](https://tableplus.com/), can use your mode's **Host and Port** values as described above.
-* psql Client
-  * In **Docker Mode** - `psql -h localhost -p 54320 -U postgres`. You don't have to run `docker-compose exec...` commands to "talk" to the PostgreSQL container.
-  * In **Manual Mode** - `psql -h localhost -p 5432 -U postgres`
+
+- [pgAdmin](https://www.pgadmin.org/), [Postico](https://eggerapps.at/postico/) or [Table Plus](https://tableplus.com/), can use your mode's **Host and Port** values as described above.
+- psql Client
+  - In **Docker Mode** - `psql -h localhost -p 54320 -U postgres`. You don't have to run `docker-compose exec...` commands to "talk" to the PostgreSQL container.
+  - In **Manual Mode** - `psql -h localhost -p 5432 -U postgres`
 
 ### Using Prisma and NPM
 
 #### Initializing the Database
 
 If starting the application for the first time, or syncronizing with the latest development changes, then the following must occur
-* build a server with `npm run -w=server build`, to create `prisma/seed.js` file.
-* drop the database - delete the schema and data.
-* apply all migrations - bring the schema up to date.
-* seed the database - fill the database with example data.
+- build a server with `npm run -w=server build`, to create `prisma/seed.js` file.
+- drop the database - delete the schema and data.
+- apply all migrations - bring the schema up to date.
+- seed the database - fill the database with example data.
 
 The `npm run db:migrate:reset` command will do all three tasks by running `prisma migrate reset` which handles all three tasks. It also builds the server, since the seed script needs to be compiled to run.
 
@@ -605,9 +614,9 @@ Chapter has a role based permission system, with specific permission assigned to
 
 ### Available role scopes
 
-* Instance role - per instance - every registered user has instance role.
-* Chapter role - per chapter - chapter role is created for user when explicitly joining chapter, or performing on event actions requiring chapter role. Ie. Attending event. Elevated chapter role for one chapter, doesn't impact chapter roles for different chapters.
-* Event role - per event - chapter role is created for user when attending an event. Elevated event role (permissions) for a one event doesn't impact event roles for different events.
+- Instance role - per instance - every registered user has instance role.
+- Chapter role - per chapter - chapter role is created for user when explicitly joining chapter, or performing on event actions requiring chapter role. Ie. Attending event. Elevated chapter role for one chapter, doesn't impact chapter roles for different chapters.
+- Event role - per event - chapter role is created for user when attending an event. Elevated event role (permissions) for a one event doesn't impact event roles for different events.
 
 _Note: in MVP Event roles are not used._
 
@@ -670,9 +679,9 @@ flowchart LR;
 
 Adding `@Authorize(Permissions.EventEdit)` before mutation editing event will authorize user if one of the following applies:
 
-* Their Instance role has `Permissions.EventEdit` permission.
-* User is not banned on the chapter, on which edited event is, and for that chapter their Chapter role has `Permission.EventEdit` permission.
-* Their Event role, for the edited event, has `Permission.EventEdit` permission.
+- Their Instance role has `Permissions.EventEdit` permission.
+- User is not banned on the chapter, on which edited event is, and for that chapter their Chapter role has `Permission.EventEdit` permission.
+- Their Event role, for the edited event, has `Permission.EventEdit` permission.
 
 Otherwise request will be rejected.
 
@@ -683,29 +692,29 @@ If your problem isn't resolved in the sections below, then visit our [chat](http
 <details>
  <summary>Application Troubleshooting</summary>
 
-* **Problem:**  Where do application registration and other emails go? </br>
+- **Problem:**  Where do application registration and other emails go? </br>
   **Solution:** All email are captured and saved by Mailhog. Simply open [http://localhost:8025/](http://localhost:8025/) to see captured emails. For account registration, the email validation link can be opened in the browser to complete the registration process.
 
-* **Problem:** The applications shows
+- **Problem:** The applications shows
   > _The table `public.chapters` does not exist in the current database_</br>
   > or
   > *Invalid'prisma_1.prisma.chapters.findMany()* </br>
 
   **Solution:** The [database needs to be initialized](https://github.com/freeCodeCamp/chapter/blob/main/CONTRIBUTING.md#initializing-the-database). Run `npm run db:reset` to clear and re-create the database tables.
 
-* **Problem:**  I have come back after a long period of time, and chapter isn't working. </br>
+- **Problem:**  I have come back after a long period of time, and chapter isn't working. </br>
   **Solution:** As we develop Chapter, it is often necessary to change the environment variables we use. In case .env file being outdated, try replacing it with [.env.example](#env-configuration-file).
 </details>
 
 <details>
  <summary>Linux Docker Troubleshooting</summary>
 
-* **Problem:** You are getting this error
+- **Problem:** You are getting this error
    > docker.errors.DockerException: Error while fetching server API version: ('Connection aborted.', PermissionError(13, 'Permission denied')) </br>
 
   **Solution:** Run `sudo docker-compose up` or add non-privileged user to the docker group as described in [https://docs.docker.com/engine/install/linux-postinstall/](https://docs.docker.com/engine/install/linux-postinstall/) If Docker was run as sudo before adding your user to the docker group.
 
-* **Problem:** You are getting this error
+- **Problem:** You are getting this error
   > "WARNING: Error loading config file: /home/user/.docker/config.json "  </br>
 
   **Solution:**  see [https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user).
@@ -714,19 +723,19 @@ If your problem isn't resolved in the sections below, then visit our [chat](http
 <details>
  <summary>Node / NPM Troubleshooting</summary>
 
-* **Problem:** You are getting this error
+- **Problem:** You are getting this error
    > notsup Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"} </br>
 
   **Solution:** Upgrade to npm version 7 or 8, like `npm install -g npm@latest` or by getting the latest version of NodeJS from your Linux package manager. Or, install [nvm](https://github.com/nvm-sh/nvm).
 
-* **Problem:** You are getting these errors
+- **Problem:** You are getting these errors
   > npm ERR! Error: EACCES: permission denied, rename '/usr/lib/node_modules/npm'</br>
   > or </br>
   > Error: EACCES: permission denied, rename '/usr/bin/npm' </br>
 
   **Solution:**  see [https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) or [https://stackoverflow.com/a/51024493](https://stackoverflow.com/questions/48910876/error-eacces-permission-denied-access-usr-local-lib-node-modules/51024493#51024493).
 
-  * **Problem:** if you are using Windows / WSL + Ubuntu Terminal, and the application shows
+  - **Problem:** if you are using Windows / WSL + Ubuntu Terminal, and the application shows
    > npx /bin/sh^M bad interpreter: No such file or directory </br>
 
   **Solution:** likely happens when Node.js is already installed on Windows, but it also needs to be [installed within the Linux subsystem / terminal](https://nodejs.org/en/download/package-manager/), such as installing it with [apt on in Ubuntu](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions).
@@ -740,14 +749,14 @@ If your problem isn't resolved in the sections below, then visit our [chat](http
   [Windows](https://docs.docker.com/desktop/windows/troubleshoot/)</br>
   [Mac](https://docs.docker.com/desktop/mac/troubleshoot/)
 
-* **Problem:** You are getting this error running
+- **Problem:** You are getting this error running
    > ERROR: for chapter-npx-test_db_1 Cannot start service db: driver failed programming external connectivity on endpoint chapter-npx-test_db_1 (....): Bind for 0.0.0.0:54320 failed: port is already allocated. ERROR: for db Cannot start service db: driver failed programming external connectivity on endpoint chapter-npx-test_db_1</br>
 
   **Solution:** Make sure Docker isn't already running and bound to port 54320.
 
-* **Note:** To shut down Docker on Linux, press Ctrl + C in the terminal where it was started.
+- **Note:** To shut down Docker on Linux, press Ctrl + C in the terminal where it was started.
 
-* **Note:** To purge old images, which can sometimes be the source of errors, run `docker-compose rm && docker image prune -a`
+- **Note:** To purge old images, which can sometimes be the source of errors, run `docker-compose rm && docker image prune -a`
 </details>
 
 <details>
@@ -755,12 +764,12 @@ If your problem isn't resolved in the sections below, then visit our [chat](http
 
 - Install Linux for Windows with [WSL](https://docs.microsoft.com/en-us/windows/wsl/install#troubleshooting-installation).</br>
 
-* **Problem:** You are getting this error
+- **Problem:** You are getting this error
    > WSL2 Installation is Incomplete</br>
 
   **Solution:** Follow the steps to install the missing component.
 
-* **Problem:** You are getting this error
+- **Problem:** You are getting this error
    > WslRegisterDistribution failed with error: 0x80070057</br>
 
   **Solution:** this is common on older CPUs which does not support Virtulization, HyperV or SLAT - Solution: Open Powershell and change back to WSL 1 using `wsl --set-default-version 1`
@@ -769,28 +778,28 @@ If your problem isn't resolved in the sections below, then visit our [chat](http
 <details>
  <summary>Windows / WSL + Docker Troubleshooting</summary>
 
-* **Problem:** You are getting this error
+- **Problem:** You are getting this error
    > Docker Desktop requires Windows 10 Pro/Enterprise (######+) or Windows 10 Home (#####.####+)</br>
 
   **Solution:** Windows 10 is running an old / unsupported version and needs to be updated before Docker will install.
 
-* **Problem:** You are getting this error
+- **Problem:** You are getting this error
    > Failed to execute script docker-composer</br>
 
   **Solution:** Start Docker Desktop via the Windows Start Menu and restart Git Bash.
 
-* **Problem:** Docker / WSL2 consumes all your system's RAM and is very slow</br>
+- **Problem:** Docker / WSL2 consumes all your system's RAM and is very slow</br>
 
   **Solution:** [Limit resources](https://medium.com/@lewwybogus/how-to-stop-wsl2-from-hogging-all-your-ram-with-docker-d7846b9c5b37)
 
-* **Problem:** You are getting this error
+- **Problem:** You are getting this error
    > Windows Defender Firewall has blocked some features of this app</br>
 
   **Solution:**  Allow Access.
 
-* **Problem:** You are getting either of these errors:
-   > * The Docker Compose file './docker-compose.yml' is invalid because: Unsupported config option for services.app: 'platform'
-   > * Error while fetching server API version: ('Connection aborted.', FileNotFoundError(2, 'No such file or directory'))
+- **Problem:** You are getting either of these errors:
+   > - The Docker Compose file './docker-compose.yml' is invalid because: Unsupported config option for services.app: 'platform'
+   > - Error while fetching server API version: ('Connection aborted.', FileNotFoundError(2, 'No such file or directory'))
 
   **Solution:**  _Docker Desktop for Windows_ must be installed on the host Windows operating system.
 </details>

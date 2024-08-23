@@ -1,6 +1,6 @@
 import NextError from 'next/error';
 import { useRouter } from 'next/router';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 
 import {
   useDashboardEventQuery,
@@ -84,10 +84,10 @@ export const EditEventPage: NextPageWithLayout = () => {
         venue_id: data.dashboardEvent?.venue?.id,
       }}
       formType="edit"
-      header="Edit Event"
-      loadingText={'Saving Event Changes'}
+      header="Edit event: "
+      loadingText={'Saving changes'}
       onSubmit={onSubmit}
-      submitText={'Save Event Changes'}
+      submitText={'Save changes'}
     />
   );
 };

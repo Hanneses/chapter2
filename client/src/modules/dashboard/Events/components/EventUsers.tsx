@@ -1,8 +1,8 @@
 import { Box, Button, HStack, Text, VStack } from '@chakra-ui/react';
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { useConfirm, useConfirmDelete } from 'chakra-confirm';
 import { DataTable } from 'chakra-data-table';
-
+import { CheckIcon, DeleteIcon, TimeIcon } from '@chakra-ui/icons';
 import { DASHBOARD_EVENT } from '../graphql/queries';
 import {
   MutationConfirmAttendeeArgs,
@@ -86,11 +86,17 @@ export const EventUsers = ({
       title: 'Attendees',
       statusFilter: AttendanceNames.confirmed,
       action: [
-        { title: 'Remove', onClick: onRemove, colorScheme: 'red' },
+        {
+          title: 'Remove',
+          onClick: onRemove,
+          colorScheme: 'red',
+          icon: <DeleteIcon />,
+        },
         {
           title: 'Move to waitlist',
           onClick: onMoveToWaitlist,
           colorScheme: 'orange',
+          icon: <TimeIcon />,
         },
       ],
     },
@@ -98,13 +104,25 @@ export const EventUsers = ({
       title: 'Waitlist',
       statusFilter: AttendanceNames.waitlist,
       action: [
-        { title: 'Confirm', onClick: onConfirmAttendee, colorScheme: 'blue' },
+        {
+          title: 'Confirm',
+          onClick: onConfirmAttendee,
+          colorScheme: 'blue',
+          icon: <CheckIcon />,
+        },
       ],
     },
     {
       title: 'Canceled',
       statusFilter: AttendanceNames.canceled,
-      action: [{ title: 'Remove', onClick: onRemove, colorScheme: 'red' }],
+      action: [
+        {
+          title: 'Remove',
+          onClick: onRemove,
+          colorScheme: 'red',
+          icon: <DeleteIcon />,
+        },
+      ],
     },
   ];
 
@@ -126,16 +144,17 @@ export const EventUsers = ({
                 title={`${title}: ${users.length}`}
                 data={users}
                 keys={['user', 'joined', 'role', 'action'] as const}
-                emptyText="No users"
+                emptyText="Nobody"
                 mapper={{
                   user: ({ user }) => <UserName user={user} />,
                   action: ({ user }) => (
                     <HStack>
-                      {action.map(({ title, onClick, colorScheme }) => (
+                      {action.map(({ title, onClick, colorScheme, icon }) => (
                         <Button
                           key={title.toLowerCase()}
+                          leftIcon={icon}
                           data-cy={title.toLowerCase()}
-                          size="xs"
+                          size="sm"
                           colorScheme={colorScheme}
                           onClick={onClick({ eventId, userId: user.id })}
                         >
@@ -171,7 +190,7 @@ export const EventUsers = ({
                       data={[users[index]]}
                       keys={['type', 'action'] as const}
                       showHeader={false}
-                      emptyText="No users"
+                      emptyText="Nobody"
                       mapper={{
                         type: () => (
                           <VStack
@@ -196,23 +215,26 @@ export const EventUsers = ({
                           >
                             <UserName user={user} />
                             <Text>{joined_date}</Text>
-                            {action.map(({ title, onClick, colorScheme }) => (
-                              <Button
-                                key={title.toLowerCase()}
-                                data-cy={title.toLowerCase()}
-                                size="xs"
-                                colorScheme={colorScheme}
-                                onClick={onClick({
-                                  eventId,
-                                  userId: user.id,
-                                })}
-                              >
-                                {title}
-                                <Text srOnly as="span">
-                                  {user.name} attendee
-                                </Text>
-                              </Button>
-                            ))}
+                            {action.map(
+                              ({ title, onClick, colorScheme, icon }) => (
+                                <Button
+                                  key={title.toLowerCase()}
+                                  data-cy={title.toLowerCase()}
+                                  size="sm"
+                                  leftIcon={icon}
+                                  colorScheme={colorScheme}
+                                  onClick={onClick({
+                                    eventId,
+                                    userId: user.id,
+                                  })}
+                                >
+                                  {title}
+                                  <Text srOnly as="span">
+                                    {user.name} attendee
+                                  </Text>
+                                </Button>
+                              ),
+                            )}
                             <Text data-cy="role">{event_role.name}</Text>
                           </VStack>
                         ),

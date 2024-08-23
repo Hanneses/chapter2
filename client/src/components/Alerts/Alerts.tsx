@@ -6,7 +6,7 @@ import {
   CloseButton,
   Wrap,
 } from '@chakra-ui/react';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { AlertContext } from './AlertContext';
 
 export const Alerts = () => {
@@ -25,29 +25,34 @@ export const Alerts = () => {
           iconProps,
           titleProps,
           ...rest
-        }) => (
-          <Alert
-            key={alertId}
-            status={status}
-            variant="top-accent"
-            justifyContent="space-between"
-            {...rest}
-          >
-            <Wrap>
-              <AlertIcon {...iconProps} />
-              <AlertTitle {...titleProps}>{title}</AlertTitle>
-              {description && (
-                <AlertDescription {...descriptionProps}>
-                  {description}
-                </AlertDescription>
-              )}
-            </Wrap>
-            <CloseButton
-              onClick={() => removeAlert(alertId)}
-              {...closeButtonProps}
-            />
-          </Alert>
-        ),
+        }) => {
+          // hide alert automatically after 5 sec
+          setTimeout(() => removeAlert(alertId), 5000);
+
+          return (
+            <Alert
+              key={alertId}
+              status={status}
+              variant="top-accent"
+              justifyContent="space-between"
+              {...rest}
+            >
+              <Wrap>
+                <AlertIcon {...iconProps} />
+                <AlertTitle {...titleProps}>{title}</AlertTitle>
+                {description && (
+                  <AlertDescription {...descriptionProps}>
+                    {description}
+                  </AlertDescription>
+                )}
+              </Wrap>
+              <CloseButton
+                onClick={() => removeAlert(alertId)}
+                {...closeButtonProps}
+              />
+            </Alert>
+          );
+        },
       )}
     </>
   );

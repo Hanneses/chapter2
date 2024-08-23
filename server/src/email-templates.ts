@@ -1,4 +1,5 @@
 import { events_venue_type_enum } from '@prisma/client';
+import { formatEventDateStartEnd } from './util/formatDateStartEnd';
 import { formatDate } from './util/date';
 
 export const SPACER = `<br />
@@ -67,7 +68,7 @@ export const dateChangeText = ({
   start_at: Date;
 }) => {
   return `\n- Start: ${formatDate(start_at)}<br />
-- End: ${formatDate(ends_at)}`;
+- End:   ${formatDate(ends_at)}`;
 };
 
 export const streamingUrlChangeText = ({
@@ -150,7 +151,7 @@ export const eventConfirmAtendeeText = ({
   subject: 'Your attendance is confirmed',
   emailText: `Your reservation is confirmed. You can attend the event ${eventName}.<br />
 <br />
-When: ${formatDate(start_at)} to ${formatDate(ends_at)}
+When: ${formatEventDateStartEnd(start_at, ends_at)}
 <br />${physicalLocation}${streamingData}
 <br />`,
 });
@@ -206,7 +207,7 @@ export const eventInviteText = ({
   subject: `Invitation to ${eventName}.`,
   emailText: `Upcoming event for ${chapterName}.<br />
 <br />
-When: ${formatDate(start_at)} to ${formatDate(ends_at)}
+When: ${formatEventDateStartEnd(start_at, ends_at)}
 <br />${physicalLocation}${streamingData}
 <br />
 Go to <a href="${eventConfirmAttendanceURL}">the event page</a> to confirm your attendance.${SPACER}
@@ -251,7 +252,7 @@ export const eventAttendanceConfirmationText = ({
   emailText: `Hi${userName},<br />
 Confirming your attendance of ${eventName}.<br />
 <br />
-When: ${formatDate(start_at)} to ${formatDate(ends_at)}
+When: ${formatEventDateStartEnd(start_at, ends_at)}
 <br />${physicalLocation}${streamingData}
 <br />
 You should receive a calendar invite shortly. If you do not, you can add the event to your calendars by clicking on the links below:<br />

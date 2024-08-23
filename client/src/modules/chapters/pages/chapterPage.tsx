@@ -9,11 +9,11 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
-import { CheckIcon } from '@chakra-ui/icons';
+import { BellIcon, CheckIcon, CloseIcon } from '@chakra-ui/icons';
 import { NextPage } from 'next';
 import NextError from 'next/error';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useConfirm } from 'chakra-confirm';
 
 import { CHAPTER } from '../graphql/queries';
@@ -44,6 +44,16 @@ const ChatLink = ({ chatUrl }: { chatUrl?: string | null }) => {
   ) : null;
 };
 
+const textStyleProps = {
+  fontSize: 'md',
+  fontWeight: 500,
+};
+
+const textStylePropsSuccess = {
+  ...textStyleProps,
+  color: 'green',
+};
+
 const SubscriptionWidget = ({
   chapterUser,
   chapterSubscribe,
@@ -55,11 +65,16 @@ const SubscriptionWidget = ({
 }) => {
   return chapterUser.subscribed ? (
     <>
-      <Text fontWeight={500}>You are subscribed to new events</Text>
+      <Text {...textStylePropsSuccess} fontWeight={500}>
+        <BellIcon marginRight={2} />
+        You are subscribed to new events
+      </Text>
       <Button
         data-cy="unsubscribe-chapter"
+        colorScheme="red"
         isLoading={loading}
         onClick={() => chapterSubscribe(false)}
+        leftIcon={<CloseIcon />}
       >
         Unsubscribe
       </Button>
@@ -72,6 +87,7 @@ const SubscriptionWidget = ({
         data-cy="subscribe-chapter"
         isLoading={loading}
         onClick={() => chapterSubscribe(true)}
+        leftIcon={<BellIcon />}
       >
         Subscribe
       </Button>
@@ -94,16 +110,27 @@ const ChapterUserRoleWidget = ({
 }) =>
   chapterUser?.chapter_role ? (
     <>
-      <Text data-cy="join-success" fontWeight={500}>
+      <Text {...textStylePropsSuccess} data-cy="join-success" fontWeight={500}>
         <CheckIcon marginRight={1} />
         {chapterUser.chapter_role.name} of the chapter
       </Text>
-      <Button isLoading={loadingLeave} onClick={LeaveChapter}>
+
+      <Button
+        colorScheme="red"
+        isLoading={loadingLeave}
+        onClick={LeaveChapter}
+        leftIcon={<CloseIcon />}
+      >
         Leave Chapter
       </Button>
     </>
   ) : (
-    <Button colorScheme="blue" isLoading={loadingJoin} onClick={JoinChapter}>
+    <Button
+      colorScheme="green"
+      isLoading={loadingJoin}
+      onClick={JoinChapter}
+      leftIcon={<CheckIcon />}
+    >
       Join Chapter
     </Button>
   );

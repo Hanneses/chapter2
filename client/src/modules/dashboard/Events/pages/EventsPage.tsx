@@ -15,8 +15,7 @@ import { LinkButton } from 'chakra-next-link';
 import React, { ReactElement, useState } from 'react';
 
 import { isPast } from 'date-fns';
-import { LockIcon } from '@chakra-ui/icons';
-import { formatDate } from '../../../../util/date';
+import { AddIcon, EditIcon, LockIcon } from '@chakra-ui/icons';
 import { DashboardLoading } from '../../shared/components/DashboardLoading';
 import { DashboardLayout } from '../../shared/components/DashboardLayout';
 import { isOnline, isPhysical } from '../../../../util/venueType';
@@ -28,6 +27,7 @@ import {
   Permission,
 } from '../../../../../../common/permissions';
 import { checkChapterPermission } from '../../../../util/check-permission';
+import { formatEventDateStartEnd } from 'util/formatDateStartEnd';
 
 interface FilterEventsProps {
   setFilterEvent: React.Dispatch<React.SetStateAction<boolean>>;
@@ -98,7 +98,10 @@ export const EventsPage: NextPageWithLayout = () => {
         gap="2em"
         gridTemplateColumns=".5fr 1fr 1fr 8em"
       >
-        <Heading id="page-heading">Events</Heading>
+        <Heading id="page-heading" data-cy="dashboard-events-page-headline">
+          Events
+        </Heading>
+
         <Flex
           alignItems="center"
           justifyContent={{ base: 'space-between', md: 'revert' }}
@@ -108,7 +111,7 @@ export const EventsPage: NextPageWithLayout = () => {
           <FilterEvents
             defaultChecked={hideEnded}
             setFilterEvent={setHideEnded}
-            filterLabel="Hide events that have ended"
+            filterLabel="Hide ended events"
             id={'hide-ended-events'}
           />
         </Flex>
@@ -132,6 +135,7 @@ export const EventsPage: NextPageWithLayout = () => {
             href="/dashboard/events/new"
             colorScheme={'blue'}
             gridColumn="-2 / -1"
+            leftIcon={<AddIcon />}
           >
             Add new
             <Text srOnly as="span">
@@ -140,12 +144,15 @@ export const EventsPage: NextPageWithLayout = () => {
           </LinkButton>
         )}
       </Grid>
+
+      {/* Table for large viewport */}
       <Box
         display={{ base: 'none', lg: 'block' }}
         width={'100%'}
         marginBlock={'2em'}
       >
         <DataTable
+          variant={'variantTableList'}
           tableProps={{ table: { 'aria-labelledby': 'page-heading' } }}
           data={filteredEvents}
           keys={
@@ -188,7 +195,6 @@ export const EventsPage: NextPageWithLayout = () => {
               <VStack align="flex-start">
                 <LinkButton
                   data-cy="event"
-                  colorScheme={event.canceled ? 'red' : undefined}
                   href={`/dashboard/events/${event.id}`}
                 >
                   {event.name}
@@ -221,7 +227,8 @@ export const EventsPage: NextPageWithLayout = () => {
                   : 'In-person only'}
               </Text>
             ),
-            date: (event) => formatDate(event.start_at),
+            date: (event) =>
+              formatEventDateStartEnd(event.start_at, event.ends_at),
             action: (event) => (
               <>
                 {hasPermissiontoEditEvent && (
@@ -229,6 +236,7 @@ export const EventsPage: NextPageWithLayout = () => {
                     colorScheme="blue"
                     size="sm"
                     href={`/dashboard/events/${event.id}/edit`}
+                    leftIcon={<EditIcon />}
                   >
                     Edit
                     <Text srOnly as="span">
@@ -242,6 +250,7 @@ export const EventsPage: NextPageWithLayout = () => {
         />
       </Box>
 
+      {/* Table for small viewport */}
       <Box display={{ base: 'block', lg: 'none' }} marginBlock={'2em'}>
         {filteredEvents.map(
           (
@@ -346,7 +355,7 @@ export const EventsPage: NextPageWithLayout = () => {
                         ? streaming_url || 'TBD'
                         : 'In-person only'}
                     </Text>
-                    <Text>{formatDate(start_at)}</Text>
+                    <Text>{formatEventDateStartEnd(start_at, ends_at)}</Text>
                     {hasPermissiontoEditEvent && (
                       <LinkButton
                         colorScheme="blue"
