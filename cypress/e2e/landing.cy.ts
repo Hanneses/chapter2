@@ -1,6 +1,12 @@
 describe('landing page', () => {
+  before(() => {
+    cy.task('seedDb');
+  });
+
   it('should have lists of events and chapters', () => {
+    cy.interceptGQL('PaginatedEventsWithTotal');
     cy.visit('/');
+    cy.wait('@GQLPaginatedEventsWithTotal');
     cy.contains('Upcoming events');
     cy.get('[data-cy="event-card"]').should('have.length', 3);
     cy.contains('Click for more').click();
