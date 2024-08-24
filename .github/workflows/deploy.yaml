@@ -21,4 +21,4 @@ jobs:
           remote_path: /var/www/virtual/${{ vars.UBERSPACE_SSH_USER }}/html
           remote_host: ${{ vars.UBERSPACE_SSH_HOST }}
           remote_user: ${{ vars.UBERSPACE_SSH_USER }}
-          remote_key: ${{ secrets.UBERSPACE_SSH_KEY }}
+          remote_key: ${{ secrets.UBERSPACE_SSH_PRIVATE_KEY }}
