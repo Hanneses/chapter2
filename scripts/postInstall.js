@@ -5,7 +5,7 @@ console.log('--------------------------');
 console.log('🎉 WELCOME TO CHAPTER 🎉');
 console.log('--------------------------');
 
-const CHAPTER_REMOTE = 'freeCodeCamp/chapter.git';
+const CHAPTER_REMOTE = 'Hanneses/chapter2.git';
 let IS_ERROR = false;
 
 function setup() {

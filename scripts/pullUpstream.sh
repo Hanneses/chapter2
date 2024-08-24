@@ -4,7 +4,7 @@ set -e
 
 if [[ $(git remote -v | grep 'upstream' | wc -l) -eq 0 ]]; then
   echo "Upstream remote not found, adding one"
-  git remote add upstream https://github.com/freeCodeCamp/chapter.git
+  git remote add upstream https://github.com/Hanneses/chapter2.git
 fi
 
 git fetch upstream
