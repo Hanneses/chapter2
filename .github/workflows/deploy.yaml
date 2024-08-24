@@ -1,0 +1,19 @@
+name: Deploy to Uberspace Test
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Uberspace Demo
+        uses: burnett01/rsync-deployments@6.0.0
+        with:
+          switches: -avrh --delete
+          path: src/
+          remote_path: /var/www/virtual/${{ vars.UBERSPACE_SSH_USER }}/html
+          remote_host: ${{ vars.UBERSPACE_SSH_HOST }}
+          remote_user: ${{ vars.UBERSPACE_SSH_USER }}
+          remote_key: ${{ secrets.UBERSPACE_SSH_PRIVATE_KEY }}
