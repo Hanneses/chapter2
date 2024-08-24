@@ -16,25 +16,24 @@ See our [Vision statement](https://github.com/freeCodeCamp/chapter/wiki/Vision).
 
 ## Features
 
-### Maintain Events
-
-* **Create events** – Create events and assign them to chapters. Maintain several information per event: name, start/end date, description, image, type, capacity, public and invite-only.
-* **Create chapters** – Create several chapters for your organization.
-* **Event overview** – See reports for chapters' events and attendees.
-
 ### Attend and Subscribe to Events
 
-* **View events** – See upcoming and past events of your organization and per each chapter.
-* **Attend events** – Members can attend events. Attendance to invity-only events needs confirmation by event organizers.
-* **Waiting list** – If an events capacity is reached members will be placed on a waiting list.
-* **Subscribe to notifications** – Members can subscribe to event notifications, to get notified on new or changed events.
+* **View events** – See upcoming and past events of the organization and chapters.
+* **Attend events** – Members can attend events. Attendance to invite-only events needs confirmation by event organizers.
+* **Waiting list** – If an events capacity is reached, members will be placed on a waiting list.
+* **Subscribe to notifications** – Members can subscribe to event notifications, to get notified on new, changed and canceled events.
+
+### Maintain Events
+
+* **Create events** – Create events and assign them to chapters. Maintain information per event - such as name,  description, start/end date, image, capacity, online/offline, public/invite-only.
+* **Event report** – See reports of events and attendees per chapter.
 
 ### Manage Organization and Chapters
 
-* **View chapters** – See all available chapters of your organisation and relating events.
+* **Create chapters** – Manage your organizational structure by creating chapters (like sub-organizations or local branches of an organization).
+* **Chapter overview** – See all chapters and relating events.
 * **Join/leave chapters** – Members are able to join and leave chapters.
 * **Subscribe to chapters** – Members can subscribe to chapters to get notified for new events.
-* **Create chapters** – To manage your organizational structure you can create chapters (like sub-organizations or local branches of an organization).
 
 ### Account Management
 
