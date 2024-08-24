@@ -222,13 +222,13 @@ describe('spec needing owner', () => {
       .invoke('text')
       .as('eventTitle');
 
-    cy.findAllByRole('row')
-      .not(':has([data-cy=event-canceled])')
-      .find('a')
-      .first()
-      .click();
-
     cy.get<string>('@eventTitle').then((eventTitle) => {
+      cy.findAllByRole('row')
+        .filter(`:contains(${eventTitle})`)
+        .find('a')
+        .first()
+        .click();
+
       cy.findByRole('button', { name: 'Cancel' }).click();
       cy.findByRole('alertdialog').findByText('Cancel event').click();
 

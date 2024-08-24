@@ -4,7 +4,7 @@ import { InstanceRoles } from '../../../../common/roles';
 
 import { prisma } from '../../../src/prisma';
 
-const { name, internet } = faker;
+const { person, internet } = faker;
 
 const createUsers = async (): Promise<{
   ownerId: number;
@@ -69,7 +69,7 @@ const createUsers = async (): Promise<{
     new Array(9),
     () => ({
       email: internet.email(),
-      name: `${name.firstName()} ${name.lastName()}`,
+      name: `${person.firstName()} ${person.lastName()}`,
       instance_role: { connect: { id: memberRoleId } },
     }),
   );

@@ -4,7 +4,7 @@ import { Prisma } from '@prisma/client';
 import { prisma } from '../../../src/prisma';
 import { selectTags } from '../lib/util';
 
-const { company, address } = faker;
+const { company, location } = faker;
 
 const createVenues = async (
   chapterIds: number[],
@@ -23,13 +23,13 @@ const createVenues = async (
         tag: { connectOrCreate: { where: { name }, create: { name } } },
       }));
       const venueData: Prisma.venuesCreateInput = {
-        name: company.companyName(),
-        city: address.city(),
-        region: address.state(),
-        postal_code: address.zipCode(),
-        country: address.country(),
+        name: company.name(),
+        city: location.city(),
+        region: location.state(),
+        postal_code: location.zipCode(),
+        country: location.country(),
         street_address:
-          Math.random() > 0.5 ? address.streetAddress() : undefined,
+          Math.random() > 0.5 ? location.streetAddress() : undefined,
         chapter: { connect: { id: chapterId } },
         venue_tags: { create: connectOrCreateTags },
       };

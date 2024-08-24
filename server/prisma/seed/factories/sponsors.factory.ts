@@ -16,7 +16,7 @@ const createSponsors = async (): Promise<number[]> => {
   const sponsors: number[] = [];
 
   for (let i = 0; i < 4; i++) {
-    const name = company.companyName();
+    const name = company.name();
     const website = internet.url();
     const logo_path = system.commonFileName('png');
     const type = String(randomEnum(SponsorTypes));

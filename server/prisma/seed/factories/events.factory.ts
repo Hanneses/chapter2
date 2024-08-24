@@ -58,18 +58,18 @@ const createEvents = async (
     };
 
     const eventData: Prisma.eventsCreateInput = {
-      name: company.companyName(),
+      name: company.name(),
       chapter: { connect: { id: chapterId } },
-      description: lorem.words(),
+      description: lorem.words(5 + random(50)),
       url: internet.url(),
       venue_type: venueType,
-      capacity: 10 + random(1000),
+      capacity: 10 + random(100),
       canceled: canceled[i],
       // Setting the first event to be open, so that we can test the user attend flow
       invite_only: i == 0 ? false : inviteOnly[i],
       start_at,
       ends_at: addHours(start_at, 1 + random(5)),
-      image_url: image.imageUrl(640, 480, 'nature', true, true),
+      image_url: image.url({ width: 640, height: 480 }),
       ...venueData,
     };
 
