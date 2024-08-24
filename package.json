@@ -7,8 +7,8 @@
     "doc": "docs"
   },
   "engines": {
-    "node": "20.15.0",
-    "npm": "10.7.0"
+    "node": "20.16.0",
+    "npm": "10.8.1"
   },
   "scripts": {
     "dev:client": "dotenv -- 'npm -w=client run dev'",

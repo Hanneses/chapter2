@@ -4,13 +4,13 @@ import { Prisma } from '@prisma/client';
 import { prisma } from '../../../src/prisma';
 import { selectTags } from '../lib/util';
 
-const { company, lorem, address, image } = faker;
+const { company, lorem, location, image } = faker;
 
 const createChapters = async (userId: number): Promise<number[]> => {
   const chapterIds: number[] = [];
 
   for (let i = 0; i < 4; i++) {
-    const name = company.companyName();
+    const name = company.name();
     const description = lorem.words();
     const category = lorem.word();
 
@@ -27,11 +27,11 @@ const createChapters = async (userId: number): Promise<number[]> => {
       description,
       category,
       creator_id: userId,
-      country: address.country(),
-      city: address.city(),
-      region: address.state(),
-      logo_url: image.imageUrl(150, 150, 'tech', true, true),
-      banner_url: image.imageUrl(640, 480, 'tech', true, true),
+      country: location.country(),
+      city: location.city(),
+      region: location.state(),
+      logo_url: image.url({ width: 150, height: 150 }),
+      banner_url: image.url({ width: 150, height: 150 }),
       chapter_tags: { create: connectOrCreateTags },
     };
 
