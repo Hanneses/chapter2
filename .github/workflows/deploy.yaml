@@ -1,19 +1,36 @@
-name: Deploy to Uberspace Test
+name: Deploy to Uberspace test environment
 on:
-  # run workflow manually from Actions tab
   workflow_dispatch:
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Deploy to Uberspace Demo
+      - name: Deploy to Uberspace test environment
         uses: burnett01/rsync-deployments@7.0.1
         with:
           switches: -avrh --delete
           path: ./
-          remote_path: /var/www/virtual/${{ vars.UBERSPACE_SSH_USER }}/html
+          remote_path: /var/www/virtual/${{ vars.UBERSPACE_SSH_USER }}/chapter2-node-app
           remote_host: ${{ vars.UBERSPACE_SSH_HOST }}
           remote_user: ${{ vars.UBERSPACE_SSH_USER }}
           remote_key: ${{ secrets.UBERSPACE_SSH_PRIVATE_KEY }}
+
+      - name: Build on Uberspace test environment
+        if: ${{ success() }}
+        uses: appleboy/ssh-action@v1.0.3
+        env:
+          NODE_ENV: 'NODE_ENV=test'
+        with:
+          host: ${{ vars.UBERSPACE_SSH_HOST }}
+          username: ${{ vars.UBERSPACE_SSH_USER }}
+          key: ${{ secrets.UBERSPACE_SSH_PRIVATE_KEY }}
+          envs: NODE_ENV
+          script: |
+            cd chapter2-node-app/server
+            npm ci
+            npm run build
+            cd ../client
+            npm ci
+            npm run build
