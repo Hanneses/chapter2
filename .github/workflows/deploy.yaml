@@ -21,16 +21,20 @@ jobs:
         if: ${{ success() }}
         uses: appleboy/ssh-action@v1.0.3
         env:
-          NODE_ENV: 'NODE_ENV=test'
+          NODE_ENV: 'NODE_ENV=production'
         with:
           host: ${{ vars.UBERSPACE_SSH_HOST }}
           username: ${{ vars.UBERSPACE_SSH_USER }}
           key: ${{ secrets.UBERSPACE_SSH_PRIVATE_KEY }}
           envs: NODE_ENV
           script: |
-            cd chapter2-node-app/server
-            npm ci
-            npm run build
-            cd ../client
-            npm ci
-            npm run build
+            echo "### Set $NODE_ENV"
+            cd chapter2-node-app
+            echo "### install and build server"
+            npm ci -w=server --ignore-scripts
+            npm run build -w=server
+            echo "### install and build server finished"
+            echo "### install and build client"
+            npm ci -w=client --ignore-scripts
+            npm run build -w=client
+            echo "### install and build client finished"
