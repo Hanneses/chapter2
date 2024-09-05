@@ -36,7 +36,7 @@
     "@aws-sdk/client-ses": "3.632.0",
     "@cypress/code-coverage": "3.10.4",
     "@googleapis/calendar": "2.0.0",
-    "@prisma/client": "5.18.0",
+    "@prisma/client": "^5.19.0",
     "@sendgrid/mail": "7.7.0",
     "apollo-server-express": "3.13.0",
     "calendar-link": "^2.7.0",
@@ -72,7 +72,7 @@
     "lodash": "4.17.21",
     "node-dev": "7.4.3",
     "nyc": "15.1.0",
-    "prisma": "5.18.0",
+    "prisma": "^5.19.0",
     "rimraf": "3.0.2",
     "supertest": "6.3.3",
     "typescript": "5.0.4"
