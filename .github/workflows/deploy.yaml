@@ -38,3 +38,8 @@ jobs:
             npm ci -w=client --ignore-scripts
             npm run build -w=client
             echo "### install and build client finished"
+            supervisorctl stop chapter2-test-server-daemon
+            supervisorctl stop chapter2-test-client-daemon
+            supervisorctl start chapter2-test-server-daemon
+            supervisorctl start chapter2-test-client-daemon
+            echo "### server and client daemons started"
