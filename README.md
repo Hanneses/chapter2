@@ -1,3 +1,14 @@
+This project is archived (since 10/2024).
+
+**Reason**
+- There are professional event platforms (like Eventbrite and MeetUp) which now provide their service without any charges if your event has no ticket costs/is free. This seems to be a really nice offer.
+- Self-hosting an event platform (server, database, mail etc.) takes some money per month as well as ongoing effort for operations and maintenance. This might be to much costs for small non-profit organizations.
+
+Nevertheless feel free to fork an continue this project. :)
+
+----
+
+
 # Chapter 2 – event management tool
 
 [![All Contributors](https://img.shields.io/github/all-contributors/Hanneses/chapter2?color=orange&style=flat-square)](#contributors-)
